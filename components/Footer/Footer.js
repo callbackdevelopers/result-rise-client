@@ -11,8 +11,8 @@ import {
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-black text-white">
+    <div className=" p-10 bg-black text-white">
+      <footer className="footer">
         <div>
           <span className="footer-title">Contact Info</span>
           <Link href="https://www.google.com" className="link link-hover">
@@ -104,7 +104,11 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+       
       </footer>
+      <div className="text-center">
+        <span className="text-center ">&copy; Result Rise team 2023</span>
+      </div>
     </div>
   );
 };
