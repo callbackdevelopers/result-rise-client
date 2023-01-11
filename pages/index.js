@@ -9,10 +9,6 @@ export default function Home() {
         <title>Result Riase - Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className=''>
-        hello
-      </body>
-
     </>
   )
 }

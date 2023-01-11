@@ -22,6 +22,7 @@
     "sweetalert2": "^11.4.8"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
     "@next/eslint-plugin-next": "^13.1.1",
     "autoprefixer": "^10.4.13",
     "eslint": "8.31.0",

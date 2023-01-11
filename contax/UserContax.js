@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 import { createContext, useContext, useEffect, useState } from "react";
 import { app } from "../config/firebase.init";
 
+
 const AuthUser = createContext()
 const auth = getAuth(app);
 const provaider = new GoogleAuthProvider();
@@ -26,7 +27,6 @@ const UserContax = ({ children }) => {
         })
         return () => unsuscribe()
     }, [])
-
     const authInfo = {
         user, setUser,
         loading, setLoading,
@@ -40,7 +40,6 @@ const UserContax = ({ children }) => {
         </AuthUser.Provider>
     );
 }
-
 export default UserContax;
 
 export const useFirebase = () => {
