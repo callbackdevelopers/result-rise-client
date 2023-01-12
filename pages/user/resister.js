@@ -15,7 +15,6 @@ const resister = () => {
         const user = {
             name, email, password, id
         }
-
         CreateUserEP(data.email, data.Password)
             .then(rs =>
                 updateProfilePic(data.name)

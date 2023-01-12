@@ -5,5 +5,4 @@ export default function App({ Component, pageProps }) {
   return <UserContax>
     <Component {...pageProps} />
   </UserContax>
-
 }

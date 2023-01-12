@@ -1,5 +1,5 @@
 {
-  "name": "result-rise-client",
+  "name": "result-rice_clint",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,25 +11,29 @@
   "dependencies": {
     "@next/font": "13.1.1",
     "daisyui": "^2.46.1",
+    "eslint": "^8.2.0",
+    "eslint-config-next": "13.1.1",
     "firebase": "^9.15.0",
-    "lint": "^0.8.19",
     "lottie-react": "^2.3.1",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.5",
     "react-icons": "^4.7.1",
-    "sweetalert2": "^11.4.8"
+    "sweetalert2": "^11.7.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.19.1",
-    "@next/eslint-plugin-next": "^13.1.1",
     "autoprefixer": "^10.4.13",
-    "eslint": "8.31.0",
-    "eslint-config-next": "^0.2.4",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.2",
     "tailwindcss": "^3.2.4"
   }
 }
