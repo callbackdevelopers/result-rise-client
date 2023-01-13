@@ -2,6 +2,7 @@ import * as React from "react";
 
 function ArticleIcon({ fill = "#6C7281", ...rest }) {
     return (
+
         <svg
             width={24}
             height={24}

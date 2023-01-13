@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import heroImg from '../../public/heroImage.svg'
+import BodyTamplate from '../Shared/BodyTamplate'
 
 
 
@@ -8,51 +8,46 @@ const HeroSection = () => {
     return (
         <div>
             <Head><title>Home - Result Rise</title></Head>
-            <div className="hero min-h-screen text-white h-full  container px-3 md:px-12 mx-auto">
-                <div className="hero-content md:px-0 flex-col  md:grid md:grid-cols-2 md:w-full">
+            <BodyTamplate>
+                <div className="hero min-h-[calc(100vh_-_70px)] text-white ">
+                    <div className="md:px-0 flex-col  md:grid md:grid-cols-2 md:w-full  h-full flex  items-center justify-between ">
+                        <div className='col-span-1 md:mt-0 mt-14'>
+                            <div className="mb-7">
+                                <span className='bg-gradient-to-bl from-orange-600 to-orange-500
+                            p-2 md:text-sm rounded-3xl text-white'>REAL RESULT, REAL SUCCESS
+                                </span>
+                            </div>
+                            <h1 className="text-7xl font-bold mt-5"> <span className='stroke-text md:text-4xl lg:text-7xl'>Get Your Results</span> <span className=''>Easy Way</span>
+                            </h1>
+                            <p className="py-6">Student, Subject, Teacher, Semester, Result and Class from this project. The main objective to develop Result Management System.
+                            </p>
+                            <div className='flex justify-between mt-5  w-96'>
+                                <div className='flex flex-col justify-center items-center'>
+                                    <h1 className='md:text-4xl text-2xl'>+ 50</h1>
+                                    <p>Teachers </p>
+                                </div>
+                                <div className='flex flex-col justify-center items-center'>
+                                    <h1 className='md:text-4xl text-2xl'>+ 200</h1>
+                                    <p>Students </p>
+                                </div>
+                                <div className='flex flex-col justify-center items-center'>
+                                    <h1 className='md:text-4xl text-2xl'>+ 90</h1>
+                                    <p>Parents </p>
+                                </div>
+                            </div>
+                            <div className='mt-12'>
+                                <div>
+                                    <button className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">GetGo to Your Dashboard </button>
+                                </div>
 
-                    <div className='col-span-1 md:mt-0 mt-14'>
-                        <span className='bg-amber-400 p-3 md:text-xl rounded-3xl text-white '>REAL RESULT, REAL SUCCESS
-                        </span>
-                        <h1 className="text-7xl font-bold mt-5"> <span className='stroke-text'>Get Your Results</span> with Us
-                        </h1>
-                        <p className="py-6">Transforming Ideas into Results. Efficiency meets precision with our generator. Elevate student success with our results generator.
-                        </p>
-                        <div className='flex justify-between mt-5'>
-                            <div>
-                                <h1 className='md:text-4xl text-2xl'>+ 5</h1>
-                                <p>Institute Join</p>
-                            </div>
-                            <div>
-                                <h1 className='md:text-4xl text-2xl'>+ 200</h1>
-                                <p>Students</p>
-                            </div>
-                            <div>
-                                <h1 className='md:text-4xl text-2xl'>+ 20</h1>
-                                <p>Users Reviews</p>
                             </div>
                         </div>
-                        <div className='flex gap-5 mt-5'>
-                            <div>
-                                <button className="btn btn-warning no-animation bg-amber-400 text-white font-bold">Get started</button>
-
-                            </div>
-                            <div>
-                                <button className="btn btn-outline btn-warning no-animation text-white font-bold">Learn more</button>
-
-                            </div>
+                        <div className='flex justify-end  lg:w-5/6  '>
+                            <img src="/heroImage.svg" alt="hero iamge " className='h-96 w-96 md:h-[520px] md:w-auto' />
                         </div>
-
-                    </div>
-                    <div className='flex justify-center md:mt-0 -mt-24'>
-
-
-                        <img src="/heroImage.svg" alt="hero iamge " className='md:h-auth w-96 md:mt-0 mt-28' />
-
-
                     </div>
                 </div>
-            </div>
+            </BodyTamplate>
         </div>
     )
 }
