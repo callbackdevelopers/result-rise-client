@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useFirebase } from "../../contax/UserContax";
 import AlartMessage from "../../Hooks/AlartMessage";
@@ -77,7 +78,9 @@ const login = () => {
                         <span className="hidden mx-2 sm:inline">Sign in with Google</span>
                     </button>
                 </div>
-                <p className="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <a href="#" className="font-medium text-gray-700  hover:underline">Create One</a></p>
+                <p className="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account?
+                    <Link href="/user/resister" className="font-medium text-gray-700  hover:underline">Create One</Link>
+                </p>
             </div>
         </div >
     );
