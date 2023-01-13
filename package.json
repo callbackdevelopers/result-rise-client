@@ -20,7 +20,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.5",
     "react-icons": "^4.7.1",
-    "sweetalert2": "^11.7.0"
+    "sweetalert2": "^11.7.0",
+    "vercel": "^28.11.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
