@@ -1,10 +1,14 @@
-import Head from 'next/head'
-import React from 'react'
-import BodyTamplate from '../Shared/BodyTamplate'
+import Head from 'next/head';
+import Link from 'next/link';
+import React from 'react';
+import CountUp from 'react-countup';
+import { useFirebase } from '../../contax/UserContax';
+import BodyTamplate from '../Shared/BodyTamplate';
 
 
 
 const HeroSection = () => {
+    const { user } = useFirebase();
     return (
         <div>
             <Head><title>Home - Result Rise</title></Head>
@@ -23,22 +27,26 @@ const HeroSection = () => {
                             </p>
                             <div className='flex justify-between mt-5  w-96'>
                                 <div className='flex flex-col justify-center items-center'>
-                                    <h1 className='md:text-4xl text-2xl'>+ 50</h1>
+                                    <h1 className='md:text-4xl text-2xl'>+ <CountUp start={0} end={50} delay={0} duration={2} /></h1>
                                     <p>Teachers </p>
                                 </div>
                                 <div className='flex flex-col justify-center items-center'>
-                                    <h1 className='md:text-4xl text-2xl'>+ 200</h1>
+                                    <h1 className='md:text-4xl text-2xl'>
+                                        +<CountUp start={0} end={200} delay={0} duration={2} />
+                                    </h1>
                                     <p>Students </p>
                                 </div>
                                 <div className='flex flex-col justify-center items-center'>
-                                    <h1 className='md:text-4xl text-2xl'>+ 90</h1>
+                                    <h1 className='md:text-4xl text-2xl'>+ <CountUp start={0} end={90} delay={0} duration={2} /></h1>
                                     <p>Parents </p>
                                 </div>
                             </div>
                             <div className='mt-12'>
-                                <div>
-                                    <button className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">GetGo to Your Dashboard </button>
-                                </div>
+                                {user?.uid ? <div>
+                                    <button className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Go to Your Dashboard </button>
+                                </div> :
+                                    <Link href='/user/login' className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Got To Login</Link>
+                                }
 
                             </div>
                         </div>
