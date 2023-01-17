@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useFirebase } from "../../contax/UserContax";
 import AlartMessage from "../../Hooks/AlartMessage";
@@ -8,11 +9,12 @@ const login = () => {
     const { successMessage, errorMessage } = AlartMessage()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { loginEmail, GoogleLogin } = useFirebase()
-
+    const router = useRouter()
     const heandelGoogleSignIn = () => {
         GoogleLogin()
             .then(result => {
                 successMessage('login successfull')
+                router.push('/')
             }).catch(error => {
                 errorMessage(error.message)
             })
@@ -21,17 +23,17 @@ const login = () => {
         console.log(data);
         loginEmail(data.email, data.password)
             .then(re => {
-                setTimeout(() => {
-                }, 200)
                 successMessage("login Successfull")
+                router.push('/')
             })
             .catch(err => {
                 errorMessage(err.message)
             })
     }
     return (
-        <div className="flex justify-center min-h-screen">
-            <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md ">
+        <div className="flex justify-center min-h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+            <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md 
+            bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100">
                 <h1 className="text-3xl font-semibold text-center text-gray-700 ">Result Rise</h1>
                 <form onSubmit={handleSubmit(onSubmit)}
                     className="mt-6">

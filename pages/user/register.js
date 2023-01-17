@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useFirebase } from "../../contax/UserContax";
 import AlartMessage from "../../Hooks/AlartMessage";
 
-const resister = () => {
+const register = () => {
     const { successMessage, errorMessage } = AlartMessage()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { GoogleLogin, CreateUserEP, updateProfilePic } = useFirebase()
@@ -32,19 +32,18 @@ const resister = () => {
     }
     return (
         <div>
-            <section className="bg-white ">
+            <section className="bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
                 <div className="flex justify-center min-h-screen">
-
                     <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
-                        <div className="w-full">
-                            <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize ">
+                        <div className="w-full ">
+                            <h1 className="text-2xl font-semibold tracking-wider text-white capitalize ">
                                 Create your account.
                             </h1>
-                            <p className="mt-4 text-gray-500 ">
+                            <p className="mt-4 text-gray-400">
                                 Let’s get you all set up so you can verify your personal account and begin setting up your profile.
                             </p>
                             <div className="mt-6">
-                                <h1 className="text-gray-500 ">Select type of account</h1>
+                                <h1 className="text-gray-400 ">Select type of account</h1>
                                 <div className="mt-3 md:flex md:items-center md:-mx-2">
                                     <button className="flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -69,10 +68,10 @@ const resister = () => {
 
                             <form
                                 onSubmit={handleSubmit(onSubmit)}
-                                className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+                                className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text"> Name</span>
+                                        <span className="label-text text-white"> Name</span>
                                     </label>
                                     <input type="text" placeholder="md shakeeb" className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.firstName ? ' border-red-700 focus:ring-red-300' : 'focus:border-blue-400 focus:ring-blue-300'} focus:outline-none focus:ring focus:ring-opacity-40`}
                                         {...register("firstName", { required: ' Name must required' })}
@@ -81,7 +80,7 @@ const resister = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Id Number</span>
+                                        <span className="label-text text-white">Id Number</span>
                                     </label>
                                     <input type="text" placeholder="XXX-XXXXX" className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.id ? ' border-red-700 focus:ring-red-300' : 'focus:border-blue-400 focus:ring-blue-300'} focus:outline-none focus:ring focus:ring-opacity-40`}
                                         {...register("id", { required: 'id must required' })}
@@ -91,7 +90,7 @@ const resister = () => {
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Email</span>
+                                        <span className="label-text text-white">Email</span>
                                     </label>
                                     <input type="text" placeholder="shakeeb@example.com" className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.email ? ' border-red-700 focus:ring-red-300' : 'focus:border-blue-400 focus:ring-blue-300'} focus:outline-none focus:ring focus:ring-opacity-40`}
                                         {...register("email", { required: 'Email must required' })}
@@ -100,7 +99,7 @@ const resister = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Password</span>
+                                        <span className="label-text text-white">Password</span>
                                     </label>
                                     <input type="password" placeholder="XXX-XXX-XX-XXX" className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.Password ? ' border-red-700 focus:ring-red-300' : 'focus:border-blue-400 focus:ring-blue-300'} focus:outline-none focus:ring focus:ring-opacity-40`}
                                         {...register("Password", { required: 'Password must required', minLength: 6 })}
@@ -126,4 +125,4 @@ const resister = () => {
     );
 }
 
-export default resister;
+export default register;
