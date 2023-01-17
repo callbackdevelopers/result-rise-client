@@ -1,22 +1,27 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+
+import { useState } from 'react';
+import HeroSection from '../components/HeroSection/HeroSection';
+import Navbar from '../components/Navbars/Navbar';
+import Spiner from '../components/Spiner/Spiner';
+import { useFirebase } from '../contax/UserContax';
 
 export default function Home() {
-    return (
-        <>
-            <Head>
-                <title>ResultRise</title>
-            </Head>
-            <main>
-                <div className={styles.container}>
-                    <div className={styles.main}>
-                        <h1 className={styles.title} >ResultRise</h1>
-                        <p className="text-center">
-                            A platform for students to get their results
-                        </p>
-                    </div>
-                </div>
-            </main>
-        </>
-    );
+  const { loading } = useFirebase()
+  const [timeOutLoading, setTimeOutLoading] = useState(true)
+  setTimeout(() => {
+    setTimeOutLoading(false)
+  }, 500);
+  if (timeOutLoading || loading) return <div className="bg-gradient-to-r from-gray-700 via-gray-900 to-black h-screen flex justify-center items-center">
+    <Spiner
+      color={'#ffff'}
+    />
+  </div>
+  return (
+    <div className='bg-gradient-to-r from-gray-700 via-gray-900 to-black'>
+      <div className='md:mx-6'>
+        <Navbar></Navbar>
+      </div>
+      <HeroSection></HeroSection>
+    </div>
+  )
 }
