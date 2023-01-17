@@ -3,6 +3,7 @@ import React from 'react';
 import { useFirebase } from '../../contax/UserContax';
 import AlartMessage from "../../Hooks/AlartMessage";
 import BodyTamplate from '../Shared/BodyTamplate';
+import ButtonUp from '../Shared/Buttons/SecondaryButton';
 
 const Navbar = () => {
     const { successMessage } = AlartMessage()
@@ -16,9 +17,6 @@ const Navbar = () => {
         <li><Link href="/whyUs">Why Us</Link></li>
         <li><Link href="/">About Us</Link></li>
     </>
-
-
-
     return (
         <div className="shadow-md ">
             <BodyTamplate>
@@ -61,8 +59,9 @@ const Navbar = () => {
                             </div>
                             :
                             <Link
-                                className="btn hover:bg-white no-animation  bg-white text-black border-none rounded-none"
-                                href='/user/resister'>Resister</Link>
+                                className=""
+                                href='/user/register'><ButtonUp>
+                                    Register</ButtonUp></Link>
                         }
                     </div>
                 </div>

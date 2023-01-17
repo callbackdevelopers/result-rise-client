@@ -31,8 +31,9 @@ const login = () => {
             })
     }
     return (
-        <div className="flex justify-center min-h-screen">
-            <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md ">
+        <div className="flex justify-center min-h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+            <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md 
+            bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100">
                 <h1 className="text-3xl font-semibold text-center text-gray-700 ">Result Rise</h1>
                 <form onSubmit={handleSubmit(onSubmit)}
                     className="mt-6">

@@ -6,8 +6,6 @@ import { useFirebase } from '../../contax/UserContax';
 import BodyTamplate from '../Shared/BodyTamplate';
 import ButtonArrow from '../Shared/Buttons/PrimaryButton';
 
-
-
 const HeroSection = () => {
     const { user } = useFirebase();
     return (
@@ -19,7 +17,8 @@ const HeroSection = () => {
                         <div className='col-span-1 md:mt-0 mt-14'>
                             <div className="mb-7">
                                 <span className='bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800
-                            p-2 md:text-sm rounded-3xl text-white'>REAL RESULT, REAL SUCCESS
+                            p-2 md:text-sm rounded-3xl text-white  h-10'>
+                                    REAL RESULT, REAL SUCCESS
                                 </span>
                             </div>
                             <h1 className="text-7xl font-bold mt-5"> <span className='stroke-text md:text-4xl lg:text-7xl'>Get Your Results</span> <span className=''>Easy Way</span>
@@ -49,15 +48,13 @@ const HeroSection = () => {
                                             h={'10'}>
                                             Go to Your Dashboard
                                         </ButtonArrow> </Link>
-                                </div> :
-                                    <div className=''>
-                                        <Link href='/user/login' >
-                                            <ButtonArrow
-                                                h={'10'}>
-                                                Go to Login
-                                            </ButtonArrow> </Link>
-                                    </div>
-                                }
+                                </div> : <div className=''>
+                                    <Link href='/user/login' >
+                                        <ButtonArrow
+                                            h={'10'}>
+                                            Go to Login
+                                        </ButtonArrow> </Link>
+                                </div>}
                             </div>
                         </div>
                         <div className='flex justify-end  lg:w-5/6  '>
