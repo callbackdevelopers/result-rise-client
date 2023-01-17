@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useFirebase } from "../../contax/UserContax";
 import AlartMessage from "../../Hooks/AlartMessage";
@@ -8,11 +9,12 @@ const login = () => {
     const { successMessage, errorMessage } = AlartMessage()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { loginEmail, GoogleLogin } = useFirebase()
-
+    const router = useRouter()
     const heandelGoogleSignIn = () => {
         GoogleLogin()
             .then(result => {
                 successMessage('login successfull')
+                router.push('/')
             }).catch(error => {
                 errorMessage(error.message)
             })
@@ -21,9 +23,8 @@ const login = () => {
         console.log(data);
         loginEmail(data.email, data.password)
             .then(re => {
-                setTimeout(() => {
-                }, 200)
                 successMessage("login Successfull")
+                router.push('/')
             })
             .catch(err => {
                 errorMessage(err.message)

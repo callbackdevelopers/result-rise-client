@@ -43,11 +43,12 @@ const HeroSection = () => {
                             </div>
                             <div className='mt-12'>
                                 {user?.uid ? <div>
-                                    <button className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Go to Your Dashboard </button>
+                                    <Link
+                                        href="dashboard/profile"
+                                        className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Go to Your Dashboard </Link>
                                 </div> :
                                     <Link href='/user/login' className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Got To Login</Link>
                                 }
-
                             </div>
                         </div>
                         <div className='flex justify-end  lg:w-5/6  '>
