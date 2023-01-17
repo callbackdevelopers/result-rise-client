@@ -16,6 +16,9 @@ const Navbar = () => {
         <li><Link href="/whyUs">Why Us</Link></li>
         <li><Link href="/">About Us</Link></li>
     </>
+
+
+
     return (
         <div className="shadow-md ">
             <BodyTamplate>
@@ -41,7 +44,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        {user?.photoURL}
+                                        <img src={user?.photoURL} alt="" />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black rounded-box w-52">
