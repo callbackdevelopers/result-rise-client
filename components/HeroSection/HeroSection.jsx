@@ -17,7 +17,7 @@ const HeroSection = () => {
                     <div className="md:px-0 flex-col  md:grid md:grid-cols-2 md:w-full  h-full flex  items-center justify-between ">
                         <div className='col-span-1 md:mt-0 mt-14'>
                             <div className="mb-7">
-                                <span className='bg-gradient-to-bl from-orange-600 to-orange-500
+                                <span className='bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800
                             p-2 md:text-sm rounded-3xl text-white'>REAL RESULT, REAL SUCCESS
                                 </span>
                             </div>
@@ -45,7 +45,7 @@ const HeroSection = () => {
                                 {user?.uid ? <div>
                                     <Link
                                         href="dashboard/profile"
-                                        className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Go to Your Dashboard </Link>
+                                        className="btn btn-sm  bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 text-white font-bold">Go to Your Dashboard </Link>
                                 </div> :
                                     <Link href='/user/login' className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Got To Login</Link>
                                 }
