@@ -4,6 +4,7 @@ import React from 'react';
 import CountUp from 'react-countup';
 import { useFirebase } from '../../contax/UserContax';
 import BodyTamplate from '../Shared/BodyTamplate';
+import ButtonArrow from '../Shared/Buttons/PrimaryButton';
 
 
 
@@ -42,12 +43,20 @@ const HeroSection = () => {
                                 </div>
                             </div>
                             <div className='mt-12'>
-                                {user?.uid ? <div>
-                                    <Link
-                                        href="dashboard/profile"
-                                        className="btn btn-sm  bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 text-white font-bold">Go to Your Dashboard </Link>
+                                {user?.uid ? <div className=''>
+                                    <Link href="dashboard/profile">
+                                        <ButtonArrow
+                                            h={'10'}>
+                                            Go to Your Dashboard
+                                        </ButtonArrow> </Link>
                                 </div> :
-                                    <Link href='/user/login' className="btn btn-sm btn-warning bg-gradient-to-bl from-orange-600 to-orange-500 text-white font-bold">Got To Login</Link>
+                                    <div className=''>
+                                        <Link href='/user/login' >
+                                            <ButtonArrow
+                                                h={'10'}>
+                                                Go to Login
+                                            </ButtonArrow> </Link>
+                                    </div>
                                 }
                             </div>
                         </div>
