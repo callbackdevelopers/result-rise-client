@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
-import { useFirebase } from '../../contax/UserContax';
-import AlartMessage from "../../Hooks/AlartMessage";
+import { useFirebase } from '../../context/UserContext';
+import AlertMessage from '../../Hooks/AlertMessage';
 import BodyTamplate from '../Shared/BodyTamplate';
 import ButtonUp from '../Shared/Buttons/SecondaryButton';
 
 const Navbar = () => {
-    const { successMessage } = AlartMessage()
+    const { successMessage } = AlertMessage()
     const { user, logout } = useFirebase()
     const heandelLogout = () => {
         logout()

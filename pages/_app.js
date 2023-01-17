@@ -1,8 +1,10 @@
-import UserContax from '../contax/UserContax'
+
+
+import UserContext from '../context/UserContext'
 import '../styles/globals.css'
 
 export default function App({ Component, pageProps }) {
-  return <UserContax>
+  return <UserContext>
     <Component {...pageProps} />
-  </UserContax>
+  </UserContext>
 }

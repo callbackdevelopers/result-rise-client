@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { useFirebase } from "../../contax/UserContax";
-import AlartMessage from "../../Hooks/AlartMessage";
-
+import { useFirebase } from "../../context/UserContext";
+import AlertMessage from "../../Hooks/AlertMessage";
 
 const login = () => {
-    const { successMessage, errorMessage } = AlartMessage()
+    const { successMessage, errorMessage } = AlertMessage()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { loginEmail, GoogleLogin } = useFirebase()
     const router = useRouter()

@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const AlartMessage = () => {
+const AlertMessage = () => {
     const successMessage = message => {
         Swal.fire({
             icon: 'success', title: `${message}`, showConfirmButton: false, timer: 1500
@@ -15,4 +15,4 @@ const AlartMessage = () => {
     return { successMessage, errorMessage }
 };
 
-export default AlartMessage;
+export default AlertMessage;

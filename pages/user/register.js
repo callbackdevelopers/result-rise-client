@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useFirebase } from "../../contax/UserContax";
-import AlartMessage from "../../Hooks/AlartMessage";
+import { useFirebase } from "../../context/UserContext";
+import AlertMessage from "../../Hooks/AlertMessage";
 
 const register = () => {
-    const { successMessage, errorMessage } = AlartMessage()
+    const { successMessage, errorMessage } = AlertMessage()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { GoogleLogin, CreateUserEP, updateProfilePic } = useFirebase()
     const onSubmit = (data) => {

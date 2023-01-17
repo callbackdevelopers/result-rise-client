@@ -1,9 +1,10 @@
-
 import { useState } from 'react';
 import HeroSection from '../components/HeroSection/HeroSection';
 import Navbar from '../components/Navbars/Navbar';
 import Spiner from '../components/Spiner/Spiner';
-import { useFirebase } from '../contax/UserContax';
+import { useFirebase } from '../context/UserContext';
+
+
 
 export default function Home() {
   const { loading } = useFirebase()
