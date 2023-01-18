@@ -1,9 +1,10 @@
 import Head from "next/head";
+import Layout from "../../../Layout/Layout";
 import Student from "./student";
 
 const Students = ({ students }) => {
     return (
-        <>
+        <Layout>
             <Head>
                 <title>Students</title>
             </Head>
@@ -24,16 +25,16 @@ const Students = ({ students }) => {
                     ))}
                 </table>
             </div>
-        </>
+        </Layout>
     );
 };
 
 export default Students;
 
 export const getStaticProps = async () => {
-    const res = await fetch("http://localhost:5000/students");
+    const res = await fetch("http://localhost:3100/students");
     const students = await res.json();
-    console.log(students);
+    // console.log(students);
 
     return {
         props: {
