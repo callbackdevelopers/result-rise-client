@@ -13,7 +13,8 @@ const login = () => {
     } = useForm();
     const { loginEmail, GoogleLogin } = useFirebase();
     const router = useRouter();
-    const heandelGoogleSignIn = () => {
+
+    const handelGoogleSignIn = () => {
         GoogleLogin()
             .then((result) => {
                 successMessage("login successfull");
@@ -23,6 +24,7 @@ const login = () => {
                 errorMessage(error.message);
             });
     };
+
     const onSubmit = (data) => {
         console.log(data);
         loginEmail(data.email, data.password)
@@ -34,6 +36,7 @@ const login = () => {
                 errorMessage(err.message);
             });
     };
+
     return (
         <div className="flex justify-center min-h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-black">
             <div
@@ -41,7 +44,7 @@ const login = () => {
             bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100"
             >
                 <h1 className="text-3xl font-semibold text-center text-gray-700 ">
-                    Result Rise
+                    ResultRise
                 </h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
                     <div className="form-control">
@@ -74,12 +77,12 @@ const login = () => {
                             >
                                 Password
                             </label>
-                            <a
-                                href="/"
+                            <Link
+                                href="/user/resetPass"                                                             
                                 className="text-xs text-gray-600  hover:underline"
                             >
                                 Forget Password?
-                            </a>
+                            </Link>
                         </div>
                         <input
                             type="password"
@@ -107,17 +110,14 @@ const login = () => {
                 </form>
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b  lg:w-1/5"></span>
-                    <a
-                        href="#"
-                        className="text-xs text-center text-gray-500 uppercase  hover:underline"
-                    >
+                    <p className="text-xs text-center text-gray-500 uppercase">
                         or login with Social Media
-                    </a>
+                    </p>
                     <span className="w-1/5 border-b  lg:w-1/5"></span>
                 </div>
                 <div className="flex items-center mt-6 -mx-2">
                     <button
-                        onClick={() => heandelGoogleSignIn()}
+                        onClick={() => handelGoogleSignIn()}
                         type="button"
                         className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
                     >
@@ -136,7 +136,7 @@ const login = () => {
                     {" "}
                     Don't have an account?
                     <Link
-                        href="/user/resister"
+                        href="/user/register"
                         className="font-medium text-gray-700  hover:underline"
                     >
                         Create One
