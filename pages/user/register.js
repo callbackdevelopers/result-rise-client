@@ -9,7 +9,7 @@ const register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { GoogleLogin, CreateUserEP, updateProfilePic } = useFirebase();
+    const { CreateUserEP, updateProfilePic } = useFirebase();
     const onSubmit = (data) => {
         const name = data.firstName;
         const email = data.email;
@@ -22,10 +22,10 @@ const register = () => {
             id,
         };
         CreateUserEP(data.email, data.Password)
-            .then((rs) =>
+            .then((res) =>
                 updateProfilePic(data.name)
                     .then((res) => {
-                        successMessage("successfully account created");
+                        successMessage("account created successfully ");
                         form.reset();
                     })
                     .catch((err) => {
@@ -53,7 +53,7 @@ const register = () => {
                             </p>
                             <div className="mt-6">
                                 <h1 className="text-gray-400 ">
-                                    Select type of account
+                                    Select type of the account
                                 </h1>
                                 <div className="mt-3 md:flex md:items-center md:-mx-2">
                                     <button className="flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none">
