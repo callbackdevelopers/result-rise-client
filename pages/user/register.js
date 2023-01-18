@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import AlertMessage from "../../Hooks/AlertMessage";
 import { useFirebase } from "../../context/UserContext";
+import Link from "next/link";
 
 const register = () => {
     const { successMessage, errorMessage } = AlertMessage();
@@ -40,10 +41,13 @@ const register = () => {
     return (
         <div>
             <section className="bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
-                <div className="flex justify-center min-h-screen">
-                    <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
-                        <div className="w-full ">
-                            <h1 className="text-2xl font-semibold tracking-wider text-white capitalize ">
+                <div className="flex justify-center min-h-screen ">
+                    <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5 ">
+                        <div
+                            className="w-full bg-white rounded-lg shadow-md 
+            bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100 p-12"
+                        >
+                            <h1 className="text-2xl font-semibold tracking-wider capitalize ">
                                 Create your account.
                             </h1>
                             <p className="mt-4 text-gray-400">
@@ -56,7 +60,7 @@ const register = () => {
                                     Select type of the account
                                 </h1>
                                 <div className="mt-3 md:flex md:items-center md:-mx-2">
-                                    <button className="flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none">
+                                    <button className="flex justify-center w-full px-6 py-3 bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             className="w-6 h-6"
@@ -101,14 +105,14 @@ const register = () => {
                             >
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text text-white">
+                                        <span className="label-text">
                                             {" "}
                                             Name
                                         </span>
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="md shakeeb"
+                                        placeholder="Enter your name"
                                         className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${
                                             errors.firstName
                                                 ? " border-red-700 focus:ring-red-300"
@@ -126,7 +130,7 @@ const register = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text text-white">
+                                        <span className="label-text">
                                             Id Number
                                         </span>
                                     </label>
@@ -151,13 +155,13 @@ const register = () => {
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text text-white">
+                                        <span className="label-text">
                                             Email
                                         </span>
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="shakeeb@example.com"
+                                        placeholder="Enter your email"
                                         className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${
                                             errors.email
                                                 ? " border-red-700 focus:ring-red-300"
@@ -175,7 +179,7 @@ const register = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text text-white">
+                                        <span className="label-text">
                                             Password
                                         </span>
                                     </label>
@@ -218,6 +222,16 @@ const register = () => {
                                     </svg>
                                 </button>
                             </form>
+                            <p className="mt-8 text-xs font-light text-center text-gray-400">
+                                {" "}
+                                Already have an account? {" "}
+                                <Link
+                                    href="/user/login"
+                                    className="font-medium text-gray-700 hover:underline"
+                                >
+                                    Login
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </div>

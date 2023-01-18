@@ -78,7 +78,7 @@ const login = () => {
                                 Password
                             </label>
                             <Link
-                                href="/user/resetPass"                                                             
+                                href="/user/resetPass"
                                 className="text-xs text-gray-600  hover:underline"
                             >
                                 Forget Password?
@@ -134,7 +134,7 @@ const login = () => {
                 </div>
                 <p className="mt-8 text-xs font-light text-center text-gray-400">
                     {" "}
-                    Don't have an account?
+                    Don't have an account?{" "}
                     <Link
                         href="/user/register"
                         className="font-medium text-gray-700  hover:underline"

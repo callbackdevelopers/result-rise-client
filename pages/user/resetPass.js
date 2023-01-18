@@ -35,7 +35,7 @@ const resetPass = () => {
                 className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md 
             bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100"
             >
-                <h1 className="text-3xl font-semibold text-center mb-6 text-gray-700 ">
+                <h1 className="text-3xl font-semibold text-center mb-3 text-gray-700 ">
                     ResultRise
                 </h1>
                 <form
