@@ -1,15 +1,15 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo, useState } from 'react';
 
-import { MdDashboardCustomize } from 'react-icons/md';
-import { BiNews, BiBookOpen } from 'react-icons/bi';
-import { FiUsers, FiSettings } from 'react-icons/fi';
 import { AiOutlineFileDone } from 'react-icons/ai';
+import { BiBookOpen, BiNews } from 'react-icons/bi';
+import { FiSettings, FiUsers } from 'react-icons/fi';
 import { ImNotification } from 'react-icons/im';
+import { MdDashboardCustomize } from 'react-icons/md';
 
 import classNames from "classnames";
-import { CollapseIcon, LogoIcon, LogoutIcon } from '../icons';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { CollapseIcon, LogoIcon, LogoutIcon } from '../icons';
+import LinkTemplate from '../Shared/NavbarLinkTemplate/LinkTemplate';
 
 
 const menuItems = [
@@ -86,38 +86,12 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className="flex flex-col items-start mt-20">
-
-                    {menuItems.map(({ icon, ...menu }) => {
-                        const classes = getNavItemClasses(menu);
-                        return (
-                            <Link href={menu.link} className={`${classes}, "flex py-4 px-3 items-center w-full h-full"`} >
-
-
-                                <span className='w-7'>
-                                    {icon}
-                                </span>
-                                {/* <div className='w-10'>
-                                    <Icon></Icon>
-                                </div> */}
-
-                                {/* <span className='w-10'>
-                                    <Icon />
-                                </span> */}
-                                {!toggleCollapse && (
-
-                                    <span
-                                        className={classNames(
-                                            "text-md font-medium text-text-light"
-                                        )}
-                                    >
-                                        {menu.label}
-                                    </span>
-                                )}
-
-
-                            </Link>
-                        );
-                    })}
+                    <LinkTemplate
+                        icon={<FiSettings />}
+                        title={"dd"}
+                        link={'/dashboard/profile'}
+                        toggleCollapse={toggleCollapse}
+                    />
                 </div>
                 <div className={`${getNavItemClasses({})} px-4 py-4`}>
                     <div style={{ width: "1.5rem" }}>
