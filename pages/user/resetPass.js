@@ -18,6 +18,7 @@ const resetPass = () => {
 
         resetPassword(email)
             .then(() => {
+                successMessage("Password reset email sent!");
                 console.log("Password reset email sent!");
             })
             .catch((error) => {
