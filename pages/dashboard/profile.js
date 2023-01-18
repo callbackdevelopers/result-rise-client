@@ -80,53 +80,53 @@ const profile = () => {
                     {/* end img-section */}
 
 
-                    <div class="bg-white p-3 shadow-sm rounded-sm">
-                        <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                    <div className="bg-white p-3 shadow-sm rounded-sm">
+                        <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                             <span className="text-green-500">
                                 <FaUser />
                             </span>
-                            <span class="tracking-wide">About</span>
+                            <span className="tracking-wide">About</span>
                         </div>
-                        <div class="text-gray-700">
-                            <div class="grid md:grid-cols-2 text-sm">
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">First Name</div>
-                                    <div class="px-4 py-2">Jahirul</div>
+                        <div className="text-gray-700">
+                            <div className="grid md:grid-cols-2 text-sm">
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">First Name</div>
+                                    <div className="px-4 py-2">Jahirul</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Last Name</div>
-                                    <div class="px-4 py-2">Islam</div>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Last Name</div>
+                                    <div className="px-4 py-2">Islam</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Gender</div>
-                                    <div class="px-4 py-2">Male</div>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Gender</div>
+                                    <div className="px-4 py-2">Male</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Contact No.</div>
-                                    <div class="px-4 py-2">+880 123456789</div>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Contact No.</div>
+                                    <div className="px-4 py-2">+880 123456789</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Current Address</div>
-                                    <div class="px-4 py-2">Dhaka, Bangladesh</div>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Current Address</div>
+                                    <div className="px-4 py-2">Dhaka, Bangladesh</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                                    <div class="px-4 py-2">Dhaka, Bangladesh</div>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Permanant Address</div>
+                                    <div className="px-4 py-2">Dhaka, Bangladesh</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Email.</div>
-                                    <div class="px-4 py-2">
-                                        <a class="text-blue-800" href="mailto:jane@example.com">jahirul@example.com</a>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Email.</div>
+                                    <div className="px-4 py-2">
+                                        <a className="text-blue-800" href="mailto:jane@example.com">jahirul@example.com</a>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Birthday</div>
-                                    <div class="px-4 py-2">Feb 06, 1998</div>
+                                <div className="grid grid-cols-2">
+                                    <div className="px-4 py-2 font-semibold">Birthday</div>
+                                    <div className="px-4 py-2">Feb 06, 1998</div>
                                 </div>
                             </div>
                         </div>
                         <button
-                            class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
+                            className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
                             Full Information</button>
                     </div>
                     {/* <!-- End of about section --> */}
@@ -134,31 +134,31 @@ const profile = () => {
                     <div className="my-4"></div>
 
                     {/* <!-- Experience and education --> */}
-                    <div class="bg-white p-3 shadow-sm rounded-sm">
+                    <div className="bg-white p-3 shadow-sm rounded-sm">
 
-                        <div class="grid grid-cols-2">
+                        <div className="grid grid-cols-2">
                             <div>
-                                <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
                                     <FaFileAlt className='text-green-500' />
-                                    <span class="tracking-wide">Course</span>
+                                    <span className="tracking-wide">Course</span>
                                 </div>
-                                <ul class="list-inside space-y-2">
+                                <ul className="list-inside space-y-2">
                                     <li>
-                                        <div class="text-teal-600">BSC.........</div>
-                                        <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                        <div className="text-teal-600">BSC.........</div>
+                                        <div className="text-gray-500 text-xs">March 2020 - Now</div>
                                     </li>
 
                                 </ul>
                             </div>
                             <div>
-                                <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
                                     <FaGraduationCap className='text-green-500' />
-                                    <span class="tracking-wide">Education</span>
+                                    <span className="tracking-wide">Education</span>
                                 </div>
-                                <ul class="list-inside space-y-2">
+                                <ul className="list-inside space-y-2">
                                     <li>
-                                        <div class="text-teal-600">Masters Degree in DU</div>
-                                        <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                        <div className="text-teal-600">Masters Degree in DU</div>
+                                        <div className="text-gray-500 text-xs">March 2020 - Now</div>
                                     </li>
 
                                 </ul>
