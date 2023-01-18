@@ -25,7 +25,7 @@ const register = () => {
             .then((rs) =>
                 updateProfilePic(data.name)
                     .then((res) => {
-                        successMessage("successfully accoutt created");
+                        successMessage("successfully account created");
                         form.reset();
                     })
                     .catch((err) => {
@@ -198,7 +198,10 @@ const register = () => {
                                         </span>
                                     )}
                                 </div>
-                                <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                <button
+                                    type="submit"
+                                    className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                                >
                                     <span>Sign Up </span>
 
                                     <svg

@@ -1,2 +1,1 @@
-#Live
-https://result-rise.vercel.app/
+# Live: https://result-rise.vercel.app/
