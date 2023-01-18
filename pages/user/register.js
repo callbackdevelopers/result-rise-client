@@ -8,9 +8,11 @@ const register = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
-    const { CreateUserEP, updateProfilePic } = useFirebase();
+    const { CreateUserEP, updateProfilePic, verifyEmail } = useFirebase();
+
     const onSubmit = (data) => {
         const name = data.firstName;
         const email = data.email;
@@ -26,8 +28,8 @@ const register = () => {
             .then((res) =>
                 updateProfilePic(data.name)
                     .then((res) => {
-                        successMessage("account created successfully ");
-                        form.reset();
+                        handleVerifyEmail();
+                        reset();
                     })
                     .catch((err) => {
                         errorMessage(err.message);
@@ -38,6 +40,16 @@ const register = () => {
             });
         console.log(user);
     };
+
+    const handleVerifyEmail = () => {
+        verifyEmail().then(() => {
+            successMessage(
+                "Email verification sent. Please, verify your email."
+            );
+            console.log("Email verification sent.");
+        });
+    };
+
     return (
         <div>
             <section className="bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
@@ -224,7 +236,7 @@ const register = () => {
                             </form>
                             <p className="mt-8 text-xs font-light text-center text-gray-400">
                                 {" "}
-                                Already have an account? {" "}
+                                Already have an account?{" "}
                                 <Link
                                     href="/user/login"
                                     className="font-medium text-gray-700 hover:underline"
