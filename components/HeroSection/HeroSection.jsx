@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import CountUp from 'react-countup';
-import { useFirebase } from '../../contax/UserContax';
+import { useFirebase } from '../../context/UserContext';
 import BodyTamplate from '../Shared/BodyTamplate';
 import ButtonArrow from '../Shared/Buttons/PrimaryButton';
 

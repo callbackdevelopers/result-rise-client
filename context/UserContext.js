@@ -8,7 +8,7 @@ const auth = getAuth(Firebase);
 const provaider = new GoogleAuthProvider();
 
 
-const UserContax = ({ children }) => {
+const UserContext = ({ children }) => {
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true)
     // console.log(user);
@@ -41,9 +41,9 @@ const UserContax = ({ children }) => {
         </AuthUser.Provider>
     );
 }
-export default UserContax;
+export default UserContext;
 
 export const useFirebase = () => {
-    const contax = useContext(AuthUser)
-    return contax;
+    const context = useContext(AuthUser)
+    return context;
 }
