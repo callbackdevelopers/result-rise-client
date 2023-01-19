@@ -148,7 +148,6 @@ const profile = () => {
                 <ProfileModal></ProfileModal>
             </div >
         </Layout>
-
     );
 };
 

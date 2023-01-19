@@ -24,9 +24,10 @@ const register = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        console.log(data);
         const name = data.firstName;
         const email = data.email;
-        const password = data.Password;
+        const password = data.password;
         const id = data.id;
         const user = {
             name,
@@ -34,9 +35,9 @@ const register = () => {
             password,
             id,
         };
-        CreateUserEP(data.email, data.Password)
+        CreateUserEP(email, password)
             .then((res) =>
-                updateProfilePic(data.name)
+                updateProfilePic(name)
                     .then((res) => {
                         handleVerifyEmail();
                         reset();
@@ -106,12 +107,14 @@ const register = () => {
                                                 required: "id must required",
                                             })}
                                         />
-                                        {errors.id && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.id.message}
-                                            </span>
-                                        )}
-                                    </div>
+                                        {
+                                            errors.id && (
+                                                <span className="label-text text-red-400">
+                                                    {errors?.id.message}
+                                                </span>
+                                            )
+                                        }
+                                    </div >
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text">
@@ -146,9 +149,9 @@ const register = () => {
                                                 minLength: 6,
                                             })}
                                         />
-                                        {errors.Password && (
+                                        {errors.password && (
                                             <span className="label-text text-red-400">
-                                                {errors?.Password.message}
+                                                {errors?.password.message}
                                             </span>
                                         )}
                                     </div>
@@ -222,31 +225,10 @@ const register = () => {
                                             </select>
                                         </div>
                                     </div>
-
-                                    {value === 'teacher' ??
-                                        <div className="form-control">
-                                            <label className="label">
-                                                <span className="label-text">Department</span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="CSE"
-                                                className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
-                                                {...register("department", {
-                                                    required: "department must required",
-                                                })}
-                                            />
-                                            {errors.department && (
-                                                <span className="label-text text-red-400">
-                                                    {errors?.department.message}
-                                                </span>
-                                            )}
-                                        </div>}
-
                                     <ButtonUp>
                                         <span>Sign Up </span>
                                     </ButtonUp>
-                                </form>
+                                </form >
                                 <p className="mt-8 text-xs font-light text-center text-gray-400">
                                     {" "}
                                     Already have an account?{" "}
@@ -257,10 +239,10 @@ const register = () => {
                                         Login
                                     </Link>
                                 </p>
-                            </div>
+                            </div >
 
-                        </div>
-                    </div>
+                        </div >
+                    </div >
                 </section >
             </div >
         </>

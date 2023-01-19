@@ -1,11 +1,11 @@
 import DashboardNavbar from "../components/Navbars/DashboardNavbar";
-import Sidebar from "../components/Sidebars/Sidebar";
+import StudentSidebar from "../components/Sidebars/StudentSidebar";
 
-const Layout = ({ children }) => {
+const StudentLayout = ({ children }) => {
     return (
         <div>
             <div className="h-screen flex flex-row justify-start">
-                <Sidebar />
+                <StudentSidebar />
                 <div className=" flex-1 p-4  ">
                     <DashboardNavbar />
                     {children}
@@ -15,4 +15,4 @@ const Layout = ({ children }) => {
     );
 };
 
-export default Layout;
+export default StudentLayout;

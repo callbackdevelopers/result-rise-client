@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from "../../../Layout/Layout";
+import Layout from "../../../../Layout/Layout";
 import Teacher from "./teacher";
 
 const Teachers = ({ teachers }) => {
@@ -36,7 +36,7 @@ const Teachers = ({ teachers }) => {
 export default Teachers;
 
 export const getStaticProps = async () => {
-    const res = await fetch("http://localhost:3100/teachers");
+    const res = await fetch("https://result-rise-server.vercel.app/teachers");
     const teachers = await res.json();
     // console.log(teachers);
 
