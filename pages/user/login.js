@@ -24,7 +24,7 @@ const login = () => {
                 errorMessage(error.message);
             });
     };
-
+    //form data :
     const onSubmit = (data) => {
         console.log(data);
         loginEmail(data.email, data.password)
@@ -46,6 +46,7 @@ const login = () => {
                 <h1 className="text-3xl font-semibold text-center text-gray-700 ">
                     ResultRise
                 </h1>
+                {/* Form start */}
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
                     <div className="form-control">
                         <label className="label">
@@ -55,8 +56,8 @@ const login = () => {
                             type="text"
                             placeholder="email"
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg ${errors.email
-                                    ? " border-red-700 focus:ring-red-300"
-                                    : "focus:border-blue-400 focus:ring-blue-300"
+                                ? " border-red-700 focus:ring-red-300"
+                                : "focus:border-blue-400 focus:ring-blue-300"
                                 } focus:outline-none focus:ring focus:ring-opacity-40`}
                             {...register("email", {
                                 required: "Email must required",
@@ -87,8 +88,8 @@ const login = () => {
                             type="password"
                             placeholder="password"
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg ${errors.password
-                                    ? " border-red-700 focus:ring-red-300"
-                                    : "focus:border-blue-400 focus:ring-blue-300"
+                                ? " border-red-700 focus:ring-red-300"
+                                : "focus:border-blue-400 focus:ring-blue-300"
                                 } focus:outline-none focus:ring focus:ring-opacity-40`}
                             {...register("password", {
                                 required: "password must required",
@@ -106,6 +107,7 @@ const login = () => {
                         </button>
                     </div>
                 </form>
+                {/* Form end  */}
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b  lg:w-1/5"></span>
                     <p className="text-xs text-center text-gray-500 uppercase">

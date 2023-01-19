@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Link from "next/link";
 import React, { useState } from 'react';
 import { AiOutlineFileDone } from 'react-icons/ai';
 import { BiBookOpen, BiNews } from 'react-icons/bi';
@@ -42,18 +43,18 @@ const Sidebar = () => {
         setToggleCollapse(!toggleCollapse);
     };
     return (
-        <div className='shadow-xl '>
+        <div className='shadow-xl'>
             <div className={wrapperClasses}
                 onMouseEnter={onMouseOver}
                 onMouseLeave={onMouseOver}
                 style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
             >
-                <div className='flex flex-col'>
+                <div className='flex flex-col '>
                     <div className='flex items-center justify-between relative'>
                         <div className='flex items-center pl-1 gap-4'>
                             <LogoIcon></LogoIcon>
                             <span className={classNames("mt-2 text-xl  font-medium text-slate-900", { hidden: toggleCollapse })}>
-                                Result Rise
+                                <Link href='/'> Result Rise</Link>
                             </span>
                         </div>
                         {isCollapsed &&
@@ -62,26 +63,26 @@ const Sidebar = () => {
                             </button>
                         }
                     </div>
-                </div>
-                <div className="flex flex-col items-start mt-10">
-                    <LinkTemplate
-                        icon={<BiNews />}
-                        title={"Profile"}
-                        link={'/dashboard/profile'}
-                        toggleCollapse={toggleCollapse}
-                    />
-                    <LinkTemplate
-                        icon={<FiUsers />}
-                        title={"Studets"}
-                        link={'/dashboard/students'}
-                        toggleCollapse={toggleCollapse}
-                    />
-                    <LinkTemplate
-                        icon={<FaUserTie />}
-                        title={"Teachers"}
-                        link={'/dashboard/teachers'}
-                        toggleCollapse={toggleCollapse}
-                    />
+                    <div className="flex flex-col items-start mt-28">
+                        <LinkTemplate
+                            icon={<BiNews />}
+                            title={"Profile"}
+                            link={'/dashboard/profile'}
+                            toggleCollapse={toggleCollapse}
+                        />
+                        <LinkTemplate
+                            icon={<FiUsers />}
+                            title={"Studets"}
+                            link={'/dashboard/students'}
+                            toggleCollapse={toggleCollapse}
+                        />
+                        <LinkTemplate
+                            icon={<FaUserTie />}
+                            title={"Teachers"}
+                            link={'/dashboard/teachers'}
+                            toggleCollapse={toggleCollapse}
+                        />
+                    </div>
                 </div>
                 <div className='px-4 py-4 flex'>
                     <div style={{ width: "1.5rem" }}>
