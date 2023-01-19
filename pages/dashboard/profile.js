@@ -1,17 +1,18 @@
 import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../components/modals/ProfileModal/ProfileModal";
-import AlartMessage from "../../Hooks/AlertMessage";
+import AlertMessage from "../../Hooks/AlertMessage";
 import Layout from "../../Layout/Layout";
 
 
 const profile = () => {
-    const { successMessage, errorMessage } = AlartMessage()
+    const { successMessage, errorMessage } = AlertMessage()
 
 
     const studentDetails = {
-        firstName: "Jahirul", lastName: "Islam", type: "Student", email: "jahirul@example.com", currentCddress: "Dhaka, Bangladesh", permanantAddress: "Dhaka, Bangladesh"
+        firstName: "Jahirul", lastName: "Islam", type: "Student", email: "jahirul@example.com", currentAddress: "Dhaka, Bangladesh", permanantAddress: "Dhaka, Bangladesh", phone: "+088 0123456789", gender: "male"
     }
-    const { firstName, lastName, type, email, currentCddress, permanantAddress } = studentDetails;
+    const { firstName, lastName, type, email, currentAddress, permanantAddress, phone, gender } = studentDetails;
+
 
     return (
         <Layout>
@@ -19,7 +20,7 @@ const profile = () => {
                 <div className="w-full md:w-9/12 mx-2 h-64">
 
                     {/* start profile-img  */}
-                    <div className="flex">
+                    <div className="flex justify-between">
                         <div className="bg-white p-3 text-center lg:flex justify-items-center">
                             <div className="image overflow-hidden p-3 lg:border-l-4 text-center border-green-400">
                                 <div className="avatar">
@@ -47,9 +48,9 @@ const profile = () => {
                             </div>
                         </div>
                         <div className="p-3">
-                            <a href="#my-modal-2">
+                            <label htmlFor="my-modal-2" >
                                 <FaUserEdit />
-                            </a>
+                            </label>
                         </div>
 
                     </div>
@@ -78,15 +79,15 @@ const profile = () => {
                                 </div>
                                 <div className="grid grid-cols-2">
                                     <div className="px-4 py-2 font-semibold">Gender</div>
-                                    <div className="px-4 py-2">Male</div>
+                                    <div className="px-4 py-2">{gender}</div>
                                 </div>
                                 <div className="grid grid-cols-2">
                                     <div className="px-4 py-2 font-semibold">Contact No.</div>
-                                    <div className="px-4 py-2">+880 123456789</div>
+                                    <div className="px-4 py-2">{phone}</div>
                                 </div>
                                 <div className="grid grid-cols-2">
                                     <div className="px-4 py-2 font-semibold">Current Address</div>
-                                    <div className="px-4 py-2">{currentCddress}</div>
+                                    <div className="px-4 py-2">{currentAddress}</div>
                                 </div>
                                 <div className="grid grid-cols-2">
                                     <div className="px-4 py-2 font-semibold">Permanant Address</div>
@@ -95,7 +96,7 @@ const profile = () => {
                                 <div className="grid grid-cols-2">
                                     <div className="px-4 py-2 font-semibold">Email.</div>
                                     <div className="px-4 py-2">
-                                        <a className="text-blue-800" href="mailto:jane@example.com">{email}</a>
+                                        <a className="text-blue-800" href={`mailto:${email}`}>{email}</a>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-2">
@@ -144,9 +145,12 @@ const profile = () => {
                     </div>
                     {/* <!-- End of profile tab --> */}
                 </div>
-                <ProfileModal></ProfileModal>
+                <ProfileModal
+                    studentDetails={studentDetails}
+                ></ProfileModal>
             </div >
-        </Layout>
+        </Layout >
+
     );
 };
 

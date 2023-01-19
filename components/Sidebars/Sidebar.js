@@ -64,7 +64,7 @@ const Sidebar = () => {
         setToggleCollapse(!toggleCollapse);
     };
     return (
-        <div className="shadow-xl">
+        <div className="shadow-xl ">
             <div
                 className={wrapperClasses}
                 onMouseEnter={onMouseOver}

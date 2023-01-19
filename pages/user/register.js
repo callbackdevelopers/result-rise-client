@@ -145,9 +145,9 @@ const register = () => {
                                                 minLength: 6,
                                             })}
                                         />
-                                        {errors.password && (
+                                        {errors.Password && (
                                             <span className="label-text text-red-400">
-                                                {errors?.password.message}
+                                                {errors?.Password.message}
                                             </span>
                                         )}
                                     </div>
