@@ -1,3 +1,4 @@
+import ResultTable from "../../components/Table/ResultTable";
 
 
 const semester = () => {
@@ -7,7 +8,7 @@ const semester = () => {
 
     return (
         <div>
-            <h1>semester all here </h1>
+          <ResultTable/>
             
         </div>
     );
