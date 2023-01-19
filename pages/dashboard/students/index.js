@@ -6,7 +6,7 @@ const Students = ({ students }) => {
     return (
         <Layout>
             <Head>
-                <title>Students</title>
+                <title>ResultRise - Students</title>
             </Head>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
