@@ -1,8 +1,9 @@
 import { FaFileAlt, FaGraduationCap, FaUser, FaUsers } from "react-icons/fa";
+import AlertMessage from "../../Hooks/AlertMessage";
 import Layout from "../../Layout/Layout";
 
 const profile = () => {
-    const { successMessage, errorMessage } = AlartMessage()
+    const { successMessage, errorMessage } = AlertMessage()
 
 
     const studentDetails = {
