@@ -5,6 +5,10 @@ node_modules
 /.pnp
 .pnp.js
 cache
+.yarn
+
+.pnp.cjs
+.pnp.loader.mjs
 
 # testing
 /coverage
