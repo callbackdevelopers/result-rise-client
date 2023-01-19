@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import 'react-tabs/style/react-tabs.css';
 import ButtonUp from "../../components/Shared/Buttons/SecondaryButton";
 import { useFirebase } from "../../context/UserContext";
 import AlertMessage from "../../Hooks/AlertMessage";
@@ -16,18 +14,11 @@ const register = () => {
         formState: { errors },
     } = useForm();
     const { CreateUserEP, updateProfilePic, verifyEmail } = useFirebase();
-    //some reasonable classes
-    const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
-    const borderErrorColor = 'border-red-700 focus:ring-red-300'
-    const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
-
 
     const onSubmit = (data) => {
-        console.log(data);
-        console.log(data);
-        const name = data.firstName;
+        const name = data.name;
         const email = data.email;
-        const password = data.password;
+        const password = data.Password;
         const id = data.id;
         const user = {
             name,
@@ -50,8 +41,6 @@ const register = () => {
                 errorMessage(err.message);
             });
     };
-    const [value, setValue] = useState("");
-    console.log(value);
 
     const handleVerifyEmail = () => {
         verifyEmail().then(() => {
@@ -61,6 +50,11 @@ const register = () => {
             console.log("Email verification sent.");
         });
     };
+    const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
+    const borderErrorColor = 'border-red-700 focus:ring-red-300'
+    const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
+    // const [value, setValue] = useState("");
+    // console.log(value);
     return (
         <>
             <Head>
@@ -71,13 +65,15 @@ const register = () => {
                     <div className="flex justify-center min-h-screen ">
                         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5 ">
                             <div
-                                className="w-full bg-white rounded-lg shadow-md bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100 p-12">
+                                className="w-full bg-white rounded-lg shadow-md 
+            bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100 p-12"
+                            >
                                 <h1 className="text-2xl font-semibold tracking-wider capitalize ">
                                     Create your account.
                                 </h1>
                                 <form
                                     onSubmit={handleSubmit(onSubmit)}
-                                    className="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2 "
+                                    className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 "
                                 >
                                     <div className="form-control">
                                         <label className="label">
@@ -208,17 +204,16 @@ const register = () => {
                                             </span>
                                         )}
                                     </div>
-
                                     <div className="">
                                         <label className="label">
                                             <span className="label-text">type of the account</span>
                                         </label>
 
                                         <div>
-                                            <select value={value}
+                                            <select
                                                 className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
                                                 {...register("type")}
-                                                onChange={(e) => setValue(e.target.value)}>
+                                            >
                                                 <option value="">Select</option>
                                                 <option value="student">Student</option>
                                                 <option value="teacher">Teacher</option>
@@ -228,7 +223,7 @@ const register = () => {
                                     <ButtonUp>
                                         <span>Sign Up </span>
                                     </ButtonUp>
-                                </form >
+                                </form>
                                 <p className="mt-8 text-xs font-light text-center text-gray-400">
                                     {" "}
                                     Already have an account?{" "}
@@ -239,12 +234,11 @@ const register = () => {
                                         Login
                                     </Link>
                                 </p>
-                            </div >
-
-                        </div >
-                    </div >
-                </section >
-            </div >
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </>
     );
 };
