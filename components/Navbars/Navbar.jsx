@@ -88,7 +88,7 @@ const Navbar = () => {
                                         </a>
                                     </li>
                                     <li >
-                                        <a><Link href='/dashboard/profile'>Dashboard
+                                        <a><Link href='/dashboard/Student/StudentProfile'>Dashboard
                                         </Link> </a>
                                     </li>
                                     <li>

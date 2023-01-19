@@ -15,9 +15,9 @@ const register = () => {
     const { CreateUserEP, updateProfilePic, verifyEmail } = useFirebase();
 
     const onSubmit = (data) => {
-        const name = data.firstName;
+        const name = data.name;
         const email = data.email;
-        const password = data.Password;
+        const password = data.password;
         const id = data.id;
         const user = {
             name,
@@ -25,9 +25,9 @@ const register = () => {
             password,
             id,
         };
-        CreateUserEP(data.email, data.Password)
+        CreateUserEP(email, password)
             .then((res) =>
-                updateProfilePic(data.name)
+                updateProfilePic(name)
                     .then((res) => {
                         handleVerifyEmail();
                         reset();
@@ -134,17 +134,18 @@ const register = () => {
                                         <input
                                             type="text"
                                             placeholder="Enter your name"
-                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.firstName
+                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${
+                                                errors.name
                                                     ? " border-red-700 focus:ring-red-300"
                                                     : "focus:border-blue-400 focus:ring-blue-300"
-                                                } focus:outline-none focus:ring focus:ring-opacity-40`}
-                                            {...register("firstName", {
+                                            } focus:outline-none focus:ring focus:ring-opacity-40`}
+                                            {...register("name", {
                                                 required: " Name must required",
                                             })}
                                         />
-                                        {errors.firstName && (
+                                        {errors.name && (
                                             <span className="label-text text-red-400">
-                                                {errors?.firstName.message}
+                                                {errors?.name.message}
                                             </span>
                                         )}
                                     </div>
@@ -157,10 +158,11 @@ const register = () => {
                                         <input
                                             type="text"
                                             placeholder="XXX-XXXXX"
-                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.id
+                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${
+                                                errors.id
                                                     ? " border-red-700 focus:ring-red-300"
                                                     : "focus:border-blue-400 focus:ring-blue-300"
-                                                } focus:outline-none focus:ring focus:ring-opacity-40`}
+                                            } focus:outline-none focus:ring focus:ring-opacity-40`}
                                             {...register("id", {
                                                 required: "id must required",
                                             })}
@@ -181,10 +183,11 @@ const register = () => {
                                         <input
                                             type="text"
                                             placeholder="Enter your email"
-                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.email
+                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${
+                                                errors.email
                                                     ? " border-red-700 focus:ring-red-300"
                                                     : "focus:border-blue-400 focus:ring-blue-300"
-                                                } focus:outline-none focus:ring focus:ring-opacity-40`}
+                                            } focus:outline-none focus:ring focus:ring-opacity-40`}
                                             {...register("email", {
                                                 required: "Email must required",
                                             })}
@@ -204,19 +207,20 @@ const register = () => {
                                         <input
                                             type="password"
                                             placeholder="XXX-XXX-XX-XXX"
-                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.Password
+                                            className={`block w-full px-5 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${
+                                                errors.password
                                                     ? " border-red-700 focus:ring-red-300"
                                                     : "focus:border-blue-400 focus:ring-blue-300"
-                                                } focus:outline-none focus:ring focus:ring-opacity-40`}
-                                            {...register("Password", {
+                                            } focus:outline-none focus:ring focus:ring-opacity-40`}
+                                            {...register("password", {
                                                 required:
                                                     "Password must required",
                                                 minLength: 6,
                                             })}
                                         />
-                                        {errors.Password && (
+                                        {errors.password && (
                                             <span className="label-text text-red-400">
-                                                {errors?.Password.message}
+                                                {errors?.password.message}
                                             </span>
                                         )}
                                     </div>
