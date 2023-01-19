@@ -10,15 +10,15 @@ import { CollapseIcon, LogoIcon, LogoutIcon } from '../icons';
 import LinkTemplate from '../Shared/NavbarLinkTemplate/LinkTemplate';
 
 
-const menuItems = [
-    { id: 1, label: "Dashboard", icon: <MdDashboardCustomize />, link: "/admin/dashboard" },
-    { id: 2, label: "Student Classes", icon: <BiNews />, link: "/admin/studentClasses" },
-    { id: 3, label: "Subject", icon: <BiBookOpen />, link: "/admin/subject" },
-    // { id: 4, label: "Student", icon: <FiUsers />, link: "/admin/student" },
-    { id: 5, label: "Result", icon: <AiOutlineFileDone />, link: "/admin/result" },
-    { id: 6, label: "Notice", icon: <ImNotification />, link: "/admin/notice" },
-    { id: 7, label: "Admin Settings", icon: <FiSettings />, link: "/admin/adminSettings" },
-];
+// const menuItems = [
+//     { id: 1, label: "Dashboard", icon: <MdDashboardCustomize />, link: "/admin/dashboard" },
+//     { id: 2, label: "Student Classes", icon: <BiNews />, link: "/admin/studentClasses" },
+//     { id: 3, label: "Subject", icon: <BiBookOpen />, link: "/admin/subject" },
+//     // { id: 4, label: "Student", icon: <FiUsers />, link: "/admin/student" },
+//     { id: 5, label: "Result", icon: <AiOutlineFileDone />, link: "/admin/result" },
+//     { id: 6, label: "Notice", icon: <ImNotification />, link: "/admin/notice" },
+//     { id: 7, label: "Admin Settings", icon: <FiSettings />, link: "/admin/adminSettings" },
+// ];
 
 const Sidebar = () => {
     const [toggleCollapse, setToggleCollapse] = useState(false);
