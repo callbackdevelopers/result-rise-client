@@ -1,5 +1,5 @@
 import Link from "next/link";
-import primaryButton from '../../components/Shared/Buttons/PrimaryButton'
+import ButtonUp from "../../components/Shared/Buttons/SecondaryButton";
 import { data } from "../../public/semester.json";
 
 const sgpa = ({ semesterData }) => {
@@ -14,7 +14,7 @@ const sgpa = ({ semesterData }) => {
       <div className=" grid lg:grid-cols-2 col-span-1 gap-3 p-4">
         {semesterData.map((singledata) => (
           <Link key={singledata.id} href={`${singledata.id}`}>
-            <primaryButton>{singledata.semester}</primaryButton>
+            <ButtonUp>{singledata.semester}</ButtonUp>
           </Link>
         ))}
       </div>
