@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SecondaryButton = ({ children }) => {
+const ButtonUp = ({ children }) => {
     return (
         <button className="relative group px-8  bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 text-sm  py-3  w-full  text-white
         before:absolute 
@@ -18,4 +18,4 @@ const SecondaryButton = ({ children }) => {
     );
 };
 
-export default SecondaryButton;
+export default ButtonUp;
