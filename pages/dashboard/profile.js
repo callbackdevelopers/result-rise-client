@@ -13,7 +13,6 @@ const profile = () => {
     }
     const { firstName, lastName, type, email, currentCddress, permanantAddress } = studentDetails;
 
-
     return (
         <Layout>
             <div className="container mx-auto my-5 p-5">
