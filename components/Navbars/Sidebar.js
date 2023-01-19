@@ -73,13 +73,13 @@ const Sidebar = () => {
                         <LinkTemplate
                             icon={<FiUsers />}
                             title={"Studets"}
-                            link={'/dashboard/students'}
+                            link={'/dashboard/Admin/AllStudents'}
                             toggleCollapse={toggleCollapse}
                         />
                         <LinkTemplate
                             icon={<FaUserTie />}
                             title={"Teachers"}
-                            link={'/dashboard/teachers'}
+                            link={'/dashboard/Admin/AllTeachers'}
                             toggleCollapse={toggleCollapse}
                         />
                     </div>
