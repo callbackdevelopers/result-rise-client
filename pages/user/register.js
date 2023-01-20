@@ -1,6 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import ButtonUp from "../../components/Shared/Buttons/SecondaryButton";
 import { useFirebase } from "../../context/UserContext";
 import AlertMessage from "../../Hooks/AlertMessage";
@@ -15,17 +18,47 @@ const register = () => {
     } = useForm();
     const { CreateUserEP, updateProfilePic, verifyEmail } = useFirebase();
 
+    const [tabIndex, setTabIndex] = useState(0);
+
     const onSubmit = (data) => {
         const name = data.name;
         const email = data.email;
-        const password = data.Password;
+        const password = data.password;
         const id = data.id;
-        const user = {
-            name,
-            email,
-            password,
-            id,
-        };
+        const semester = data.semester;
+        const subject = data.subject;
+        const department = data.department;
+        const address = data.address;
+        const phone = data.phone;
+        //differentiate users data. like : student, teacher and head
+        if (tabIndex === 0) {
+            data.subject = undefined;
+            const student = {
+                name, email, password, id, semester, department, address, phone
+            };
+            handleCreateUser(email, password, name);
+            console.log("student", student);
+        } else if (tabIndex === 1) {
+            data.semester = undefined;
+            const teacher = {
+                name, email, password, id,
+                subject, department, address, phone
+            };
+            handleCreateUser(email, password, name);
+        } else if (tabIndex === 2) {
+            data.semester = undefined;
+            data.subject = undefined;
+            const Head = {
+                name, email, password, id, department, address, phone
+            }
+            handleCreateUser(email, password, name);
+        }
+        else {
+            console.log("error");
+        }
+    };
+    //create user
+    const handleCreateUser = (email, password, name) => {
         CreateUserEP(email, password)
             .then((res) =>
                 updateProfilePic(name)
@@ -40,8 +73,8 @@ const register = () => {
             .catch((err) => {
                 errorMessage(err.message);
             });
-    };
-
+    }
+    //verify email
     const handleVerifyEmail = () => {
         verifyEmail().then(() => {
             successMessage(
@@ -50,11 +83,11 @@ const register = () => {
             console.log("Email verification sent.");
         });
     };
+    //some reusable styles
     const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
     const borderErrorColor = 'border-red-700 focus:ring-red-300'
     const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
-    // const [value, setValue] = useState("");
-    // console.log(value);
+
     return (
         <>
             <Head>
@@ -64,146 +97,222 @@ const register = () => {
                 <section className="bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
                     <div className="flex justify-center min-h-screen ">
                         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5 ">
-                            <div
-                                className="w-full bg-white rounded-lg shadow-md 
-            bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100 p-12"
-                            >
+                            <div className="w-full bg-white rounded-lg shadow-md 
+            bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-rose-100 to-teal-100 p-7" >
                                 <h1 className="text-2xl font-semibold tracking-wider capitalize ">
-                                    Create your account.
-                                </h1>
+                                    Create your account.</h1>
                                 <form
                                     onSubmit={handleSubmit(onSubmit)}
-                                    className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 "
                                 >
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Name</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="Enter your name"
-                                            className={`${borderPrimaryColor} ${errors.name ? borderErrorColor : borderSuccessColor}`}
-                                            {...register("name", {
-                                                required: " Name must required",
-                                            })}
-                                        />
-                                        {errors.name && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.name.message}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Id Number</span>
-                                        </label>
-                                        <input type="text" placeholder="XXX-XXXXX"
-                                            className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
-                                            {...register("id", {
-                                                required: "id must required",
-                                            })}
-                                        />
-                                        {
-                                            errors.id && (
-                                                <span className="label-text text-red-400">
-                                                    {errors?.id.message}
-                                                </span>
-                                            )
-                                        }
-                                    </div >
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">
-                                                Email
-                                            </span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="Enter your email"
-                                            className={`${borderPrimaryColor} ${errors.email ? borderErrorColor : borderSuccessColor}`}
-                                            {...register("email", {
-                                                required: "Email must required",
-                                            })}
-                                        />
-                                        {errors.email && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.email.message}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Password</span>
-                                        </label>
-                                        <input
-                                            type=""
-                                            placeholder="XXX-XXX-XX-XXX"
-                                            className={`${borderPrimaryColor} ${errors.Password ? borderErrorColor : borderSuccessColor}`}
-                                            {...register("Password", {
-                                                required:
-                                                    "Password must required",
-                                                minLength: 6,
-                                            })}
-                                        />
-                                        {errors.Password && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.Password.message}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Photo</span>
-                                        </label>
-                                        <input
-                                            type="file"
-                                            className="file-input file-input-bordered  file-input-sm"
-                                            {...register("photo", {
-                                                required: "Photo must required",
-                                            })}
-                                        />
-                                        {errors.photo && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.photo.message}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Address</span>
-                                        </label>
-                                        <input
-                                            type="address"
-                                            placeholder="dhaka,bangladesh"
-                                            className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
-                                            {...register("address", {
-                                                required: "address must required",
-                                            })}
-                                        />
-                                        {errors.address && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.address.message}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Department</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="CSE"
-                                            className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
-                                            {...register("department", {
-                                                required: "department must required",
-                                            })}
-                                        />
-                                        {errors.department && (
-                                            <span className="label-text text-red-400">
-                                                {errors?.department.message}
-                                            </span>
-                                        )}
-                                    </div>
+                                    <Tabs className='mt-5' selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                                        <TabList>
+                                            type of the account   -{'  '}
+                                            <Tab><p className="px-4">Student</p></Tab>
+                                            <Tab><p className="px-4">Teacher</p> </Tab>
+                                            <Tab><p className="px-4">Head</p> </Tab>
+                                        </TabList>
+                                        <div className="grid grid-cols-1 gap-4 mt-3 md:grid-cols-2 ">
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Name</span>
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Enter your name"
+                                                    className={`${borderPrimaryColor} ${errors.name ? borderErrorColor : borderSuccessColor}`}
+                                                    {...register("name", {
+                                                        required: " Name must required",
+                                                    })}
+                                                />
+                                                {errors.name && (
+                                                    <span className="label-text text-red-400">
+                                                        {errors?.name.message}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Id Number</span>
+                                                </label>
+                                                <input type="text" placeholder="XXX-XXXXX"
+                                                    className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                    {...register("id", {
+                                                        required: "id must required",
+                                                    })}
+                                                />
+                                                {
+                                                    errors.id && (
+                                                        <span className="label-text text-red-400">
+                                                            {errors?.id.message}
+                                                        </span>
+                                                    )
+                                                }
+                                            </div >
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">
+                                                        Email
+                                                    </span>
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Enter your email"
+                                                    className={`${borderPrimaryColor} ${errors.email ? borderErrorColor : borderSuccessColor}`}
+                                                    {...register("email", {
+                                                        required: "Email must required",
+                                                    })}
+                                                />
+                                                {errors.email && (
+                                                    <span className="label-text text-red-400">
+                                                        {errors?.email.message}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Password</span>
+                                                </label>
+                                                <input
+                                                    type=""
+                                                    placeholder="XXX-XXX-XX-XXX"
+                                                    className={`${borderPrimaryColor} ${errors.Password ? borderErrorColor : borderSuccessColor}`}
+                                                    {...register("password", {
+                                                        required:
+                                                            "Password must required",
+                                                        minLength: 6,
+                                                    })}
+                                                />
+                                                {errors.Password && (
+                                                    <span className="label-text text-red-400">
+                                                        {errors?.Password.message}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Photo</span>
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    className="file-input file-input-bordered  file-input-sm"
+                                                    {...register("photo", {
+                                                        required: "Photo must required",
+                                                    })}
+                                                />
+                                                {errors.photo && (
+                                                    <span className="label-text text-red-400">
+                                                        {errors?.photo.message}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Address</span>
+                                                </label>
+                                                <input
+                                                    type="address"
+                                                    placeholder="dhaka,bangladesh"
+                                                    className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                    {...register("address", {
+                                                        required: "address must required",
+                                                    })}
+                                                />
+                                                {errors.address && (
+                                                    <span className="label-text text-red-400">
+                                                        {errors?.address.message}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="">
+                                                <label className="label">
+                                                    <span className="label-text"> Department</span>
+                                                </label>
+                                                <div>
+                                                    <select
+                                                        className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                        {...register("department")}
+                                                    >
+                                                        <option>CSE</option>
+                                                        <option>EEE</option>
+                                                        <option>ENGLISH</option>
+                                                        <option>LAW</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Phone</span>
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    placeholder="+880-XXXX-XXXX"
+                                                    className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                    {...register("phone", {
+                                                        required: "phone must required",
+                                                    })}
+                                                />
+                                                {errors.phone && (
+                                                    <span className="label-text text-red-400">
+                                                        {errors?.phone.message}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <TabPanel >
+                                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+
+                                                <div className="">
+                                                    <label className="label">
+                                                        <span className="label-text">Semester</span>
+                                                    </label>
+                                                    <div>
+                                                        <select
+                                                            className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                            {...register("semester")}
+                                                        >
+                                                            <option>1st</option>
+                                                            <option>2nd</option>
+                                                            <option>3rd</option>
+                                                            <option>4th</option>
+                                                            <option>5th</option>
+                                                            <option>6th</option>
+                                                            <option>7th</option>
+                                                            <option>8th</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </TabPanel>
+                                        <TabPanel>
+                                            <div className="grid grid-cols-1 gap-6  md:grid-cols-2">
+                                                <div className="">
+                                                    <label className="label">
+                                                        <span className="label-text">Subject</span>
+                                                    </label>
+                                                    <div>
+
+                                                        <select
+                                                            className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                            {...register("subject")}
+                                                        >
+                                                            <option>English</option>
+                                                            <option>....</option>
+                                                            <option>3rd</option>
+                                                            <option>4th</option>
+                                                            <option>5th</option>
+                                                            <option>6th</option>
+                                                            <option>7th</option>
+                                                            <option>8th</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </TabPanel>
+                                        <TabPanel >
+                                        </TabPanel>
+                                    </Tabs>
+                                    {/* 
                                     <div className="">
                                         <label className="label">
                                             <span className="label-text">type of the account</span>
@@ -219,12 +328,14 @@ const register = () => {
                                                 <option value="teacher">Teacher</option>
                                             </select>
                                         </div>
+                                    </div> */}
+                                    <div className="mt-5">
+                                        <ButtonUp >
+                                            <span>Sign Up </span>
+                                        </ButtonUp>
                                     </div>
-                                    <ButtonUp>
-                                        <span>Sign Up </span>
-                                    </ButtonUp>
                                 </form>
-                                <p className="mt-8 text-xs font-light text-center text-gray-400">
+                                <p className="mt-3 text-xs font-light text-center text-gray-400">
                                     {" "}
                                     Already have an account?{" "}
                                     <Link
