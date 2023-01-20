@@ -4,7 +4,8 @@ import ButtonUp from "../../Shared/Buttons/SecondaryButton";
 
 const ProfileModal = ({ studentDetails }) => {
     const { firstName, lastName, currentAddress, phone } = studentDetails;
-    console.log(phone)
+    const { user } = useFirebase()
+    // console.log(phone)
     const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
     const borderErrorColor = 'border-red-700 focus:ring-red-300'
     const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
@@ -14,14 +15,13 @@ const ProfileModal = ({ studentDetails }) => {
         console.log(data);
 
     }
-
     return (
         <>
             <input type="checkbox" id="my-modal-2" className="modal-toggle" />
-            <div className="modal bg-gradient-to-tr from-gray-700 via-gray-900 to-black">
-                <div className="modal-box relative bg-gradient-to-r from-rose-100 to-teal-100">
+            <div className="modal">
+                <div className="modal-box relative bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600">
                     <label htmlFor="my-modal-2" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
+                    <h3 className="text-lg font-bold">Hello {user?.displayName}!</h3>
 
                     <form
                         onSubmit={handleSave(onSubmit)}
@@ -74,7 +74,8 @@ const ProfileModal = ({ studentDetails }) => {
                         </div>
                         <div className="w-full mt-5">
                             <ButtonUp><span>Submit</span></ButtonUp>
-                        </div>                    </form>
+                        </div>
+                    </form>
                 </div>
             </div>
         </>
