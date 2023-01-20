@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileTamplate = () => {
+const attendance = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const ProfileTamplate = () => {
     );
 };
 
-export default ProfileTamplate;
+export default attendance;

@@ -25,6 +25,10 @@ const login = () => {
                 errorMessage(error.message);
             });
     };
+    const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
+    const borderErrorColor = 'border-red-700 focus:ring-red-300'
+    const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
+
     //form data :
     const onSubmit = (data) => {
         console.log(data);
@@ -59,10 +63,7 @@ const login = () => {
                             <input
                                 type="text"
                                 placeholder="email"
-                                className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg ${errors.email
-                                        ? " border-red-700 focus:ring-red-300"
-                                        : "focus:border-blue-400 focus:ring-blue-300"
-                                    } focus:outline-none focus:ring focus:ring-opacity-40`}
+                                className={`${borderPrimaryColor} ${errors.email ? borderErrorColor : borderSuccessColor}`}
                                 {...register("email", {
                                     required: "Email must required",
                                 })}
@@ -91,10 +92,7 @@ const login = () => {
                             <input
                                 type="password"
                                 placeholder="password"
-                                className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg ${errors.password
-                                        ? " border-red-700 focus:ring-red-300"
-                                        : "focus:border-blue-400 focus:ring-blue-300"
-                                    } focus:outline-none focus:ring focus:ring-opacity-40`}
+                                className={`${borderPrimaryColor} ${errors.password ? borderErrorColor : borderSuccessColor}`}
                                 {...register("password", {
                                     required: "password must required",
                                 })}
