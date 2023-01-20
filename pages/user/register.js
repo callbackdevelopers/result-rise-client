@@ -175,16 +175,16 @@ const register = () => {
                                                 <input
                                                     type=""
                                                     placeholder="XXX-XXX-XX-XXX"
-                                                    className={`${borderPrimaryColor} ${errors.Password ? borderErrorColor : borderSuccessColor}`}
+                                                    className={`${borderPrimaryColor} ${errors.password ? borderErrorColor : borderSuccessColor}`}
                                                     {...register("password", {
                                                         required:
                                                             "Password must required",
                                                         minLength: 6,
                                                     })}
                                                 />
-                                                {errors.Password && (
+                                                {errors.password && (
                                                     <span className="label-text text-red-400">
-                                                        {errors?.Password.message}
+                                                        {errors?.password.message}
                                                     </span>
                                                 )}
                                             </div>
@@ -229,7 +229,7 @@ const register = () => {
                                                 </label>
                                                 <div>
                                                     <select
-                                                        className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                        className={`${borderPrimaryColor} ${errors.department ? borderErrorColor : borderSuccessColor}`}
                                                         {...register("department")}
                                                     >
                                                         <option>CSE</option>
@@ -268,7 +268,7 @@ const register = () => {
                                                     </label>
                                                     <div>
                                                         <select
-                                                            className={`${borderPrimaryColor} ${errors.id ? borderErrorColor : borderSuccessColor}`}
+                                                            className={`${borderPrimaryColor} ${errors.semester ? borderErrorColor : borderSuccessColor}`}
                                                             {...register("semester")}
                                                         >
                                                             <option>1st</option>
