@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ButtonUp from "../../components/Shared/Buttons/SecondaryButton";
+import Spiner from "../../components/Spiner/Spiner";
 import { useFirebase } from "../../context/UserContext";
 import AlertMessage from "../../Hooks/AlertMessage";
 
@@ -19,8 +20,10 @@ const register = () => {
     const { CreateUserEP, updateProfilePic, verifyEmail } = useFirebase();
 
     const [tabIndex, setTabIndex] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = (data) => {
+        setLoading(true);
         const name = data.name;
         const email = data.email;
         const password = data.password;
@@ -30,59 +33,101 @@ const register = () => {
         const department = data.department;
         const address = data.address;
         const phone = data.phone;
+        const photo = data.photo[0];
+
         //differentiate users data. like : student, teacher and head
         if (tabIndex === 0) {
             data.subject = undefined;
-            const student = {
-                name, email, password, id, semester, department, address, phone
+            const user = {
+                name, email, password, id, semester, department, address, phone,
+                roll: "student"
             };
-            handleCreateUser(email, password, name);
-            console.log("student", student);
+            imageHosting(photo, user);
         } else if (tabIndex === 1) {
             data.semester = undefined;
-            const teacher = {
-                name, email, password, id,
-                subject, department, address, phone
+            const user = {
+                name, email, password, id, subject,
+                department, address, phone, roll: "teacher",
             };
-            handleCreateUser(email, password, name);
+            imageHosting(photo, user);
         } else if (tabIndex === 2) {
             data.semester = undefined;
             data.subject = undefined;
-            const Head = {
-                name, email, password, id, department, address, phone
+            const user = {
+                name, email, password, id, department, address, phone,
+                roll: "head"
             }
-            handleCreateUser(email, password, name);
-        }
-        else {
-            console.log("error");
-        }
+            imageHosting(photo, user);
+        } else { console.log("error"); }
     };
+    //image upload
+    const imageHosting = (data, user) => {
+        // console.log(user);
+        const imageBBapi = '27b73950d28f0e1e9f8c01294ddb3bae';
+        const formData = new FormData();
+        formData.append('image', data)
+        const urL = `https://api.imgbb.com/1/upload?expiration=600&key=${imageBBapi}`
+        fetch(urL, {
+            method: 'POST',
+            body: formData
+        }).then(res => res.json())
+            .then(img => {
+                if (img.success) {
+                    user['photoURL'] = img.data.url;
+                    handleCreateUser(user);
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false);
+            })
+    }
     //create user
-    const handleCreateUser = (email, password, name) => {
+    const handleCreateUser = (user) => {
+        const { email, password, name, photoURL } = user;
+        // console.log(email, password, name, photoURL);
         CreateUserEP(email, password)
             .then((res) =>
-                updateProfilePic(name)
+                updateProfilePic(name, photoURL)
                     .then((res) => {
-                        handleVerifyEmail();
+                        handleVerifyEmail(user);
                         reset();
                     })
                     .catch((err) => {
                         errorMessage(err.message);
+                        setLoading(false);
                     })
             )
             .catch((err) => {
+                setLoading(false);
                 errorMessage(err.message);
             });
     }
     //verify email
-    const handleVerifyEmail = () => {
+    const handleVerifyEmail = (user) => {
         verifyEmail().then(() => {
-            successMessage(
-                "Email verification sent. Please, verify your email."
-            );
+            handlePostData(user);
             console.log("Email verification sent.");
         });
     };
+    //post data to server 
+    const handlePostData = (user) => {
+        console.log(user);
+        fetch("http://localhost:3100/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setLoading(false);
+                successMessage(
+                    "Account created,Please Got to Your Email & verify your email."
+                );
+            });
+    }
     //some reusable styles
     const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
     const borderErrorColor = 'border-red-700 focus:ring-red-300'
@@ -330,8 +375,12 @@ const register = () => {
                                         </div>
                                     </div> */}
                                     <div className="mt-5">
-                                        <ButtonUp >
-                                            <span>Sign Up </span>
+                                        <ButtonUp>
+                                            {loading ?
+                                                <Spiner
+                                                    color={"#fff"}
+                                                    height={15} />
+                                                : <span>Sign Up </span>}
                                         </ButtonUp>
                                     </div>
                                 </form>
