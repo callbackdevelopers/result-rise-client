@@ -87,8 +87,9 @@ const Navbar = () => {
                                             {user?.displayName}
                                         </a>
                                     </li>
-                                    <li>
-                                        <a>Dashboard</a>
+                                    <li >
+                                        <a><Link href='/dashboard/Student/StudentProfile'>Dashboard
+                                        </Link> </a>
                                     </li>
                                     <li>
                                         <a onClick={() => heandelLogout()}>

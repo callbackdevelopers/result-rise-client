@@ -1,11 +1,12 @@
 import Head from "next/head";
+import Layout from "../../../../Layout/Layout";
 import Student from "./student";
 
 const Students = ({ students }) => {
     return (
-        <>
+        <Layout>
             <Head>
-                <title>Students</title>
+                <title>ResultRise - Students</title>
             </Head>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -20,20 +21,24 @@ const Students = ({ students }) => {
                         </tr>
                     </thead>
                     {students.map((student, index) => (
-                        <Student key={student.key} student={student} index={index}></Student>
+                        <Student
+                            key={student.key}
+                            student={student}
+                            index={index}
+                        ></Student>
                     ))}
                 </table>
             </div>
-        </>
+        </Layout>
     );
 };
 
 export default Students;
 
 export const getStaticProps = async () => {
-    const res = await fetch("http://localhost:5000/students");
+    const res = await fetch("https://result-rise-server.vercel.app/students");
     const students = await res.json();
-    console.log(students);
+    // console.log(students);
 
     return {
         props: {

@@ -10,7 +10,7 @@ const HeroSection = () => {
     const { user } = useFirebase();
     return (
         <div>
-            <Head><title>Home - Result Rise</title></Head>
+            <Head><title>Home - ResultRise</title></Head>
             <BodyTamplate>
                 <div className="hero min-h-[calc(100vh_-_70px)] text-white ">
                     <div className="md:px-0 flex-col  md:grid md:grid-cols-2 md:w-full  h-full flex  items-center justify-between ">
