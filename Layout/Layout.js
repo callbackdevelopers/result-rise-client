@@ -1,17 +1,19 @@
 import DashboardNavbar from "../components/Navbars/DashboardNavbar";
-import Sidebar from "../components/Sidebars/Sidebar";
+import Sidebars from "../components/Sidebars/Sidebars";
 
 const Layout = ({ children }) => {
     return (
-        <div>
-            <div className="h-screen flex flex-row justify-start">
-                <Sidebar />
-                <div className=" flex-1 p-4  ">
+        <>
+            <div className="drawer drawer-mobile border">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content">
                     <DashboardNavbar />
                     {children}
                 </div>
+                <Sidebars />
             </div>
-        </div>
+        </>
+
     );
 };
 
