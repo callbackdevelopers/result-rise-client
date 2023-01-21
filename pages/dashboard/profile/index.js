@@ -1,7 +1,8 @@
 import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
-import ProfileModal from "../../components/modals/ProfileModal/ProfileModal";
-import AlertMessage from "../../Hooks/AlertMessage";
-import Layout from "../../Layout/Layout";
+import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
+import AlertMessage from "../../../Hooks/AlertMessage";
+import Layout from "../../../Layout/Layout";
+
 
 
 const profile = () => {
