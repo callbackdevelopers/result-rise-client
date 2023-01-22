@@ -5,9 +5,9 @@ const DashboardNavbar = () => {
     const { user } = useFirebase();
     return (
         <div>
-            <div className="navbar ">
+            <div className="navbar container mx-auto ">
                 <div className="flex-1">
-                    <a className=" normal-case text-xl font-semibold">
+                    <a className="lg:ml-28 normal-case text-xl font-semibold">
                         Hello , {user?.displayName}
                     </a>
                 </div>
