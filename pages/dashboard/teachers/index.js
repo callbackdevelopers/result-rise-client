@@ -1,8 +1,7 @@
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 
-
-const index = () => {
+function teachers() {
     return (
         <>
             <DashboardNavbar />
@@ -41,7 +40,7 @@ const index = () => {
                                     </td>
                                     <td>Purple</td>
                                     <th>
-                                        <button className="btn btn-warning btn-xs">Report</button>
+                                        <button className="btn btn-warning btn-xs"> delete</button>
                                     </th>
                                 </tr>
                             </tbody>
@@ -61,8 +60,4 @@ const index = () => {
         </>
     );
 }
-
-export default index;
-
-
-
+export default teachers;
