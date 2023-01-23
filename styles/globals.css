@@ -1,9 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
 
 @layer base {
     body {
       @apply bg-gray-100;
     }
   }
+=======
+html,
+body {
+  font-family: "Space Grotesk";
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+>>>>>>> 2da39eeab4369883c270d722a05a8167649d81fd
