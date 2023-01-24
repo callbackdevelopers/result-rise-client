@@ -1,12 +1,37 @@
+import { useEffect, useState } from "react";
 import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../components/modals/ProfileModal/ProfileModal";
+import { useFirebase } from "../../context/UserContext";
 import AlertMessage from "../../Hooks/AlertMessage";
 import Layout from "../../Layout/Layout";
 
 
 const profile = () => {
+    const { user } = useFirebase()
     const { successMessage, errorMessage } = AlertMessage()
 
+    const [users, setUsers] = useState([])
+    console.log("useEffect users", users)
+
+    useEffect(() => {
+        fetch('http://localhost:3100/users')
+            .then(res => res.json())
+            .then(data => {
+                console.log("insite useEffect", data);
+                setUsers(data);
+            })
+    }, [])
+
+    // const { data: users = [], refetch } = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: async () => {
+    //         const res = await fetch('http://localhost:3100/users');
+    //         const data1 = await res.json();
+    //         const data = data1.filter(u => u.email === user.email)
+    //         return data;
+    //     }
+    // })
+    // console.log("Inside users 21", users)
 
     const studentDetails = {
         firstName: "Jahirul", lastName: "Islam", type: "Student", email: "jahirul@example.com", currentAddress: "Dhaka, Bangladesh", permanantAddress: "Dhaka, Bangladesh", phone: "+088 0123456789", gender: "male"
@@ -17,7 +42,7 @@ const profile = () => {
     return (
         <Layout>
             <div className="container mx-auto my-5 p-5">
-                <div className="w-full md:w-9/12 mx-2 h-64">
+                <div className="mx-2 h-64">
 
                     {/* start profile-img  */}
                     <div className="flex justify-between">

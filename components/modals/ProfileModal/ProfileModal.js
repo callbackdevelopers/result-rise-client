@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useFirebase } from "../../../context/UserContext";
 import ButtonUp from "../../Shared/Buttons/SecondaryButton";
@@ -11,10 +12,45 @@ const ProfileModal = ({ studentDetails }) => {
     const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
     const { register, handleSubmit: handleSave, formState: { errors } } = useForm();
     const { CreateUserEP, updateProfilePic } = useFirebase()
+
+    const [users, setUsers] = useState([])
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3100/users')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log("insite useEffect", data);
+    //             setUsers(data);
+
+    //         })
+    // }, [])
     const onSubmit = (data) => {
         console.log(data);
 
+        const user = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phone: data.phone,
+            currentAddress: data.currentAddress
+        }
+
+
+        fetch(`http://localhost:3100/users/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                } else {
+
+                }
+            })
+
     }
+
+
     return (
         <>
             <input type="checkbox" id="my-modal-2" className="modal-toggle" />
