@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
@@ -8,7 +9,16 @@ import AlertMessage from "../../../Hooks/AlertMessage";
 
 const profile = () => {
     const { successMessage, errorMessage } = AlertMessage()
-
+    const url = `http://localhost:3100/users`
+    const { data: users = [], refetch, isLoading } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch(url)
+            const data = await res.json()
+            return data
+        }
+    })
+    console.log(users);
 
     const studentDetails = {
         firstName: "Jahirul", lastName: "Islam", type: "Student", email: "jahirul@example.com", currentAddress: "Dhaka, Bangladesh", permanantAddress: "Dhaka, Bangladesh", phone: "+088 0123456789", gender: "male"
