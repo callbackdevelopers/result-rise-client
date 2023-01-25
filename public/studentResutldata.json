@@ -1,0 +1,116 @@
+[
+    {
+      "student_id": "001",
+      "student_name": "John Smith",
+      "semester_results": [
+        {
+          "semester": "Fall 2022",
+          "exam_results": [
+            {
+              "exam_name": "bangla",
+               "exam-code":"4924",
+              "midterm_score": 85,
+              "final_exam_score": 92,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "english",
+              "exam-code":"4924",
+              "midterm_score": 89,
+              "final_exam_score": 93,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "math",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 85,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "physics",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 85,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "chemistry",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 85,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "biology",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 85,
+              "presentation_score": 30,
+              "viva_score": 20
+            }
+            
+          ]
+        },
+
+
+        {
+          "semester": "Spring 2023",
+          "exam_results": [
+            {
+              "exam_name": "Math",
+              "midterm_score": 85,
+              "final_exam_score": 92,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "Science",
+              "exam-code":"4924",
+              "midterm_score": 85,
+              "presentation_score": 30,
+              "viva_score": 20,
+              "final_exam_score": 88
+            },
+            {
+              "exam_name": "English",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 82,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "English",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 82,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "basic electricity",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 82,
+              "presentation_score": 30,
+              "viva_score": 20
+            },
+            {
+              "exam_name": "computer",
+              "exam-code":"4924",
+              "midterm_score": 80,
+              "final_exam_score": 82,
+              "presentation_score": 30,
+              "viva_score": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
