@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
@@ -13,6 +14,7 @@ import AlertMessage from "../../Hooks/AlertMessage";
 
 const register = () => {
     const { successMessage, errorMessage } = AlertMessage();
+    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -135,6 +137,7 @@ const register = () => {
                 successMessage(
                     "Account created,Please Got to Your Email & verify your email."
                 );
+                router.push('/')
             });
     }
 
