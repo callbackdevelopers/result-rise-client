@@ -13,22 +13,17 @@ const ProfileModal = ({ userData }) => {
 
     const onSubmit = (data) => {
         console.log(data);
-        const userData = {
-            email: data.email,
-            name: data.name,
-            phone: data.phone,
-            address: data.address
-        }
-        fetch(`http://localhost:3100/users`, {
+
+        fetch(`http://localhost:3100/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                console.log("resultInside", result);
             })
     }
 

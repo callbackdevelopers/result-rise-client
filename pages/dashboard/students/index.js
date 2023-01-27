@@ -6,12 +6,13 @@ import Student from "./student";
 
 
 const index = () => {
-    const url = `http://localhost:3100/students`
+    const url = `http://localhost:3100/users`
     const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
-            const data = await res.json()
+            const data1 = await res.json()
+            const data = data1.filter(u => u.roll === "student")
             return data;
         }
     })
@@ -23,7 +24,7 @@ const index = () => {
 
     const handleStudentDelete = (student) => {
         console.log('Deleting  with id: ', student)
-        fetch(`http://localhost:3100/students/${student._id}`, {
+        fetch(`http://localhost:3100/users/${student._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -47,12 +48,12 @@ const index = () => {
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>Student ID</th>
+                                    <th>Depertment</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             {
-                                students.map(student => <Student
+                                students?.map(student => <Student
                                     id={student._id}
                                     student={student}
                                     handleStudentDelete={handleStudentDelete}
