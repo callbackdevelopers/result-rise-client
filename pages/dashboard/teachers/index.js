@@ -1,7 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
+import Spiner from "../../../components/Spiner/Spiner";
+import Teacher from "./teacher";
 
 function teachers() {
+    const url = `http://localhost:3100/teachers`
+    const { data: teachers = [], refetch, isLoading } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch(url)
+            const data = await res.json()
+            return data;
+        }
+    })
+    console.log(teachers)
+    if (isLoading) {
+        return <Spiner></Spiner>
+    }
     return (
         <>
             <DashboardNavbar />
@@ -18,32 +34,12 @@ function teachers() {
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-warning btn-xs"> delete</button>
-                                    </th>
-                                </tr>
-                            </tbody>
+                            {
+                                teachers.map(teacher => <Teacher
+                                    id={teacher._id}
+                                    teacher={teacher}
+                                ></Teacher>)
+                            }
                             <tfoot>
                                 <tr>
                                     <th></th>
