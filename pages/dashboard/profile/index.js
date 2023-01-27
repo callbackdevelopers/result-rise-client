@@ -155,6 +155,7 @@ const profile = () => {
                         </div>
                         <ProfileModal
                             userData={userData}
+                            refetch={refetch}
                         ></ProfileModal>
                     </div >
 

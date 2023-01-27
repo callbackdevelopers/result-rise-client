@@ -21,9 +21,9 @@ const Student = ({ student, handleStudentDelete }) => {
                     </div>
                 </td>
                 <td>
-                    Zemlak, Daniel and Leannon
+                    {address}
                     <br />
-                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                    {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
                 </td>
                 <td>{department}</td>
                 <th>

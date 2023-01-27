@@ -5,16 +5,18 @@ import Spiner from "../../../components/Spiner/Spiner";
 import Teacher from "./teacher";
 
 function teachers() {
-    const url = `http://localhost:3100/teachers`
+    const url = `http://localhost:3100/users`
     const { data: teachers = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
-            const data = await res.json()
+            const data1 = await res.json()
+            const data = data1.filter(u => u.roll === "teacher")
             return data;
         }
     })
-    console.log(teachers)
+    console.log("Stu", teachers)
+
     if (isLoading) {
         return <Spiner></Spiner>
     }
@@ -35,7 +37,7 @@ function teachers() {
                                 </tr>
                             </thead>
                             {
-                                teachers.map(teacher => <Teacher
+                                teachers?.map(teacher => <Teacher
                                     id={teacher._id}
                                     teacher={teacher}
                                 ></Teacher>)
