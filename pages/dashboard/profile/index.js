@@ -3,13 +3,15 @@ import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
+import { useFirebase } from '../../../context/UserContext';
 import AlertMessage from "../../../Hooks/AlertMessage";
 
 
 
 const profile = () => {
     const { successMessage, errorMessage } = AlertMessage()
-    const url = `http://localhost:3100/users`
+    const { user } = useFirebase()
+    const url = `http://localhost:3100/users/`
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
