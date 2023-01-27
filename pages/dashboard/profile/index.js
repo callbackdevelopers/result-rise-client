@@ -11,7 +11,7 @@ import AlertMessage from "../../../Hooks/AlertMessage";
 const profile = () => {
     const { successMessage, errorMessage } = AlertMessage()
     const { user } = useFirebase()
-    const url = `http://localhost:3100/users/`
+    const url = `https://result-rise-server-three.vercel.app/users/`
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
