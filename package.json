@@ -29,6 +29,7 @@
     "vercel": "^28.11.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
     "autoprefixer": "^10.4.13",
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "19.0.4",
