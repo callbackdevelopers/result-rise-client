@@ -1,0 +1,70 @@
+[
+    {
+      "student_id": 1234,
+      "student_name": "Chris Wade",
+      "department": "CSE",
+      "Addmission":"Winter-2018",
+      "student_email": "wade@gmail.com",
+      "semester_results": [
+        {
+           "year_name":"first year",
+          "first_year": [
+            {
+              "season": "Winter 2018",
+               "semester":"First Semester",
+              "exam_results": [
+                {
+                  "subject_name": "Programming and Data Structures",
+                  "subject_code": "4924",
+                  "midterm_score": 85,
+                  "final_exam_score": 92,
+                  "presentation_score": 30,
+                  "viva_score": 20
+                },
+                {
+                  "subject_name": "Algorithms and Theory of Computation",
+                  "subject_code": "4924",
+                  "midterm_score": 85,
+                  "final_exam_score": 92,
+                  "presentation_score": 30,
+                  "viva_score": 20
+                },
+                {
+                  "subject_name": "Computer Systems and Architecture",
+                  "subject_code": "4924",
+                  "midterm_score": 85,
+                  "final_exam_score": 92,
+                  "presentation_score": 30,
+                  "viva_score": 20
+                },
+                {
+                  "subject_name": "Software Engineering",
+                  "subject_code": "4924",
+                  "midterm_score": 85,
+                  "final_exam_score": 92,
+                  "presentation_score": 30,
+                  "viva_score": 20
+                },
+                {
+                  "subject_name": "Artificial Intelligence and Machine Learning",
+                  "subject_code": "4924",
+                  "midterm_score": 85,
+                  "final_exam_score": 92,
+                  "presentation_score": 30,
+                  "viva_score": 20
+                },
+                {
+                  "subject_name": "Computer Networks and Security",
+                  "subject_code": "4924",
+                  "midterm_score": 85,
+                  "final_exam_score": 92,
+                  "presentation_score": 30,
+                  "viva_score": 20
+                }
+              ] 
+            }
+          ]  
+        }
+      ]
+   }
+]
