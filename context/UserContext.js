@@ -8,7 +8,7 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
-    updateProfile,
+    updateProfile
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Firebase } from "../config/firebase.init";
@@ -29,10 +29,7 @@ const UserContext = ({ children }) => {
     const logout = () => signOut(auth);
     const updateProfilePic = (name, photo) =>
         updateProfile(auth.currentUser, { displayName: name, photoURL: photo });
-    const verifyEmail = () =>
-        sendEmailVerification(auth.currentUser).then(() => {
-            console.log("Email verification sent!");
-        });
+    const verifyEmail = () => sendEmailVerification(auth.currentUser);
     const resetPassword = (email) => sendPasswordResetEmail(auth, email);
 
     useEffect(() => {

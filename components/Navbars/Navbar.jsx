@@ -27,7 +27,7 @@ const Navbar = () => {
         </>
     );
     return (
-        <div className="shadow-md ">
+        <div className="shadow-md bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
             <BodyTamplate>
                 <div className="navbar  text-white pt-5 ">
                     <div className="navbar-start ">
@@ -87,8 +87,9 @@ const Navbar = () => {
                                             {user?.displayName}
                                         </a>
                                     </li>
-                                    <li>
-                                        <a>Dashboard</a>
+                                    <li >
+                                        <a><Link href='/dashboard/Student/StudentProfile'>Dashboard
+                                        </Link> </a>
                                     </li>
                                     <li>
                                         <a onClick={() => heandelLogout()}>
