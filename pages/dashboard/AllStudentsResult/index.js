@@ -10,7 +10,7 @@ const SemesterResult = () => {
 
 
   return (
-    <div className="  bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 min-h-screen">
+    <div className="">
       <div className="pt-40">
         <Link className="" href="/calculateResult/gpa">
 

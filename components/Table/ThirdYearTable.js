@@ -18,16 +18,16 @@ const ThirdYearTable = ({thirdYearData, department, Addmission}) => {
      <div className="  m-5 p-5">
       
          <div className="">
-           <p className=" p-2 text-white  bg-primary rounded-xl">{semester} Exam Marks </p>
+           <p className=" p-2 bg-primary text-white rounded-xl">{semester} Exam Marks </p>
        
        </div>
-       <div className="lg:flex lg:justify-between text-white items-end">
+       <div className="lg:flex lg:justify-between  items-end">
          <div>
            <p className=" ">Matric No: T19248</p>
            <p className="">Registration NO: 092836293223</p>
            <p className="font-bold">Semester: {season}</p>
          </div>
-         <div className="text-white">
+         <div className="">
            <p className=" mt-2">
              Department: {department}
            </p>

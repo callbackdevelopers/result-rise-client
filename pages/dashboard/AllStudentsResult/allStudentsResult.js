@@ -1,9 +1,10 @@
 
 
 const allStudentsResult = () => {
+  
     return (
          <div className="  m-5 p-5">
-      <div className="p-[1px] bg-blue-500 rounded-lg text-white">
+      <div className="p-[1px]">
         <div className="mt-2">
           <p className=" p-[4px] w-28  bg-primary rounded-xl">Result View </p>
         </div>

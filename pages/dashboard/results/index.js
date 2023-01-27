@@ -5,7 +5,7 @@ import SemesterBtn from "../../../components/Table/semesterBtn";
 function index({semesterResultData}) {
 
     return (
-        <div className=" bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 min-h-screen">
+        <div className=" ">
         <div className=" py-2">
           <h2 className="lg:text-2xl text-center text-white">Semester Result </h2>
         
