@@ -42,6 +42,7 @@ const register = () => {
         const subject = data.subject;
         const department = data.department;
         const dataCreated = new Date();
+        const verification = "panding"
 
         //differentiate users data. like : student, teacher and head
         if (tabIndex === 0) {

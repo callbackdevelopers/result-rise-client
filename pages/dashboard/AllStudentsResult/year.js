@@ -5,13 +5,11 @@ import ThirdYearTable from "../../../components/Table/ThirdYearTable";
 
 
 const Year = ({ data, Addmission, department }) => {
-  const { first_year,second_year,third_year,fourth_year } = data;
+  const { first_year, second_year, third_year, fourth_year } = data;
   console.log(data);
 
   return (
     <div>
- 
- 
       {first_year?.map((firstYearData) => (
         <FirstYearTable firstYearData={firstYearData} department={department} Addmission={Addmission} />
       ))}
@@ -24,7 +22,7 @@ const Year = ({ data, Addmission, department }) => {
       {fourth_year?.map((fourthYearTable) => (
         <FourthYearTable fourthYearTable={fourthYearTable} department={department} Addmission={Addmission} />
       ))}
-     
+
     </div>
   );
 };
