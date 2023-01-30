@@ -11,7 +11,7 @@ import AlertMessage from "../../../Hooks/AlertMessage";
 const profile = () => {
     const { successMessage, errorMessage } = AlertMessage()
     const { user } = useFirebase()
-    const url = `https://result-rise-server-three.vercel.app/users/`
+    const url = `http://localhost:3000/users/`
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
@@ -20,7 +20,7 @@ const profile = () => {
             return data
         }
     })
-    console.log(users);
+    // console.log(users);
 
     const studentDetails = {
         firstName: "Jahirul", lastName: "Islam", type: "Student", email: "jahirul@example.com", currentAddress: "Dhaka, Bangladesh", permanantAddress: "Dhaka, Bangladesh", phone: "+088 0123456789", gender: "male"
