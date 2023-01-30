@@ -1,8 +1,41 @@
+import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
+import Spiner from "../../../components/Spiner/Spiner";
+import Student from "./student";
 
 
 const index = () => {
+    const url = `http://localhost:3100/students`
+    const { data: students = [], refetch, isLoading } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch(url)
+            const data = await res.json()
+            console.log(data);
+            return data;
+        }
+    })
+    console.log("Stu", students)
+
+    if (isLoading) {
+        return <Spiner></Spiner>
+    }
+
+    const handleStudentDelete = (student) => {
+        console.log('Deleting  with id: ', student)
+        fetch(`http://localhost:3100/students/${student._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    refetch();
+                }
+            })
+
+    }
     return (
         <>
             <DashboardNavbar />
@@ -15,36 +48,17 @@ const index = () => {
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>department</th>
+                                    <th>Student ID</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-warning btn-xs">Report</button>
-                                    </th>
-                                </tr>
-                            </tbody>
+                            {
+                                students.map(student => <Student
+                                    id={student._id}
+                                    student={student}
+                                    handleStudentDelete={handleStudentDelete}
+                                ></Student>)
+                            }
                             <tfoot>
                                 <tr>
                                     <th></th>

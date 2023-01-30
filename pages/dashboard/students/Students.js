@@ -1,7 +1,36 @@
+
+import { useQuery } from "@tanstack/react-query";
+import StudentReportModal from "../../../components/modals/StudentReportModal/StudentReportModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
+import Spiner from "../../../components/Spiner/Spiner";
 
-function allstudents() {
+function allStudents() {
+    // const [reportStudent, setReportStudent] = useState(null)
+
+
+    const url = `http://localhost:3100/users?roll=student`
+    const { data: students = [], refetch, isLoading } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch(url)
+            const data = await res.json()
+            console.log(data);
+            return data;
+        }
+    })
+    if (isLoading) {
+        return <Spiner></Spiner>
+    }
+
+    const handleReportStudent = (student) => {
+        console.log(student)
+
+
+    }
+
+
+
     return (
         <>
             <DashboardNavbar />
@@ -19,30 +48,38 @@ function allstudents() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+
+                                {
+                                    students?.map(student => <tr>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={student.photoURL} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className="font-bold">{student.name}</div>
+                                                    <div className="text-sm opacity-50"></div>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-warning btn-xs"> delete</button>
-                                    </th>
-                                </tr>
+                                        </td>
+                                        <td>
+
+                                            <br />
+                                            <span className="badge badge-ghost badge-sm">{student.address}</span>
+                                        </td>
+                                        <td>{student.department}</td>
+                                        <th>
+
+                                            <label onClick={() => handleReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
+                                            {/* onClick={() => handleStudentDelete(students)} */}
+                                            {/* onClick={() => setReportStudent(student)}  */}
+                                        </th>
+                                    </tr>)
+                                }
+
+
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -56,9 +93,10 @@ function allstudents() {
                     </div>
                 </div>
                 <Sidebars></Sidebars>
+                <StudentReportModal></StudentReportModal>
             </div>
         </>
     );
 }
 
-export default allstudents;
+export default allStudents;
