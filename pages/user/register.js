@@ -50,7 +50,7 @@ const register = () => {
             const user = {
                 name, email, password, id, semester,
                 department, address, phone, gender, birth,
-                dataCreated, roll: "student"
+                dataCreated, roll: "student", verification
             };
             imageHosting(photo, user);
         } else if (tabIndex === 1) {
@@ -58,7 +58,7 @@ const register = () => {
             const user = {
                 name, email, password, id,
                 subject, gender, birth, dataCreated,
-                department, address, phone, roll: "teacher",
+                department, address, phone, roll: "teacher", verification
             };
             imageHosting(photo, user);
         } else if (tabIndex === 2) {
@@ -67,7 +67,7 @@ const register = () => {
             const user = {
                 name, email, password, id, department,
                 address, phone, gender, birth,
-                dataCreated, roll: "head"
+                dataCreated, roll: "head", verification
             }
             imageHosting(photo, user);
         } else { console.log("error"); }
