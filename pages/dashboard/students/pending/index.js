@@ -1,18 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "../../../components/Spiner/Spiner";
-import Student from "./student";
+import { useQuery } from "@tanstack/react-query"
+import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
+import Pending from "../../../../components/Shared/Pending/pending"
+import Sidebars from "../../../../components/Sidebars/Sidebars"
+import Spiner from "../../../../components/Spiner/Spiner"
+import AlertMessage from "../../../../Hooks/AlertMessage"
+
+
 
 
 const index = () => {
+    const { successMessage } = AlertMessage();
     const url = `http://localhost:3100/users`
     const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(u => u.roll === "student")
+            const data = data1.filter(ps => !ps.verification && ps.roll === "student")
             return data;
         }
     })
@@ -22,16 +26,22 @@ const index = () => {
         return <Spiner></Spiner>
     }
 
-    const handleStudentDelete = (student) => {
+    const handleVerification = (student) => {
         console.log('Deleting  with id: ', student)
+
         fetch(`http://localhost:3100/users/${student._id}`, {
-            method: 'DELETE'
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify()
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    refetch();
+            .then(result => {
+                console.log("resultInside", result);
+                if (result.acknowledged === true) {
+                    successMessage("Approved")
+                    refetch()
                 }
             })
 
@@ -53,11 +63,11 @@ const index = () => {
                                 </tr>
                             </thead>
                             {
-                                students?.map(student => <Student
+                                students?.map(student => <Pending
                                     id={student._id}
                                     student={student}
-                                    handleStudentDelete={handleStudentDelete}
-                                ></Student>)
+                                    handleVerification={handleVerification}
+                                ></Pending>)
                             }
                             <tfoot>
                                 <tr>

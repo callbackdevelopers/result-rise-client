@@ -3,30 +3,29 @@ import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
+import Spiner from '../../../components/Spiner/Spiner';
 import { useFirebase } from '../../../context/UserContext';
-import AlertMessage from "../../../Hooks/AlertMessage";
 
 
 
 const profile = () => {
-    const { successMessage, errorMessage } = AlertMessage()
     const { user } = useFirebase()
-    const url = `http://localhost:3000/users/`
-    const { data: users = [], refetch, isLoading } = useQuery({
+    const url = `http://localhost:3100/users/${user?.email}`
+    const { data: userData = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data = await res.json()
-            return data
+            return data;
         }
     })
-    // console.log(users);
 
-    const studentDetails = {
-        firstName: "Jahirul", lastName: "Islam", type: "Student", email: "jahirul@example.com", currentAddress: "Dhaka, Bangladesh", permanantAddress: "Dhaka, Bangladesh", phone: "+088 0123456789", gender: "male"
+    console.log("inside profile", userData);
+
+    const { photoURL, roll, name, email, address, phone, gender, department } = userData;
+    if (isLoading) {
+        return <Spiner></Spiner>
     }
-    const { firstName, lastName, type, email, currentAddress, permanantAddress, phone, gender } = studentDetails;
-
 
     return (
         <>
@@ -35,7 +34,7 @@ const profile = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
                     <div className="container mx-auto my-5 p-5">
-                        <div className="w-full md:w-9/12 mx-2 h-64">
+                        <div className="w-full mx-2 h-64">
 
 
                             <div className="flex justify-between">
@@ -43,23 +42,23 @@ const profile = () => {
                                     <div className="image overflow-hidden p-3 lg:border-l-4 text-center border-green-400">
                                         <div className="avatar">
                                             <div className="w-32 rounded-xl">
-                                                <img src="https://placeimg.com/192/192/people" />
+                                                <img src={photoURL} />
                                             </div>
                                         </div>
-                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{firstName} {lastName}</h1>
-                                        <h3 className="text-gray-600 font-lg text-semibold leading-6">Student</h3>
+                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{name}</h1>
+                                        <h3 className="text-gray-600 font-lg text-semibold leading-6">{roll}</h3>
                                     </div>
 
                                     <div className="ml-lg-5">
                                         <ul
                                             className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                                             <li className="flex items-center py-3">
-                                                <span>Student ID:</span>
+                                                <span>{roll} ID:</span>
                                                 <span className="ml-auto"><span
                                                     className="bg-green-500 py-1 px-2 rounded text-white text-sm">1222</span></span>
                                             </li>
                                             <li className="flex items-center py-3">
-                                                <span>Student since</span>
+                                                <span>{roll} since</span>
                                                 <span className="ml-auto">Nov 07, 2016</span>
                                             </li>
                                         </ul>
@@ -85,13 +84,10 @@ const profile = () => {
                                 <div className="text-gray-700">
                                     <div className="grid md:grid-cols-2 text-sm">
                                         <div className="grid grid-cols-2">
-                                            <div className="px-4 py-2 font-semibold">First Name</div>
-                                            <div className="px-4 py-2">{firstName}</div>
+                                            <div className="px-4 py-2 font-semibold">Name</div>
+                                            <div className="px-4 py-2">{name}</div>
                                         </div>
-                                        <div className="grid grid-cols-2">
-                                            <div className="px-4 py-2 font-semibold">Last Name</div>
-                                            <div className="px-4 py-2">{lastName}</div>
-                                        </div>
+
                                         <div className="grid grid-cols-2">
                                             <div className="px-4 py-2 font-semibold">Gender</div>
                                             <div className="px-4 py-2">{gender}</div>
@@ -101,13 +97,10 @@ const profile = () => {
                                             <div className="px-4 py-2">{phone}</div>
                                         </div>
                                         <div className="grid grid-cols-2">
-                                            <div className="px-4 py-2 font-semibold">Current Address</div>
-                                            <div className="px-4 py-2">{currentAddress}</div>
+                                            <div className="px-4 py-2 font-semibold">Address</div>
+                                            <div className="px-4 py-2">{address}</div>
                                         </div>
-                                        <div className="grid grid-cols-2">
-                                            <div className="px-4 py-2 font-semibold">Permanant Address</div>
-                                            <div className="px-4 py-2">{permanantAddress}</div>
-                                        </div>
+
                                         <div className="grid grid-cols-2">
                                             <div className="px-4 py-2 font-semibold">Email.</div>
                                             <div className="px-4 py-2">
@@ -132,11 +125,11 @@ const profile = () => {
                                     <div>
                                         <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
                                             <FaFileAlt className='text-green-500' />
-                                            <span className="tracking-wide">Course</span>
+                                            <span className="tracking-wide">Department</span>
                                         </div>
                                         <ul className="list-inside space-y-2">
                                             <li>
-                                                <div className="text-teal-600">BSC.........</div>
+                                                <div className="text-teal-600">{department}</div>
                                                 <div className="text-gray-500 text-xs">March 2020 - Now</div>
                                             </li>
 
@@ -161,7 +154,8 @@ const profile = () => {
                             {/* <!-- End of profile tab --> */}
                         </div>
                         <ProfileModal
-                            studentDetails={studentDetails}
+                            userData={userData}
+                            refetch={refetch}
                         ></ProfileModal>
                     </div >
 

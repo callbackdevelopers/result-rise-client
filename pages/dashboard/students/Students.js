@@ -2,6 +2,9 @@ import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 
 function allstudents() {
+
+
+
     return (
         <>
             <DashboardNavbar />
@@ -40,7 +43,7 @@ function allstudents() {
                                     </td>
                                     <td>Purple</td>
                                     <th>
-                                        <button className="btn btn-warning btn-xs"> delete</button>
+                                        <button onClick={() => handleStudentDelete(students)} className="btn btn-warning btn-xs"> delete</button>
                                     </th>
                                 </tr>
                             </tbody>

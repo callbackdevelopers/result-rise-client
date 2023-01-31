@@ -1,17 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "../../../components/Spiner/Spiner";
-import Teacher from "./teacher";
+import { useQuery } from "@tanstack/react-query"
+import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
+import Pending from "../../../../components/Shared/Pending/pending"
+import Sidebars from "../../../../components/Sidebars/Sidebars"
+import Spiner from "../../../../components/Spiner/Spiner"
+import AlertMessage from "../../../../Hooks/AlertMessage"
 
-function teachers() {
+
+
+
+const index = () => {
+    const { successMessage } = AlertMessage();
     const url = `http://localhost:3100/users`
     const { data: teachers = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(u => u.roll === "teacher")
+            const data = data1.filter(ps => !ps.verification && ps.roll === "teacher")
             return data;
         }
     })
@@ -19,6 +24,22 @@ function teachers() {
 
     if (isLoading) {
         return <Spiner></Spiner>
+    }
+
+    const handleVerification = (student) => {
+        console.log('Verification  with id: ', student)
+        fetch(`http://localhost:3100/users/${student._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    successMessage("Approved")
+                    refetch()
+                }
+            })
+
     }
     return (
         <>
@@ -32,15 +53,16 @@ function teachers() {
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>department</th>
+                                    <th>Depertment</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             {
-                                teachers?.map(teacher => <Teacher
-                                    id={teacher._id}
-                                    teacher={teacher}
-                                ></Teacher>)
+                                teachers?.map(student => <Pending
+                                    id={student._id}
+                                    student={student}
+                                    handleVerification={handleVerification}
+                                ></Pending>)
                             }
                             <tfoot>
                                 <tr>
@@ -58,4 +80,8 @@ function teachers() {
         </>
     );
 }
-export default teachers;
+
+export default index;
+
+
+
