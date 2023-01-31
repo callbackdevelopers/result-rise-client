@@ -9,7 +9,7 @@ const MarksTable = ({ finaldata}) => {
 , exam_results,
 department, Addmission
 } = finaldata;
-  console.log(finaldata);
+  console.log('finaldata',finaldata);
 
   return (
     <div>
@@ -64,17 +64,17 @@ department, Addmission
    <div>
    <div className="  m-5 p-5">
    
-       <div className="mt-2 text-white">
-         <p className=" p-2  bg-primary rounded-xl">{semester} Final Result  </p>
+       <div className="mt-2 ">
+         <p className=" p-2 text-white bg-primary rounded-xl">{semester} Final Result  </p>
        </div>
      
-     <div className="lg:flex lg:justify-between text-white items-end">
+     <div className="lg:flex lg:justify-between items-end">
        <div>
          <p className=" ">Matric No: T19248</p>
          <p className="">Registration NO: 092836293223</p>
          <p className="font-bold">Semester: {season}</p>
        </div>
-       <div className="text-white">
+       <div className="">
          <p className=" mt-2">
            Department: {department}
          </p>

@@ -30,18 +30,18 @@ function Semester() {
         <div className="drawer-content">
           <div className="">
             <div className=" py-2">
-              <h2 className="lg:text-2xl text-center text-white">
-                Semester Result{" "}
+              <h2 className="lg:text-2xl text-center">
+                Semester Result
               </h2>
             </div>
             <div className=" gap-3 p-4">
               <div>
                 {semesterResultData.map((semester) => (
-                  <div key={semester._id}>
+                  <div className=" grid grid-cols-2 gap-3" key={semester._id}>
                   
 
                     {semester.semester_results.map((finaldata) => (
-                      <div key={finaldata._id}>
+                      <div  key={finaldata._id}>
                   
                         <Link href={`/dashboard/AllStudentsResult/${finaldata.semester}`}><ButtonUp>  {finaldata.semester}</ButtonUp></Link>
                       </div>

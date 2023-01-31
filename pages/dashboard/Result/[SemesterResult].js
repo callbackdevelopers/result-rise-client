@@ -24,9 +24,6 @@ const SemesterResult = () => {
         <div className="drawer-content">
           <div className="">
             <div className=" py-2">
-              <h2 className="lg:text-2xl text-center text-white">
-                Semester Result{" "}
-              </h2>
             </div>
             <div className=" gap-3 p-4">
               <div>
