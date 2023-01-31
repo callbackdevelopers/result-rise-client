@@ -4,9 +4,9 @@ import SecondYearTable from "../../../components/Table/SecondYearTable";
 import ThirdYearTable from "../../../components/Table/ThirdYearTable";
 
 
-const Year = ({ data, Addmission, department }) => {
-  const { first_year, second_year, third_year, fourth_year } = data;
-  console.log(data);
+const Year = ({ finaldata, Addmission, department }) => {
+  const { first_year, second_year, third_year, fourth_year } = finaldata;
+  console.log(finaldata);
 
   return (
     <div>
