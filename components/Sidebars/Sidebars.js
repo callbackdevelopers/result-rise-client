@@ -13,6 +13,7 @@ const Sidebars = () => {
                 <hr />
                 <li><Link href="/dashboard/teachers">Teachers</Link></li>
                 <li><Link href="/dashboard/students/Students">Students</Link></li>
+                <li><Link href="/dashboard/addmark">Add Marks</Link></li>
             </ul>
         </div>
     );

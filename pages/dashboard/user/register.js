@@ -5,12 +5,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import ButtonUp from "../../components/Shared/Buttons/SecondaryButton";
-import FormOptionTemplate from "../../components/Shared/FormTemplate/FormOptionTemplate";
-import FormTemplate from "../../components/Shared/FormTemplate/FormTemplate";
-import Spiner from "../../components/Spiner/Spiner";
-import { useFirebase } from "../../context/UserContext";
-import AlertMessage from "../../Hooks/AlertMessage";
+import ButtonUp from "../../../components/Shared/Buttons/SecondaryButton";
+import FormOptionTemplate from "../../../components/Shared/FormTemplate/FormOptionTemplate";
+import FormTemplate from "../../../components/Shared/FormTemplate/FormTemplate";
+import Spiner from "../../../components/Spiner/Spiner";
+import { useFirebase } from "../../../context/UserContext";
+import AlertMessage from "../../../Hooks/AlertMessage";
 
 const register = () => {
     const { successMessage, errorMessage } = AlertMessage();
