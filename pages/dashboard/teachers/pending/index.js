@@ -1,29 +1,26 @@
-// import { useQuery } from "@tanstack/react-query"
-// import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
-// import Sidebars from "../../../../components/Sidebars/Sidebars"
-// import Spiner from "../../../../components/Spiner/Spiner"
-// import Pending from "./pending"
-
 import { useQuery } from "@tanstack/react-query"
 import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
 import Pending from "../../../../components/Shared/Pending/pending"
 import Sidebars from "../../../../components/Sidebars/Sidebars"
 import Spiner from "../../../../components/Spiner/Spiner"
+import AlertMessage from "../../../../Hooks/AlertMessage"
+
 
 
 
 const index = () => {
+    const { successMessage } = AlertMessage();
     const url = `http://localhost:3100/users`
-    const { data: students = [], refetch, isLoading } = useQuery({
+    const { data: teachers = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(ps => ps.verification === "false")
+            const data = data1.filter(ps => !ps.verification && ps.roll === "teacher")
             return data;
         }
     })
-    console.log("Stu", students)
+    console.log("Stu", teachers)
 
     if (isLoading) {
         return <Spiner></Spiner>
@@ -37,9 +34,10 @@ const index = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                // if (data.deletedCount > 0) {
-                //     refetch();
-                // }
+                if (data.acknowledged) {
+                    successMessage("Approved")
+                    refetch()
+                }
             })
 
     }
@@ -60,7 +58,7 @@ const index = () => {
                                 </tr>
                             </thead>
                             {
-                                students?.map(student => <Pending
+                                teachers?.map(student => <Pending
                                     id={student._id}
                                     student={student}
                                     handleVerification={handleVerification}

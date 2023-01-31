@@ -3,18 +3,20 @@ import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
 import Pending from "../../../../components/Shared/Pending/pending"
 import Sidebars from "../../../../components/Sidebars/Sidebars"
 import Spiner from "../../../../components/Spiner/Spiner"
+import AlertMessage from "../../../../Hooks/AlertMessage"
 
 
 
 
 const index = () => {
+    const { successMessage } = AlertMessage();
     const url = `http://localhost:3100/users`
     const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(ps => ps.verification === "false")
+            const data = data1.filter(ps => !ps.verification && ps.roll === "student")
             return data;
         }
     })
@@ -26,16 +28,6 @@ const index = () => {
 
     const handleVerification = (student) => {
         console.log('Deleting  with id: ', student)
-        // fetch(`http://localhost:3100/users/${student._id}`, {
-        //     method: 'DELETE'
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.deletedCount > 0) {
-        //             refetch();
-        //         }
-        //     })
 
         fetch(`http://localhost:3100/users/${student._id}`, {
             method: 'PATCH',
@@ -48,6 +40,7 @@ const index = () => {
             .then(result => {
                 console.log("resultInside", result);
                 if (result.acknowledged === true) {
+                    successMessage("Approved")
                     refetch()
                 }
             })
