@@ -21,7 +21,7 @@ function index({ semesterResultData }) {
               <div>
                 {semesterResultData.map((semester) => (
                   <div className="border ">
-                    <SemesterBtn data={semester} />
+                    {/* <SemesterBtn data={semester} /> */}
                   </div>
                 ))}
               </div>
