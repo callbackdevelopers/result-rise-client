@@ -1,26 +1,20 @@
-
+import MarksTable from "./MarksTable";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import ButtonUp from "../../../components/Shared/Buttons/SecondaryButton";
 import Sidebars from "../../../components/Sidebars/Sidebars";
+import Spiner from "/components/Spiner/Spiner";
 
+const SemesterResult = () => {
+  const { data: semesterResultData = [], isLoading } = useQuery({
+    queryKey: [],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:3100/resultdata");
+      const data = await res.json();
+      return data;
+    },
+  });
 
-
-
-function Semester() {
-
- const {data: semesterResultData = []} = useQuery({
-  queryKey: [],
-  queryFn:async () =>{
-   const res = await fetch('http://localhost:3100/resultdata')
-   const data = await res.json();
-   return data;
-  }
-  
- })
-
- console.log('root data',semesterResultData);
+  console.log("root data", semesterResultData);
 
   return (
     <>
@@ -38,12 +32,9 @@ function Semester() {
               <div>
                 {semesterResultData.map((semester) => (
                   <div key={semester._id}>
-                  
-
                     {semester.semester_results.map((finaldata) => (
                       <div key={finaldata._id}>
-                  
-                        <Link href={`/dashboard/AllStudentsResult/${finaldata.semester}`}><ButtonUp>  {finaldata.semester}</ButtonUp></Link>
+                        <MarksTable finaldata={finaldata} />
                       </div>
                     ))}
 
@@ -58,6 +49,6 @@ function Semester() {
       </div>
     </>
   );
-}
+};
 
-export default Semester;
+export default SemesterResult;
