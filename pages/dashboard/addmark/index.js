@@ -94,20 +94,20 @@ function index() {
                                         <th> </th>
                                     </tr>
                                 </thead>
-                                {students.map(student =>
+                                {students.map((student, i) =>
                                     <tbody>
                                         <tr>
-                                            <th>2</th>
+                                            <th>{1 + i}</th>
                                             <td>
                                                 <div className="flex items-center space-x-2">
                                                     <div className="avatar">
                                                         <div className="mask mask-squircle w-12 h-12">
-                                                            <img src="/" />
+                                                            <img src={student.photoURL} />
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <div className="font-bold">Hart Hagerty</div>
-                                                        <div className="text-sm opacity-50">ID :</div>
+                                                        <div className="font-bold">{student.name} </div>
+                                                        <div className="text-sm opacity-50">ID :{student.id}</div>
                                                     </div>
                                                 </div>
                                             </td>

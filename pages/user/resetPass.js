@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useForm } from "react-hook-form";
-import ButtonUp from "../../../components/Shared/Buttons/SecondaryButton";
-import { useFirebase } from "../../../context/UserContext";
-import AlertMessage from "../../../Hooks/AlertMessage";
+import ButtonUp from "../../components/Shared/Buttons/SecondaryButton";
+import { useFirebase } from "../../context/UserContext";
+import AlertMessage from "../../Hooks/AlertMessage";
 
 const resetPass = () => {
     const {
@@ -55,8 +55,8 @@ const resetPass = () => {
                                 type="text"
                                 placeholder="enter your email"
                                 className={`block w-full px-12 py-3 mt-2 text-gray-700 bg-white border rounded-lg ${errors.email
-                                        ? " border-red-700 focus:ring-red-300"
-                                        : "focus:border-blue-400 focus:ring-blue-300"
+                                    ? " border-red-700 focus:ring-red-300"
+                                    : "focus:border-blue-400 focus:ring-blue-300"
                                     } focus:outline-none focus:ring focus:ring-opacity-40`}
                                 {...register("email", {
                                     required: "Email must required",
