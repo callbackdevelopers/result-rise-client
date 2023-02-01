@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
+import UsersTableTamplete from "../../../components/Shared/UsersTableTamplete/usersTableTamplete";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 import Spiner from "../../../components/Spiner/Spiner";
-import Teacher from "./eacher";
 
 function teachers() {
+    const btnName = "Delete";
+
     const url = `http://localhost:3100/users`
-    const { data: teachers = [], refetch, isLoading } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
@@ -15,7 +17,7 @@ function teachers() {
             return data;
         }
     })
-    console.log("Stu", teachers)
+    console.log("Teachers", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
@@ -37,10 +39,12 @@ function teachers() {
                                 </tr>
                             </thead>
                             {
-                                teachers?.map(teacher => <Teacher
-                                    id={teacher._id}
-                                    teacher={teacher}
-                                ></Teacher>)
+                                users?.map(user => <UsersTableTamplete
+                                    id={user._id}
+                                    user={user}
+                                    // handleUser={handleUser}
+                                    btnName={btnName}
+                                ></UsersTableTamplete>)
                             }
                             <tfoot>
                                 <tr>
