@@ -9,10 +9,11 @@ const Sidebars = () => {
                 <li><Link href="/dashboard/result">Results</Link></li>
                 <hr />
                 <li><Link href="/dashboard/results/addNumber">Add Number</Link></li>
-                <li><Link href="/dashboard/students">Students</Link></li>
+                <li><Link href="/dashboard/students/Students">Students</Link></li>
                 <hr />
                 <li><Link href="/dashboard/teachers">Teachers</Link></li>
-                <li><Link href="/dashboard/students/Students">Students</Link></li>
+                <li><Link href="/dashboard/students">Students</Link></li>
+
                 <hr />
                 <li><Link href="/dashboard/teachers/pending">Pending Teachers</Link></li>
                 <li><Link href="/dashboard/students/pending">Pending Students</Link></li>

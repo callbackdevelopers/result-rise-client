@@ -6,8 +6,6 @@ import Spiner from "../../../../components/Spiner/Spiner"
 import AlertMessage from "../../../../Hooks/AlertMessage"
 
 
-
-
 const index = () => {
     const { successMessage } = AlertMessage();
     const url = `http://localhost:3100/users`
