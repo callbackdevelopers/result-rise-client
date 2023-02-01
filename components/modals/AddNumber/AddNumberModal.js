@@ -40,7 +40,7 @@ function AddNumberModal({ student, setShow }) {
                             />)}
                         <br className="py-5" />
                         <ButtonUp>
-                            <span>Sign Up </span>
+                            <span>Submit Number </span>
                         </ButtonUp>
                     </form>
                 </div>
