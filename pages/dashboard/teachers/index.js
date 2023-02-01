@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 import Spiner from "../../../components/Spiner/Spiner";
-import Teacher from "./teacher";
+import Teacher from "./eacher";
 
 function teachers() {
     const url = `http://localhost:3100/users`
