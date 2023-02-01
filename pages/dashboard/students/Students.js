@@ -1,33 +1,34 @@
 
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import StudentReportModal from "../../../components/modals/StudentReportModal/StudentReportModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 import Spiner from "../../../components/Spiner/Spiner";
 
 function allStudents() {
-    // const [reportStudent, setReportStudent] = useState(null)
+
+    const [reportStudent, setReportStudent] = useState(null)
 
 
-    const url = `http://localhost:3100/users?roll=student`
     const { data: students = [], refetch, isLoading } = useQuery({
-        queryKey: [],
+        queryKey: ['students'],
         queryFn: async () => {
-            const res = await fetch(url)
+            const res = await fetch("http://localhost:3100/user?roll=student")
             const data = await res.json()
-            console.log(data);
+
             return data;
         }
     })
     if (isLoading) {
-        return <Spiner></Spiner>
+        return <Spiner className=""></Spiner>
     }
 
     const handleReportStudent = (student) => {
-        console.log(student)
 
+        setReportStudent(student);
 
-    }
+    };
 
 
 
@@ -44,7 +45,7 @@ function allStudents() {
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>department</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,8 +74,7 @@ function allStudents() {
                                         <th>
 
                                             <label onClick={() => handleReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
-                                            {/* onClick={() => handleStudentDelete(students)} */}
-                                            {/* onClick={() => setReportStudent(student)}  */}
+
                                         </th>
                                     </tr>)
                                 }
@@ -92,8 +92,14 @@ function allStudents() {
                         </table>
                     </div>
                 </div>
+                {reportStudent && (
+                    <StudentReportModal data={reportStudent}></StudentReportModal>
+                )}
                 <Sidebars></Sidebars>
                 <StudentReportModal></StudentReportModal>
+
+
+
             </div>
         </>
     );

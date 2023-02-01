@@ -12,8 +12,9 @@ const Sidebars = () => {
                 <li><Link href="/dashboard/students/Students">Students</Link></li>
 
                 <hr />
-                <li><Link href="/dashboard/teachers">Teachers</Link></li>
-                <li><Link href="/dashboard/students">Students</Link></li>
+                <li><Link href="/dashboard/teachers/teacher">Teachers</Link></li>
+                <li><Link href="/dashboard/students/ReportedStudents">Reported Students</Link></li>
+                {/* <li><Link href="/dashboard/students">Students</Link></li> */}
 
             </ul>
         </div>

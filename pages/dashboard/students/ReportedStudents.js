@@ -1,27 +1,36 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import ConfirmationModal from '../../../components/modals/ConfirmationModal/ConfirmationModal';
-import DashboardNavbar from '../../../components/Navbars/DashboardNavbar';
-import Sidebars from '../../../components/Sidebars/Sidebars';
 
-const Teacher = () => {
-    const [deleteTeacher, setDeleteTeacher] = useState(null)
-    const closeModal = () => {
-        setDeleteTeacher(null)
-    }
-    const { data: teachers = [] } = useQuery({
-        queryKey: ["teacher"],
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import ShowReportModal from "../../../components/modals/StudentReportModal/ShowReportModal";
+import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
+import Sidebars from "../../../components/Sidebars/Sidebars";
+import Spiner from "../../../components/Spiner/Spiner";
+
+function ReportedStudents() {
+    const [report, setReport] = useState(null)
+
+
+    const { data: reports = [], refetch, isLoading } = useQuery({
+        queryKey: ['reports'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3100/user?roll=teacher")
+            const res = await fetch("http://localhost:3100/reports")
             const data = await res.json()
-            console.log(data);
+
             return data;
         }
     })
+    if (isLoading) {
+        return <Spiner className=""></Spiner>
+    }
 
-    const handleTeacherDelete = (teacher) => {
+    const handleReport = (report) => {
+
+        setReport(report);
 
     };
+
+
+
     return (
         <>
             <DashboardNavbar />
@@ -33,25 +42,24 @@ const Teacher = () => {
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Subject</th>
-                                    <th></th>
+                                    <th>Report</th>
+                                    <th>department</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 {
-                                    teachers?.map(teacher => <tr>
+                                    reports?.map(report => <tr>
                                         <td>
                                             <div className="flex items-center space-x-3">
                                                 <div className="avatar">
                                                     <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={teacher?.photoURL} alt="Avatar Tailwind CSS Component" />
+                                                        <img src={report.photoURL} alt="Avatar Tailwind CSS Component" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold">{teacher?.name}</div>
+                                                    <div className="font-bold">{report.name}</div>
                                                     <div className="text-sm opacity-50"></div>
                                                 </div>
                                             </div>
@@ -59,17 +67,13 @@ const Teacher = () => {
                                         <td>
 
                                             <br />
-                                            <span className="">{teacher?.email}</span>
-                                        </td>
-                                        <td>
+                                            <span className="">{report.report.slice(0, 30)} <label onClick={() => handleReport(report)} htmlFor="show-report-modal" className="btn btn-active btn-xs btn-primary">Show more</label></span>
 
-                                            <br />
-                                            <span className="">{teacher?.department}</span>
                                         </td>
-                                        <td></td>
+                                        <td>{report.department}</td>
                                         <th>
 
-                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
+                                            <label htmlFor="show-report-modal" className="btn btn-warning btn-xs">Resolve</label>
 
                                         </th>
                                     </tr>)
@@ -83,33 +87,23 @@ const Teacher = () => {
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
-
-                {deleteTeacher && <ConfirmationModal
-                    title={`Are you sure you want to delete?`}
-                    message={`If you delete teacher, will be permanently deleted!`}
-                    closeModal={closeModal}
-                    successButtonName="Delete"
-                    successAction={handleTeacherDelete}
-                    modalData={deleteTeacher}
-                ></ConfirmationModal>
-
-                }
-
+                {report && (
+                    <ShowReportModal report={report}></ShowReportModal>
+                )}
                 <Sidebars></Sidebars>
+                <ShowReportModal></ShowReportModal>
 
 
 
 
             </div>
         </>
-
     );
-};
+}
 
-export default Teacher;
+export default ReportedStudents;
