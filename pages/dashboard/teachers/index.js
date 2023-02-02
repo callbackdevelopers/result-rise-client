@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import UsersTableTamplete from "../../../components/Shared/UsersTableTamplete/usersTableTamplete";
 import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "../../../components/Spiner/Spiner";
 
 function teachers() {
     const btnName = "Delete";
@@ -19,9 +18,7 @@ function teachers() {
     })
     console.log("Teachers", users)
 
-    if (isLoading) {
-        return <Spiner></Spiner>
-    }
+
     return (
         <>
             <DashboardNavbar />
