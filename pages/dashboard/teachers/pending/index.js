@@ -1,38 +1,43 @@
-import { useQuery } from "@tanstack/react-query";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import UsersTableTamplete from "../../../components/Shared/UsersTableTamplete/usersTableTamplete";
-import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "../../../components/Spiner/Spiner";
+import { useQuery } from "@tanstack/react-query"
+import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
+import UsersTableTamplete from "../../../../components/Shared/UsersTableTamplete/usersTableTamplete"
+import Sidebars from "../../../../components/Sidebars/Sidebars"
+import Spiner from "../../../../components/Spiner/Spiner"
+import AlertMessage from "../../../../Hooks/AlertMessage"
+
+
 
 
 const index = () => {
-    const btnName = "Delete";
+    const { successMessage } = AlertMessage();
+    const btnName = "Approve";
     const url = `http://localhost:3100/users`
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(u => u.roll === "student")
+            const data = data1.filter(ps => !ps.verification && ps.roll === "teacher")
             return data;
         }
     })
-    console.log("Stu", users)
+    console.log("UsersTableTamplete: ", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
     }
 
     const handleUser = (user) => {
-        console.log('Deleting  with id: ', user)
+        console.log('Verification  with id: ', user)
         fetch(`http://localhost:3100/users/${user._id}`, {
-            method: 'DELETE'
+            method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.deletedCount > 0) {
-                    refetch();
+                if (data.acknowledged) {
+                    successMessage("Approved")
+                    refetch()
                 }
             })
 

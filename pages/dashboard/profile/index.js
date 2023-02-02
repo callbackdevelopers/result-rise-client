@@ -22,6 +22,10 @@ const profile = () => {
 
     console.log("inside profile", userData);
 
+
+    const { photoURL, roll, name, email, address, phone, gender, department } = userData;
+
+
     const { photoURL, roll, name, email, address, phone, gender, department } = userData;
     if (isLoading) {
         return <Spiner></Spiner>
@@ -155,6 +159,9 @@ const profile = () => {
                         </div>
                         <ProfileModal
                             userData={userData}
+
+                            refetch={refetch}
+
                         ></ProfileModal>
                     </div >
 
