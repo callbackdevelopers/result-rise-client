@@ -1,16 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar";
-import UsersTableTamplete from "../../../../components/Shared/UsersTableTamplete/usersTableTamplete";
-import Sidebars from '../../../../components/Sidebars/Sidebars';
-import Spiner from "../../../../components/Spiner/Spiner";
-import AlertMessage from "../../../../Hooks/AlertMessage";
+import { useQuery } from "@tanstack/react-query"
+import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
+import UsersTableTamplete from "../../../../components/Shared/UsersTableTamplete/usersTableTamplete"
+import Sidebars from "../../../../components/Sidebars/Sidebars"
+import Spiner from "../../../../components/Spiner/Spiner"
+import AlertMessage from "../../../../Hooks/AlertMessage"
 
 
 const index = () => {
     const { successMessage } = AlertMessage();
-    const btnName = "Approve";
     const url = `http://localhost:3100/users`
-    const { data: users = [], refetch, isLoading } = useQuery({
+    const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
@@ -19,21 +18,26 @@ const index = () => {
             return data;
         }
     })
-    console.log("UsersTableTamplete: ", users)
+    console.log("Stu", students)
 
     if (isLoading) {
         return <Spiner></Spiner>
     }
 
-    const handleUser = (user) => {
-        console.log('Verification  with id: ', user)
-        fetch(`http://localhost:3100/users/${user._id}`, {
-            method: 'PATCH'
+    const handleVerification = (student) => {
+        console.log('Deleting  with id: ', student)
+
+        fetch(`http://localhost:3100/users/${student._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify()
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
+            .then(result => {
+                console.log("resultInside", result);
+                if (result.acknowledged === true) {
                     successMessage("Approved")
                     refetch()
                 }
@@ -57,11 +61,10 @@ const index = () => {
                                 </tr>
                             </thead>
                             {
-                                users?.map(user => <UsersTableTamplete
-                                    id={user._id}
-                                    user={user}
-                                    handleUser={handleUser}
-                                    btnName={btnName}
+                                students?.map(student => <UsersTableTamplete
+                                    id={student._id}
+                                    student={student}
+                                    handleVerification={handleVerification}
                                 ></UsersTableTamplete>)
                             }
                             <tfoot>
