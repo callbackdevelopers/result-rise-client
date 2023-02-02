@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
@@ -10,6 +11,7 @@ import { useFirebase } from '../../../context/UserContext';
 
 const profile = () => {
     const { user } = useFirebase()
+    const [userEdit, setUserEdit] = useState(true);
     const url = `http://localhost:3100/users/${user?.email}`
     const { data: userData = [], refetch, isLoading } = useQuery({
         queryKey: [],
@@ -153,10 +155,19 @@ const profile = () => {
                             </div>
                             {/* <!-- End of profile tab --> */}
                         </div>
-                        <ProfileModal
+                        {
+                            userEdit &&
+                            <ProfileModal
+                                userData={userData}
+                                refetch={refetch}
+                                setUserEdit={setUserEdit}
+                            ></ProfileModal>
+                        }
+                        {/* <ProfileModal
                             userData={userData}
                             refetch={refetch}
-                        ></ProfileModal>
+                            setUserEdit={setUserEdit}
+                        ></ProfileModal> */}
                     </div >
 
                 </div>

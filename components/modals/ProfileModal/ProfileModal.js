@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useFirebase } from "../../../context/UserContext";
+import AlertMessage from "../../../Hooks/AlertMessage";
 import ButtonUp from "../../Shared/Buttons/SecondaryButton";
 
-const ProfileModal = ({ userData, refetch }) => {
+const ProfileModal = ({ userData, refetch, setUserEdit }) => {
     const { user } = useFirebase()
+    const { successMessage, errorMessage } = AlertMessage();
     const { photoURL, roll, name, email, address, phone, _id, gender, department } = userData;
     // console.log(phone)
     const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
@@ -25,6 +27,8 @@ const ProfileModal = ({ userData, refetch }) => {
             .then(result => {
                 console.log("resultInside", result);
                 if (result.acknowledged === true) {
+                    setUserEdit(null)
+                    successMessage("User data updated")
                     refetch()
                 }
             })
