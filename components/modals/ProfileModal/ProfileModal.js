@@ -3,6 +3,7 @@ import { useFirebase } from "../../../context/UserContext";
 import ButtonUp from "../../Shared/Buttons/SecondaryButton";
 
 const ProfileModal = ({ userData, refetch }) => {
+
     const { user } = useFirebase()
     const { photoURL, roll, name, email, address, phone, _id, gender, department } = userData;
     // console.log(phone)
