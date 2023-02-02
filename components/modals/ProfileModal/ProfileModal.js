@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useFirebase } from "../../../context/UserContext";
 import ButtonUp from "../../Shared/Buttons/SecondaryButton";
 
-const ProfileModal = ({ userData }) => {
+const ProfileModal = ({ userData, refetch }) => {
     const { user } = useFirebase()
     const { photoURL, roll, name, email, address, phone, _id, gender, department } = userData;
     // console.log(phone)
@@ -13,22 +13,20 @@ const ProfileModal = ({ userData }) => {
 
     const onSubmit = (data) => {
         console.log(data);
-        const userData = {
-            email: data.email,
-            name: data.name,
-            phone: data.phone,
-            address: data.address
-        }
-        fetch(`http://localhost:3100/users`, {
+
+        fetch(`http://localhost:3100/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                console.log("resultInside", result);
+                if (result.acknowledged === true) {
+                    refetch()
+                }
             })
     }
 

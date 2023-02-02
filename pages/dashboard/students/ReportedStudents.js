@@ -1,13 +1,20 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import ConfirmationModal from "../../../components/modals/ConfirmationModal/ConfirmationModal";
 import ShowReportModal from "../../../components/modals/StudentReportModal/ShowReportModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 import Spiner from "../../../components/Spiner/Spiner";
+import AlertMessage from "../../../Hooks/AlertMessage";
 
 function ReportedStudents() {
-    const [report, setReport] = useState(null)
+    const { successMessage, errorMessage } = AlertMessage();
+    const [report, setReport] = useState(null);
+    const [resolve, setResolve] = useState(null);
+    const closeModal = () => {
+        setResolve(null)
+    }
 
 
     const { data: reports = [], refetch, isLoading } = useQuery({
@@ -29,7 +36,25 @@ function ReportedStudents() {
 
     };
 
+    const handleResolved = (resolve) => {
+        fetch(`http://localhost:3100/resolved/${resolve._id}`, {
+            method: "PUT"
 
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+
+                    refetch()
+                    successMessage("Resolved Now!");
+
+
+                }
+                else {
+                    errorMessage("Something went wrong, Please try again")
+                }
+            })
+    }
 
     return (
         <>
@@ -67,13 +92,25 @@ function ReportedStudents() {
                                         <td>
 
                                             <br />
-                                            <span className="">{report.report.slice(0, 30)} <label onClick={() => handleReport(report)} htmlFor="show-report-modal" className="btn btn-active btn-xs btn-primary">Show more</label></span>
+                                            <span>
+                                                {report?.report.length > 30 ?
+                                                    <>{report?.report.slice(0, 25) + "..."} <label onClick={() => handleReport(report)} htmlFor="show-report-modal" className="font-semibold cursor-pointer">Click to show more</label></>
+                                                    :
+                                                    <span>{report?.report}</span>
+                                                }
+                                            </span>
+
 
                                         </td>
                                         <td>{report.department}</td>
                                         <th>
 
-                                            <label htmlFor="show-report-modal" className="btn btn-warning btn-xs">Resolve</label>
+                                            {
+                                                report?.resolved ? <label disabled onClick={() => setResolve(report)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Success</label>
+                                                    :
+                                                    <label onClick={() => setResolve(report)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Resolve</label>
+                                            }
+
 
                                         </th>
                                     </tr>)
@@ -97,7 +134,15 @@ function ReportedStudents() {
                 )}
                 <Sidebars></Sidebars>
                 <ShowReportModal></ShowReportModal>
-
+                {resolve && <ConfirmationModal
+                    title={`Do you really want to ${resolve?.name} resolved?`}
+                    message={`If you once resolved then this button will be disabled for you!!`}
+                    closeModal={closeModal}
+                    successButtonName="Delete"
+                    successAction={handleResolved}
+                    modalData={resolve}
+                ></ConfirmationModal>
+                }
 
 
 

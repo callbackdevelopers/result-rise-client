@@ -16,7 +16,7 @@ const ShowReportModal = ({ report }) => {
                     <p>{report?.report}</p>
 
                     <div className="modal-action">
-                        <label htmlFor="show-report-modal" className="btn">Close</label>
+                        <label htmlFor="show-report-modal" className="btn btn-outline btn-warning">Close</label>
                     </div>
                 </div>
             </div>

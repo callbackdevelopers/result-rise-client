@@ -3,23 +3,43 @@ import React, { useState } from 'react';
 import ConfirmationModal from '../../../components/modals/ConfirmationModal/ConfirmationModal';
 import DashboardNavbar from '../../../components/Navbars/DashboardNavbar';
 import Sidebars from '../../../components/Sidebars/Sidebars';
+import AlertMessage from '../../../Hooks/AlertMessage';
 
 const Teacher = () => {
+    const { successMessage, errorMessage } = AlertMessage()
     const [deleteTeacher, setDeleteTeacher] = useState(null)
+
     const closeModal = () => {
         setDeleteTeacher(null)
     }
-    const { data: teachers = [] } = useQuery({
-        queryKey: ["teacher"],
+    const { data: teachers = [], refetch } = useQuery({
+        queryKey: ["teachers"],
         queryFn: async () => {
             const res = await fetch("http://localhost:3100/user?roll=teacher")
             const data = await res.json()
-            console.log(data);
+
             return data;
         }
     })
 
     const handleTeacherDelete = (teacher) => {
+        console.log(teacher);
+        fetch(`http://localhost:3100/user/${teacher._id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    successMessage("Successfully Deleted");
+                    refetch();
+                }
+                else {
+                    errorMessage("Something went wrong!! please try again")
+                }
+            });
+
+
 
     };
     return (
@@ -69,7 +89,7 @@ const Teacher = () => {
                                         <td></td>
                                         <th>
 
-                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
+                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Deletee</label>
 
                                         </th>
                                     </tr>)
@@ -91,8 +111,8 @@ const Teacher = () => {
                 </div>
 
                 {deleteTeacher && <ConfirmationModal
-                    title={`Are you sure you want to delete?`}
-                    message={`If you delete teacher, will be permanently deleted!`}
+                    title={`Are you sure you want to delete? `}
+                    message={`If you delete teacher, will be permanently deleted! ${deleteTeacher?.name}`}
                     closeModal={closeModal}
                     successButtonName="Delete"
                     successAction={handleTeacherDelete}

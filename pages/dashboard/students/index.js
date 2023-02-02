@@ -1,30 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
+import UsersTableTamplete from "../../../components/Shared/UsersTableTamplete/usersTableTamplete";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 import Spiner from "../../../components/Spiner/Spiner";
-import Student from "./student";
 
 
 const index = () => {
-    const url = `http://localhost:3100/students`
-    const { data: students = [], refetch, isLoading } = useQuery({
+    const btnName = "Delete";
+    const url = `http://localhost:3100/users`
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
-            const data = await res.json()
-            console.log(data);
+            const data1 = await res.json()
+            const data = data1.filter(u => u.roll === "student")
             return data;
         }
     })
-    console.log("Stu", students)
+    console.log("Stu", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
     }
 
-    const handleStudentDelete = (student) => {
-        console.log('Deleting  with id: ', student)
-        fetch(`http://localhost:3100/students/${student._id}`, {
+    const handleUser = (user) => {
+        console.log('Deleting  with id: ', user)
+        fetch(`http://localhost:3100/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -48,16 +49,17 @@ const index = () => {
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>Student ID</th>
+                                    <th>Depertment</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             {
-                                students.map(student => <Student
-                                    id={student._id}
-                                    student={student}
-                                    handleStudentDelete={handleStudentDelete}
-                                ></Student>)
+                                users?.map(user => <UsersTableTamplete
+                                    id={user._id}
+                                    user={user}
+                                    handleUser={handleUser}
+                                    btnName={btnName}
+                                ></UsersTableTamplete>)
                             }
                             <tfoot>
                                 <tr>
