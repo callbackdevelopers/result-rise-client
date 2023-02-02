@@ -3,13 +3,10 @@ import MarksTableRow from "../../../components/Table/MarksTableRow";
 
 
 
-const MarksTable = ({ finaldata}) => {
-  const {  semester,season
-, final_Result
-, exam_results,
-department, Addmission
-} = finaldata;
-  console.log('finaldata',finaldata);
+const MarksTable = ({ semesterResult}) => {
+  const {  semester,season,final_Result,exam_results,department, Addmission} = semesterResult;
+
+  console.log('xam_results',exam_results);
 
   return (
     <div>
@@ -52,7 +49,7 @@ department, Addmission
            </tr>
          </thead>
          <tbody>
-           {exam_results.map((numberdata, index) => (
+           {exam_results?.map((numberdata, index) => (
              <MarksTableRow data={numberdata} index={index} />
            ))}
          </tbody>
@@ -99,7 +96,7 @@ department, Addmission
            </tr>
          </thead>
          <tbody>
-           {final_Result.map((finalData, index) => (
+           {final_Result?.map((finalData, index) => (
              <FinalMarksTableRow finalData={finalData} index={index} />
            ))}
          </tbody>

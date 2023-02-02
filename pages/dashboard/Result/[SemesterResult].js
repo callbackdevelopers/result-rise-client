@@ -1,20 +1,27 @@
 import MarksTable from "./MarksTable";
-import { useQuery } from "@tanstack/react-query";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "/components/Spiner/Spiner";
+import DashboardNavbar from "../../../components/Navbars/DashboardNavbar"
+import Sidebars from "../../../components/Sidebars/Sidebars"
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useFirebase } from "../../../context/UserContext";
 
 const SemesterResult = () => {
-  const { data: semesterResultData = [], isLoading } = useQuery({
-    queryKey: [],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:3100/resultdata");
-      const data = await res.json();
-      return data;
-    },
-  });
+  const{user} = useFirebase();
+   const [semesterResult, setSemesterResult] = useState({})
+  const route = useRouter().query;
+  
+  const id = route.SemesterResult
+  console.log(id);
 
-  console.log("root data", semesterResultData);
+  useEffect(()=>{
+     fetch(`http://localhost:3100/resultdata/${id}?email=${user?.email}`)
+     .then(res=>res.json())
+     .then(data=>{
+      console.log('semester result ',data);
+      setSemesterResult(data)
+     })
+
+  },[id, user?.email])
 
   return (
     <>
@@ -23,22 +30,10 @@ const SemesterResult = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <div className="">
-            <div className=" py-2">
-            </div>
+            <div className=" py-2"></div>
             <div className=" gap-3 p-4">
-              <div>
-                {semesterResultData.map((semester) => (
-                  <div key={semester._id}>
-                    {semester.semester_results.map((finaldata) => (
-                      <div key={finaldata._id}>
-                        <MarksTable finaldata={finaldata} />
-                      </div>
-                    ))}
-
-                    <hr />
-                  </div>
-                ))}
-              </div>
+              <MarksTable semesterResult={semesterResult} ></MarksTable>
+            
             </div>
           </div>
         </div>
@@ -49,3 +44,4 @@ const SemesterResult = () => {
 };
 
 export default SemesterResult;
+
