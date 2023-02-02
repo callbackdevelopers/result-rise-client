@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Teacher = ({ teacher }) => {
-    const { photoURL, address, department, name, email, roll, id } = teacher;
+const UsersTableTamplete = ({ user, handleUser, btnName }) => {
+    console.log(user)
+    const { photoURL, address, department, name, email, roll, id, verification } = user;
+
+
     return (
+
         <tbody>
             <tr>
                 <td>
@@ -25,11 +29,18 @@ const Teacher = ({ teacher }) => {
                 </td>
                 <td>{department}</td>
                 <th>
-                    <button onClick={() => handleStudentDelete(student)} className="btn btn-warning btn-xs">Delete</button>
+                    <button onClick={() => handleUser(user)} className="btn btn-warning btn-xs">
+                        {/* {
+                            verification ? "Approve"
+                                :
+                                "Approved"
+                        } */}
+                        {btnName}
+                    </button>
                 </th>
             </tr>
         </tbody>
     );
 };
 
-export default Teacher;
+export default UsersTableTamplete;

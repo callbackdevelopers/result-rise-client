@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import DashboardNavbar from "../../../../components/Navbars/DashboardNavbar"
-import Pending from "../../../../components/Shared/Pending/pending"
+import UsersTableTamplete from "../../../../components/Shared/UsersTableTamplete/usersTableTamplete"
 import Sidebars from "../../../../components/Sidebars/Sidebars"
 import Spiner from "../../../../components/Spiner/Spiner"
 import AlertMessage from "../../../../Hooks/AlertMessage"
@@ -10,8 +10,9 @@ import AlertMessage from "../../../../Hooks/AlertMessage"
 
 const index = () => {
     const { successMessage } = AlertMessage();
+    const btnName = "Approve";
     const url = `http://localhost:3100/users`
-    const { data: teachers = [], refetch, isLoading } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
@@ -20,15 +21,15 @@ const index = () => {
             return data;
         }
     })
-    console.log("Stu", teachers)
+    console.log("UsersTableTamplete: ", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
     }
 
-    const handleVerification = (student) => {
-        console.log('Verification  with id: ', student)
-        fetch(`http://localhost:3100/users/${student._id}`, {
+    const handleUser = (user) => {
+        console.log('Verification  with id: ', user)
+        fetch(`http://localhost:3100/users/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -58,11 +59,12 @@ const index = () => {
                                 </tr>
                             </thead>
                             {
-                                teachers?.map(student => <Pending
-                                    id={student._id}
-                                    student={student}
-                                    handleVerification={handleVerification}
-                                ></Pending>)
+                                users?.map(user => <UsersTableTamplete
+                                    id={user._id}
+                                    user={user}
+                                    handleUser={handleUser}
+                                    btnName={btnName}
+                                ></UsersTableTamplete>)
                             }
                             <tfoot>
                                 <tr>

@@ -1,10 +1,42 @@
+import { useQuery } from "@tanstack/react-query";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
+import UsersTableTamplete from "../../../components/Shared/UsersTableTamplete/usersTableTamplete";
 import Sidebars from "../../../components/Sidebars/Sidebars";
-
-function allstudents() {
-
+import Spiner from "../../../components/Spiner/Spiner";
 
 
+const Students = () => {
+    const btnName = "Delete";
+    const url = `http://localhost:3100/users`
+    const { data: users = [], refetch, isLoading } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch(url)
+            const data1 = await res.json()
+            const data = data1.filter(u => u.roll === "student")
+            return data;
+        }
+    })
+    console.log("Stu", users)
+
+    if (isLoading) {
+        return <Spiner></Spiner>
+    }
+
+    const handleUser = (user) => {
+        console.log('Deleting  with id: ', user)
+        fetch(`http://localhost:3100/users/${user._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    refetch();
+                }
+            })
+
+    }
     return (
         <>
             <DashboardNavbar />
@@ -17,36 +49,18 @@ function allstudents() {
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>department</th>
+                                    <th>Depertment</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">Hart Hagerty</div>
-                                                <div className="text-sm opacity-50">United States</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button onClick={() => handleStudentDelete(students)} className="btn btn-warning btn-xs"> delete</button>
-                                    </th>
-                                </tr>
-                            </tbody>
+                            {
+                                users?.map(user => <UsersTableTamplete
+                                    id={user._id}
+                                    user={user}
+                                    handleUser={handleUser}
+                                    btnName={btnName}
+                                ></UsersTableTamplete>)
+                            }
                             <tfoot>
                                 <tr>
                                     <th></th>
@@ -64,4 +78,7 @@ function allstudents() {
     );
 }
 
-export default allstudents;
+export default Students;
+
+
+
