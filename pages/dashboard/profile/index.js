@@ -163,11 +163,7 @@ const profile = () => {
                                 setUserEdit={setUserEdit}
                             ></ProfileModal>
                         }
-                        {/* <ProfileModal
-                            userData={userData}
-                            refetch={refetch}
-                            setUserEdit={setUserEdit}
-                        ></ProfileModal> */}
+
                     </div >
 
                 </div>

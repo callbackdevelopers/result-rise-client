@@ -13,11 +13,11 @@ const index = () => {
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(u => u.roll === "student")
+            const data = data1.filter(ps => ps.verification && ps.roll === "student")
             return data;
         }
     })
-    console.log("Stu", users)
+    console.log("Pending students", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
