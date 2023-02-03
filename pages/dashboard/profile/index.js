@@ -4,10 +4,7 @@ import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from '../../../components/Spiner/Spiner';
 import { useFirebase } from '../../../context/UserContext';
-
-
 
 const profile = () => {
     const { user } = useFirebase()
@@ -22,12 +19,12 @@ const profile = () => {
         }
     })
 
-    console.log("inside profile", userData);
+    // console.log("inside profile", userData);
 
     const { photoURL, roll, name, email, address, phone, gender, department } = userData;
-    if (isLoading) {
-        return <Spiner></Spiner>
-    }
+    // if (isLoading) {
+    //     return <Spiner></Spiner>
+    // }
 
     return (
         <>

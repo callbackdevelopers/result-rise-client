@@ -19,7 +19,7 @@ const index = () => {
             return data;
         }
     })
-    console.log("UsersTableTamplete: ", users)
+    // console.log("UsersTableTamplete: ", users)
 
     if (isLoading) {
         return <Spiner></Spiner>

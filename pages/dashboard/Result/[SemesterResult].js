@@ -12,7 +12,7 @@ const SemesterResult = () => {
   const route = useRouter().query;
 
   const id = route.SemesterResult
-  console.log(semesterResult);
+  // console.log(semesterResult);
 
   useEffect(() => {
     fetch(`http://localhost:3100/resultdata/${id}?email=${user?.email}`)
