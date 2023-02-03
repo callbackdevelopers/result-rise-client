@@ -8,8 +8,9 @@ import AlertMessage from "../../../../Hooks/AlertMessage"
 
 const index = () => {
     const { successMessage } = AlertMessage();
+    const btnName = "Approve";
     const url = `http://localhost:3100/users`
-    const { data: students = [], refetch, isLoading } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
@@ -18,26 +19,21 @@ const index = () => {
             return data;
         }
     })
-    console.log("Stu", students)
+    console.log("UsersTableTamplete: ", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
     }
 
-    const handleVerification = (student) => {
-        console.log('Deleting  with id: ', student)
-
-        fetch(`http://localhost:3100/users/${student._id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify()
+    const handleUser = (user) => {
+        console.log('Verification  with id: ', user)
+        fetch(`http://localhost:3100/users/${user._id}`, {
+            method: 'PATCH'
         })
             .then(res => res.json())
-            .then(result => {
-                console.log("resultInside", result);
-                if (result.acknowledged === true) {
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
                     successMessage("Approved")
                     refetch()
                 }
@@ -61,10 +57,11 @@ const index = () => {
                                 </tr>
                             </thead>
                             {
-                                students?.map(student => <UsersTableTamplete
-                                    id={student._id}
-                                    student={student}
-                                    handleVerification={handleVerification}
+                                users?.map(user => <UsersTableTamplete
+                                    id={user._id}
+                                    user={user}
+                                    handleUser={handleUser}
+                                    btnName={btnName}
                                 ></UsersTableTamplete>)
                             }
                             <tfoot>
@@ -85,6 +82,3 @@ const index = () => {
 }
 
 export default index;
-
-
-
