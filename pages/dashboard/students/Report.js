@@ -4,13 +4,13 @@ import StudentReportModal from "../../../components/modals/StudentReportModal/St
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
 
-function allStudents() {
+function Report() {
 
     const [reportStudent, setReportStudent] = useState(null);
     const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: ['students'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3100/user?roll=student")
+            const res = await fetch("http://localhost:3100/verified/student")
             const data = await res.json()
             return data;
         }
@@ -81,10 +81,9 @@ function allStudents() {
                 )}
                 <Sidebars></Sidebars>
                 <StudentReportModal></StudentReportModal>
-
             </div>
         </>
     );
 }
 
-export default allStudents;
+export default Report;
