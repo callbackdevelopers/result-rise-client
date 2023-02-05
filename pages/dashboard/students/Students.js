@@ -16,21 +16,12 @@ function allStudents() {
         queryFn: async () => {
             const res = await fetch("http://localhost:3100/user?roll=student")
             const data = await res.json()
-
             return data;
         }
     })
     if (isLoading) {
         return <Spiner className=""></Spiner>
     }
-
-    const handleReportStudent = (student) => {
-
-        setReportStudent(student);
-
-    };
-
-
 
     return (
         <>
@@ -73,7 +64,7 @@ function allStudents() {
                                         <td>{student.department}</td>
                                         <th>
 
-                                            <label onClick={() => handleReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
+                                            <label onClick={() => setReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
 
                                         </th>
                                     </tr>)

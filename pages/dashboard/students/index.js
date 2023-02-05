@@ -13,7 +13,7 @@ const index = () => {
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(ps => ps.verification && ps.roll === "student")
+            const data = data1.filter(ps => ps.verification === true && ps.roll === "student")
             return data;
         }
     })
@@ -35,7 +35,6 @@ const index = () => {
                     refetch();
                 }
             })
-
     }
     return (
         <>
