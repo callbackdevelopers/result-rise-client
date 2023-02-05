@@ -1,36 +1,20 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import StudentReportModal from "../../../components/modals/StudentReportModal/StudentReportModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "../../../components/Spiner/Spiner";
 
-function allStudents() {
+function Report() {
 
-    const [reportStudent, setReportStudent] = useState(null)
-
-
+    const [reportStudent, setReportStudent] = useState(null);
     const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: ['students'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3100/user?roll=student")
+            const res = await fetch("http://localhost:3100/verified/student")
             const data = await res.json()
-
             return data;
         }
     })
-    if (isLoading) {
-        return <Spiner className=""></Spiner>
-    }
-
-    const handleReportStudent = (student) => {
-
-        setReportStudent(student);
-
-    };
-
-
 
     return (
         <>
@@ -73,7 +57,7 @@ function allStudents() {
                                         <td>{student.department}</td>
                                         <th>
 
-                                            <label onClick={() => handleReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
+                                            <label onClick={() => setReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
 
                                         </th>
                                     </tr>)
@@ -97,12 +81,9 @@ function allStudents() {
                 )}
                 <Sidebars></Sidebars>
                 <StudentReportModal></StudentReportModal>
-
-
-
             </div>
         </>
     );
 }
 
-export default allStudents;
+export default Report;
