@@ -29,14 +29,16 @@ const index = () => {
                 }
             })
     }
+    refetch()
     return (
         <>
             <Layout>
                 {(isLoading) ?
                     <MidSpinner />
                     :
-
-                    users?.length > 0 ?
+                    users?.length < 1 ?
+                        <div className="flex h-[80vh] justify-center items-center text-3xl">
+                            Currently <br /> No Pending Student</div> :
                         <div className="overflow-x-auto w-full">
                             <table className="table w-full">
                                 <thead>
@@ -65,9 +67,8 @@ const index = () => {
                                     </tr>
                                 </tfoot>
                             </table>
-                        </div> :
-                        <div className="flex h-[80vh] justify-center items-center text-3xl">
-                            Currently <br /> No Pending Student</div>
+                        </div>
+
                 }
             </Layout>
         </>
