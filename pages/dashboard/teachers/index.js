@@ -20,7 +20,6 @@ const index = () => {
             return data;
         }
     })
-
     const handleTeacherDelete = (teacher) => {
         console.log(teacher);
         fetch(`http://localhost:3100/user/${teacher._id}`, {
@@ -57,9 +56,8 @@ const index = () => {
                                 </tr>
                             </thead>
                             <tbody>
-
-                                {
-                                    teachers?.map(teacher => <tr>
+                                {teachers?.map(teacher =>
+                                    <tr key={teacher.id}>
                                         <td>
                                             <div className="flex items-center space-x-3">
                                                 <div className="avatar">
@@ -74,25 +72,19 @@ const index = () => {
                                             </div>
                                         </td>
                                         <td>
-
                                             <br />
                                             <span className="">{teacher?.email}</span>
                                         </td>
                                         <td>
-
                                             <br />
                                             <span className="">{teacher?.department}</span>
                                         </td>
                                         <td></td>
                                         <th>
-
                                             <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
-
                                         </th>
-                                    </tr>)
-                                }
-
-
+                                    </tr>
+                                )}
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -106,7 +98,6 @@ const index = () => {
                         </table>
                     </div>
                 </div>
-
                 {deleteTeacher && <ConfirmationModal
                     title={`Are you sure you want to delete? `}
                     message={`If you delete teacher, will be permanently deleted! ${deleteTeacher?.name}`}
@@ -119,7 +110,6 @@ const index = () => {
                 <Sidebars></Sidebars>
             </div>
         </>
-
     );
 };
 
