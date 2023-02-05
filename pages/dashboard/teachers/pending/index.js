@@ -17,7 +17,7 @@ const index = () => {
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(ps => !ps.verification && ps.roll === "teacher")
+            const data = data1.filter(ps => ps.roll === "teacher")
             return data;
         }
     })

@@ -9,22 +9,22 @@ const index = () => {
     const btnName = "Delete";
     const url = `http://localhost:3100/users`
     const { data: users = [], refetch, isLoading } = useQuery({
-        queryKey: [],
+        queryKey: ['students'],
         queryFn: async () => {
             const res = await fetch(url)
             const data1 = await res.json()
-            const data = data1.filter(ps => ps.verification === true && ps.roll === "student")
+            const data = data1.filter(ps => ps.roll === "student")
             return data;
         }
     })
-    console.log("Pending students", users)
+    // console.log("Pending students", users)
 
     if (isLoading) {
         return <Spiner></Spiner>
     }
 
     const handleUser = (user) => {
-        console.log('Deleting  with id: ', user)
+        // console.log('Deleting  with id: ', user)
         fetch(`http://localhost:3100/users/${user._id}`, {
             method: 'DELETE'
         })

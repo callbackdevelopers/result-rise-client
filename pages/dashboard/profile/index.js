@@ -32,10 +32,10 @@ const profile = () => {
                                     <div className="image overflow-hidden p-3 lg:border-l-4 text-center border-green-400">
                                         <div className="avatar">
                                             <div className="w-32 rounded-xl">
-                                                <img src={userData?.photoURL} />
+                                                <img src={photoURL} />
                                             </div>
                                         </div>
-                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{userData?.name}</h1>
+                                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{name}</h1>
                                         <h3 className="text-gray-600 font-lg text-semibold leading-6">{roll}</h3>
                                     </div>
                                     <div className="ml-lg-5">

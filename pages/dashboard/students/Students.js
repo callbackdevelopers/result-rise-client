@@ -1,16 +1,12 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import StudentReportModal from "../../../components/modals/StudentReportModal/StudentReportModal";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
 import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from "../../../components/Spiner/Spiner";
 
 function allStudents() {
 
-    const [reportStudent, setReportStudent] = useState(null)
-
-
+    const [reportStudent, setReportStudent] = useState(null);
     const { data: students = [], refetch, isLoading } = useQuery({
         queryKey: ['students'],
         queryFn: async () => {
@@ -19,9 +15,6 @@ function allStudents() {
             return data;
         }
     })
-    if (isLoading) {
-        return <Spiner className=""></Spiner>
-    }
 
     return (
         <>
@@ -88,8 +81,6 @@ function allStudents() {
                 )}
                 <Sidebars></Sidebars>
                 <StudentReportModal></StudentReportModal>
-
-
 
             </div>
         </>

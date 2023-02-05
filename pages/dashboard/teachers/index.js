@@ -5,7 +5,7 @@ import DashboardNavbar from '../../../components/Navbars/DashboardNavbar';
 import Sidebars from '../../../components/Sidebars/Sidebars';
 import AlertMessage from '../../../Hooks/AlertMessage';
 
-const Teacher = () => {
+const index = () => {
     const { successMessage, errorMessage } = AlertMessage()
     const [deleteTeacher, setDeleteTeacher] = useState(null)
 
@@ -17,7 +17,6 @@ const Teacher = () => {
         queryFn: async () => {
             const res = await fetch("http://localhost:3100/user?roll=teacher")
             const data = await res.json()
-
             return data;
         }
     })
@@ -38,8 +37,6 @@ const Teacher = () => {
                     errorMessage("Something went wrong!! please try again")
                 }
             });
-
-
 
     };
     return (
@@ -89,7 +86,7 @@ const Teacher = () => {
                                         <td></td>
                                         <th>
 
-                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Deletee</label>
+                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
 
                                         </th>
                                     </tr>)
@@ -118,18 +115,12 @@ const Teacher = () => {
                     successAction={handleTeacherDelete}
                     modalData={deleteTeacher}
                 ></ConfirmationModal>
-
                 }
-
                 <Sidebars></Sidebars>
-
-
-
-
             </div>
         </>
 
     );
 };
 
-export default Teacher;
+export default index;
