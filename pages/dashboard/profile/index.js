@@ -1,42 +1,32 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { FaFileAlt, FaGraduationCap, FaUser, FaUserEdit } from "react-icons/fa";
 import ProfileModal from "../../../components/modals/ProfileModal/ProfileModal";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import Sidebars from "../../../components/Sidebars/Sidebars";
-import Spiner from '../../../components/Spiner/Spiner';
+import MidSpinner from '../../../components/Spiner/MidSpinner';
 import { useFirebase } from '../../../context/UserContext';
-
-
+import Layout from '../../../Layout/Layout';
 
 const profile = () => {
-    const { user } = useFirebase()
-    const url = `http://localhost:3100/users/${user?.email}`
+    const { user, } = useFirebase()
+    const [userEdit, setUserEdit] = useState(true);
+
     const { data: userData = [], refetch, isLoading } = useQuery({
-        queryKey: [],
+        queryKey: ['user', user?.email],
         queryFn: async () => {
-            const res = await fetch(url)
+            const res = await fetch(`http://localhost:3100/users/${user?.email}`)
             const data = await res.json()
-            return data;
+            return data[0];
         }
     })
-
-    console.log("inside profile", userData);
-
     const { photoURL, roll, name, email, address, phone, gender, department } = userData;
-    if (isLoading) {
-        return <Spiner></Spiner>
-    }
-
     return (
         <>
-            <DashboardNavbar />
-            <div className="drawer drawer-mobile">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content ">
+            <Layout>
+                {(isLoading || !user) ?
+                    <MidSpinner />
+                    :
                     <div className="container mx-auto my-5 p-5">
                         <div className="w-full mx-2 h-64">
-
-
                             <div className="flex justify-between">
                                 <div className="bg-white p-3 text-center lg:flex justify-items-center">
                                     <div className="image overflow-hidden p-3 lg:border-l-4 text-center border-green-400">
@@ -48,7 +38,6 @@ const profile = () => {
                                         <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{name}</h1>
                                         <h3 className="text-gray-600 font-lg text-semibold leading-6">{roll}</h3>
                                     </div>
-
                                     <div className="ml-lg-5">
                                         <ul
                                             className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -100,7 +89,6 @@ const profile = () => {
                                             <div className="px-4 py-2 font-semibold">Address</div>
                                             <div className="px-4 py-2">{address}</div>
                                         </div>
-
                                         <div className="grid grid-cols-2">
                                             <div className="px-4 py-2 font-semibold">Email.</div>
                                             <div className="px-4 py-2">
@@ -153,20 +141,23 @@ const profile = () => {
                             </div>
                             {/* <!-- End of profile tab --> */}
                         </div>
-                        <ProfileModal
-                            userData={userData}
-                            refetch={refetch}
-                        ></ProfileModal>
-                    </div >
-
-                </div>
-                <Sidebars />
-            </div>
-
-
-
+                        {
+                            userEdit &&
+                            <ProfileModal
+                                userData={userData}
+                                refetch={refetch}
+                                setUserEdit={setUserEdit}
+                            ></ProfileModal>
+                        }
+                        {/* <ProfileModal
+                                userData={userData}
+                                refetch={refetch}
+                                setUserEdit={setUserEdit}
+                            ></ProfileModal> */}
+                    </div>
+                }
+            </Layout>
         </ >
-
     );
 };
 

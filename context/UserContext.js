@@ -11,7 +11,8 @@ import {
     updateProfile
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import { Firebase } from "../config/firebase.init";
+import { Firebase } from "../config/firebase";
+
 
 const AuthUser = createContext();
 const auth = getAuth(Firebase);

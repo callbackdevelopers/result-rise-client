@@ -1,9 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import Sidebars from "../../../components/Sidebars/Sidebars";
 import SecondaryButton from "../../../components/Shared/Buttons/SecondaryButton";
+import Sidebars from "../../../components/Sidebars/Sidebars";
 import { useFirebase } from "../../../context/UserContext";
-import { useQuery } from "@tanstack/react-query";
 
 const index = () => {
   const { user } = useFirebase();

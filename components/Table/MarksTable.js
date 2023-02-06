@@ -1,5 +1,6 @@
-import FinalMarksTableRow from "../../../components/Table/FinalMarksTableRow";
-import MarksTableRow from "../../../components/Table/MarksTableRow";
+import FinalMarksTableRow from "./FinalMarksTableRow";
+import MarksTableRow from "./MarksTableRow";
+
 
 const MarksTable = ({ semesterResult }) => {
   const {

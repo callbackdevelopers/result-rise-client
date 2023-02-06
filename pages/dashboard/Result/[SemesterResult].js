@@ -1,27 +1,28 @@
-import MarksTable from "./MarksTable";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar"
-import Sidebars from "../../../components/Sidebars/Sidebars"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
+import Sidebars from "../../../components/Sidebars/Sidebars";
+import MarksTable from "../../../components/Table/MarksTable";
 import { useFirebase } from "../../../context/UserContext";
 
+
 const SemesterResult = () => {
-  const{user} = useFirebase();
-   const [semesterResult, setSemesterResult] = useState({})
+  const { user } = useFirebase();
+  const [semesterResult, setSemesterResult] = useState({})
   const route = useRouter().query;
-  
+
   const id = route.SemesterResult
-  console.log(id);
+  // console.log(semesterResult);
 
-  useEffect(()=>{
-     fetch(`http://localhost:3100/resultdata/${id}?email=${user?.email}`)
-     .then(res=>res.json())
-     .then(data=>{
-      console.log('semester result ',data);
-      setSemesterResult(data)
-     })
+  useEffect(() => {
+    fetch(`http://localhost:3100/resultdata/${id}?email=${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log('semester result ', data);
+        setSemesterResult(data)
+      })
 
-  },[id, user?.email])
+  }, [id, user?.email])
 
   return (
     <>
@@ -32,8 +33,7 @@ const SemesterResult = () => {
           <div className="">
             <div className=" py-2"></div>
             <div className=" gap-3 p-4">
-              <MarksTable semesterResult={semesterResult} ></MarksTable>
-            
+              <MarksTable semesterResult={semesterResult}></MarksTable>
             </div>
           </div>
         </div>
