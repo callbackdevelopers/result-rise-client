@@ -15,7 +15,6 @@ const index = () => {
             return data;
         }
     })
-
     const handleUser = (user) => {
         fetch(`http://localhost:3100/users/${user._id}`, {
             method: 'PATCH'
@@ -28,50 +27,43 @@ const index = () => {
                 }
             })
     }
+    if (isLoading) return <MidSpinner />
     refetch()
     return (
-        <>
-            <Layout>
-                {(isLoading) ?
-                    <MidSpinner />
-                    :
-
-                    users?.length < 1 ?
-                        <div className="flex h-[80vh] justify-center items-center text-3xl">
-                            Currently <br /> No Pending Student</div> :
-                        <div className="overflow-x-auto w-full">
-                            <table className="table w-full">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Address</th>
-                                        <th>Depertment</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                {
-                                    users?.map(user => <UsersTableTamplete
-                                        id={user._id}
-                                        key={user._id}
-                                        user={user}
-                                        handleUser={handleUser}
-                                        btnName={"Approve"}
-                                    ></UsersTableTamplete>)
-                                }
-                                <tfoot>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-
-                }
-            </Layout>
-        </>
+        <Layout>
+            {users?.length < 1 ?
+                <div className="flex h-[80vh] justify-center items-center text-3xl">
+                    Currently <br /> No Pending Teacher</div> :
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Depertment</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        {users?.map(user => <UsersTableTamplete
+                            id={user._id}
+                            key={user._id}
+                            user={user}
+                            handleUser={handleUser}
+                            btnName={"Approve"}
+                        ></UsersTableTamplete>)
+                        }
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            }
+        </Layout>
     );
 }
 

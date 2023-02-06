@@ -1,10 +1,13 @@
+import Layout from "../../Layout/Layout";
 import Spiner from "./Spiner";
 
 function MidSpinner() {
     return (
-        <div className=" flex justify-center items-center h-[80vh]">
-            <Spiner />
-        </div>
+        <Layout>
+            <div className=" flex justify-center items-center h-[80vh]">
+                <Spiner />
+            </div>
+        </Layout>
     );
 }
 

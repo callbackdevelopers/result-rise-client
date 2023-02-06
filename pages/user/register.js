@@ -138,7 +138,7 @@ const register = () => {
                 successMessage(
                     "Account created,Please Got to Your Email & verify your email."
                 );
-                router.push('/')
+                router.push('/dashboard/profile')
             });
     }
 
