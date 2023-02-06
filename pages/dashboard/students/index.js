@@ -31,48 +31,45 @@ const index = () => {
                 }
             })
     }
+    if (isLoading) return <MidSpinner />
     return (
         <>
             <Layout>
-                {(isLoading) ?
-                    <MidSpinner />
+                {users?.length < 1 ?
+                    <div className="flex h-[80vh] justify-center items-center text-3xl">
+                        Currently <br /> No Student Admited</div>
                     :
-                    users?.length < 1 ?
-                        <div className="flex h-[80vh] justify-center items-center text-3xl">
-                            Currently <br /> No Student Admited</div>
-                        :
-                        <div className="overflow-x-auto w-full">
-                            <table className="table w-full">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Address</th>
-                                        <th>Depertment</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                {
-                                    users?.map(user => <UsersTableTamplete
-                                        id={user._id}
-                                        user={user}
-                                        handleUser={handleUser}
-                                        btnName={btnName}
-                                    ></UsersTableTamplete>)
-                                }
-                                <tfoot>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                    <div className="overflow-x-auto w-full">
+                        <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Depertment</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            {
+                                users?.map(user => <UsersTableTamplete
+                                    id={user._id}
+                                    user={user}
+                                    handleUser={handleUser}
+                                    btnName={btnName}
+                                ></UsersTableTamplete>)
+                            }
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 }
             </Layout>
         </>
     );
 }
-
 export default index;

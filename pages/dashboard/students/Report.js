@@ -34,33 +34,32 @@ function Report() {
                             </thead>
                             <tbody>
 
-                                {
-                                    students?.map(student => <tr>
-                                        <td>
-                                            <div className="flex items-center space-x-3">
-                                                <div className="avatar">
-                                                    <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={student.photoURL} alt="Avatar Tailwind CSS Component" />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div className="font-bold">{student.name}</div>
-                                                    <div className="text-sm opacity-50"></div>
+                                {students?.map(student => <tr>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={student.photoURL} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
+                                            <div>
+                                                <div className="font-bold">{student.name}</div>
+                                                <div className="text-sm opacity-50"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
 
-                                            <br />
-                                            <span className="badge badge-ghost badge-sm">{student.address}</span>
-                                        </td>
-                                        <td>{student.department}</td>
-                                        <th>
+                                        <br />
+                                        <span className="badge badge-ghost badge-sm">{student.address}</span>
+                                    </td>
+                                    <td>{student.department}</td>
+                                    <th>
 
-                                            <label onClick={() => setReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
+                                        <label onClick={() => setReportStudent(student)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>
 
-                                        </th>
-                                    </tr>)
+                                    </th>
+                                </tr>)
                                 }
 
 
