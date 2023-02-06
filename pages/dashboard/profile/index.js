@@ -18,7 +18,8 @@ const profile = () => {
             return data[0];
         }
     })
-    const { photoURL, roll, name, email, address, phone, gender, department } = userData;
+    console.log(userData)
+    const { photoURL, roll, name, email, address, phone, gender, department, verification, id } = userData;
 
     if (isLoading) return <MidSpinner />
     return (
@@ -42,19 +43,20 @@ const profile = () => {
                                     <li className="flex items-center py-3">
                                         <span>{roll} ID:</span>
                                         <span className="ml-auto"><span
-                                            className="bg-green-500 py-1 px-2 rounded text-white text-sm">1222</span></span>
+                                            className="bg-green-500 py-1 px-2 rounded text-white text-sm">{id}</span></span>
                                     </li>
                                     <li className="flex items-center py-3">
-                                        <span>{roll} since</span>
-                                        <span className="ml-auto">Nov 07, 2016</span>
+                                        <span>Status :</span>
+                                        <span className="ml-auto">{verification === true ? "verified" : "Pending"}</span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="p-3">
-                            <label htmlFor="my-modal-2" >
-                                <FaUserEdit />
-                            </label>
+                            {verification &&
+                                <label htmlFor="my-modal-2" >
+                                    <FaUserEdit />
+                                </label>}
                         </div>
 
                     </div>
