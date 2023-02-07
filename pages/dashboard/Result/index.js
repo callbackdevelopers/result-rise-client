@@ -23,7 +23,7 @@ const index = () => {
       return data;
     },
   });
-  console.log(resultData);
+  // console.log(resultData);
 
   return (
     <>

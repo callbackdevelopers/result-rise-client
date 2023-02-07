@@ -21,7 +21,6 @@ const SemesterResult = () => {
         console.log('semester result ', data);
         setSemesterResult(data)
       })
-
   }, [id, user?.email])
 
   return (

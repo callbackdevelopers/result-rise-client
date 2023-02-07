@@ -12,8 +12,6 @@ const MarksTable = ({ semesterResult }) => {
     Addmission,
   } = semesterResult;
 
-  console.log("xam_results", exam_results);
-
   return (
     <div>
       {/* Exam marks  */}
