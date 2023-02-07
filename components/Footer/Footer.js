@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer >
       <div className="pt-10 pb-5 text-white bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900">
-        <div className="footer justify-around pl-8">
+        <div className="footer justify-around  container mx-auto">
           <div>
             <a className="font-bold cursor-pointer select-none md:text-4xl text-xl no-animation"> ResultRise </a>
             <p className="w-96 mt-3 leading-6">It can also refer to a specific answer or output produced by a calculation or experiment. and it is often used to measure the success or effectiveness of that effort or activity.</p>
