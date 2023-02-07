@@ -10,19 +10,19 @@ const FormTemplate = ({ data, register }) => {
         <>
             <div className="form-control">
                 <label className="label">
-                    <span className="label-text">{data.placeholder}</span>
+                    <span className="label-text">{data?.placeholder}</span>
                 </label>
                 <input
-                    type={data.type}
-                    placeholder={data.placeholder}
-                    className={`${borderPrimaryColor} ${data.error ? borderErrorColor : borderSuccessColor}`}
-                    {...register(data.name, {
-                        required: ` ${data.name} must required`,
+                    type={data?.type}
+                    placeholder={data?.placeholder}
+                    className={`${borderPrimaryColor} ${data?.error ? borderErrorColor : borderSuccessColor}`}
+                    {...register(data?.name, {
+                        required: ` ${data?.name} must required`,
                     })}
                 />
-                {data.error && (
+                {data?.error && (
                     <span className="label-text text-red-400">
-                        {data.error.message}
+                        {data?.error.message}
                     </span>
                 )}
             </div>

@@ -1,20 +1,40 @@
 import { useForm } from "react-hook-form";
 import { useFirebase } from "../../../context/UserContext";
+import AlertMessage from "../../../Hooks/AlertMessage";
 import ButtonUp from "../../Shared/Buttons/SecondaryButton";
 
-const ProfileModal = ({ studentDetails }) => {
-    const { firstName, lastName, currentAddress, phone } = studentDetails;
+const ProfileModal = ({ userData, refetch, setUserEdit }) => {
     const { user } = useFirebase()
+    const { successMessage, errorMessage } = AlertMessage();
+    const { photoURL, roll, name, email, address, phone, _id, gender, department } = userData;
     // console.log(phone)
     const borderPrimaryColor = 'block w-full p-1 px-3 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring focus:ring-opacity-40'
     const borderErrorColor = 'border-red-700 focus:ring-red-300'
     const borderSuccessColor = 'focus:border-blue-400 focus:ring-blue-300'
     const { register, handleSubmit: handleSave, formState: { errors } } = useForm();
-    const { CreateUserEP, updateProfilePic } = useFirebase()
+
     const onSubmit = (data) => {
         console.log(data);
 
+        fetch(`http://localhost:3100/users/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log("resultInside", result);
+                if (result.acknowledged === true) {
+                    setUserEdit(null)
+                    successMessage("User data updated")
+                    refetch()
+                }
+            })
     }
+
+
     return (
         <>
             <input type="checkbox" id="my-modal-2" className="modal-toggle" />
@@ -30,25 +50,16 @@ const ProfileModal = ({ studentDetails }) => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">First Name</span>
+                                    <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" defaultValue={firstName}
+                                <input type="text" defaultValue={name}
 
-                                    className={`${borderPrimaryColor} ${errors.firstName ? borderErrorColor : borderSuccessColor}`}
-                                    {...register("firstName", { required: ' Name must required' })}
+                                    className={`${borderPrimaryColor} ${errors.name ? borderErrorColor : borderSuccessColor}`}
+                                    {...register("name", { required: ' Name must required' })}
                                 />
-                                {errors.firstName && <span className="label-text text-red-400">{errors?.firstName.message}</span>}
+                                {errors.name && <span className="label-text text-red-400">{errors?.name.message}</span>}
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Last Name</span>
-                                </label>
-                                <input type="text" defaultValue={lastName}
-                                    className={`${borderPrimaryColor} ${errors.lastName ? borderErrorColor : borderSuccessColor}`}
-                                    {...register("lastName", { required: ' Name must required' })}
-                                />
-                                {errors.firstName && <span className="label-text text-red-400">{errors?.firstName.message}</span>}
-                            </div>
+
 
                             <div className="form-control">
                                 <label className="label">
@@ -63,13 +74,13 @@ const ProfileModal = ({ studentDetails }) => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Current Address</span>
+                                    <span className="label-text">Address</span>
                                 </label>
-                                <input type="text" defaultValue={currentAddress}
-                                    className={`${borderPrimaryColor} ${errors.name ? borderErrorColor : borderSuccessColor}`}
-                                    {...register("currentAddress", { required: 'Current Address is required' })}
+                                <input type="text" defaultValue={address}
+                                    className={`${borderPrimaryColor} ${errors.address ? borderErrorColor : borderSuccessColor}`}
+                                    {...register("address", { required: 'Address is required' })}
                                 />
-                                {errors.currentAddress && <span className="label-text text-red-400">{errors?.currentAddress.message}</span>}
+                                {errors.address && <span className="label-text text-red-400">{errors?.address.message}</span>}
                             </div>
                         </div>
                         <div className="w-full mt-5">

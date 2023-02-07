@@ -5,13 +5,6 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-<<<<<<< HEAD
-    extend: {},
-  },
-  plugins: [require("daisyui")],
-}
-
-=======
     extend: {
       fontFamily: {
         custom: ["Space Grotesk"]
@@ -32,4 +25,3 @@ module.exports = {
     darkTheme: "false",
   },
 }
->>>>>>> 2da39eeab4369883c270d722a05a8167649d81fd
