@@ -124,8 +124,7 @@ const register = () => {
     };
     //post data to server 
     const handlePostData = (user) => {
-        console.log(user);
-        fetch("https://result-rise-server-three.vercel.app/users", {
+        fetch("http://localhost:3100/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

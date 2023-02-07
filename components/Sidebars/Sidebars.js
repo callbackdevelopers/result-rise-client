@@ -9,14 +9,17 @@ const Sidebars = () => {
                 <li><Link href="/dashboard/result">Results</Link></li>
                 <hr />
                 <li><Link href="/dashboard/students/Report">Report Student</Link></li>
+                <li><Link href="/dashboard/students/pending/reporterdStudent">Pending Reported Students</Link></li>
+                <li><Link href="/dashboard/students/ReportedStudents">Reported Students</Link></li>
                 <hr />
                 <li><Link href="/dashboard/teachers">Teachers</Link></li>
                 <li><Link href="/dashboard/students">Students</Link></li>
+                <li><Link href="/dashboard/addmark">Add Marks</Link></li>
                 <hr />
                 <li><Link href="/dashboard/teachers/pending">Pending Teachers</Link></li>
                 <li><Link href="/dashboard/students/pending">Pending Students</Link></li>
-                <li><Link href="/dashboard/addmark">Add Marks</Link></li>
-                <li><Link href="/dashboard/students/ReportedStudents">Reported Students</Link></li>
+                <hr />
+
             </ul>
         </div>
     );
