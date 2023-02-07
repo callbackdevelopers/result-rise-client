@@ -1,112 +1,125 @@
 import Link from "next/link";
-import { GoLocation } from "react-icons/go";
-import { CiFacebook } from "react-icons/ci";
 import {
-  AiOutlineMobile,
-  AiOutlineMail,
-  AiOutlineLinkedin,
   AiFillTwitterCircle,
-  AiOutlineInstagram,
+  AiOutlineInstagram, AiOutlineLinkedin, AiOutlineMail, AiOutlineMobile
 } from "react-icons/ai";
+import { CiFacebook } from "react-icons/ci";
+import { GoLocation } from "react-icons/go";
 
 const Footer = () => {
   return (
-    <div className=" p-10 bg-black text-white">
-      <footer className="footer">
+    <div className=" p-10 text-white bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900">
+      <footer className="footer justify-around pl-8">
         <div>
-          <span className="footer-title">Contact Info</span>
-          <Link href="https://www.google.com" className="link link-hover">
-            <ul>
-              <li className="flex gap-2 items-center my-2">
-                <GoLocation className="  text-blue-400 " size="30px" />
-                <div>
-                  <span>Address</span>
-                  <p>banani, dhaka b/1200</p>
-                </div>
-              </li>
-            </ul>
-            <ul>
-              <li className="flex gap-2 items-center my-2">
-                <AiOutlineMobile className="  text-blue-400 " size="30px" />
-                <div>
-                  <span>mobile</span>
-                  <p>+880 173 943-323</p>
-                </div>
-              </li>
-            </ul>
-            <ul>
-              <li className="flex gap-2 items-center">
-                <AiOutlineMail className="  text-blue-400 " size="30px" />
-                <div>
-                  <span>email</span>
-                  <p>callbackdev@gmail.com</p>
-                </div>
-              </li>
-            </ul>
-          </Link>
+          <a className="font-bold cursor-pointer select-none md:text-4xl text-xl no-animation"> ResultRise </a>
+          <p className="w-96 mt-3 leading-6">It can also refer to a specific answer or output produced by a calculation or experiment. and it is often used to measure the success or effectiveness of that effort or activity.</p>
         </div>
         <div>
-          <span className="footer-title">Pages</span>
+          <span className="footer-title text-white">SUPPORT</span>
           <Link href="https://www.facebook.com" className="link link-hover">
-            About us
+            Teachers
           </Link>
           <Link href="https://www.facebook.com" className="link link-hover">
-            Contact
+            Students
           </Link>
           <Link href="https://www.facebook.com" className="link link-hover">
             Dashboard
           </Link>
           <Link href="https://www.facebook.com" className="link link-hover">
-            Home
+            Exam Officers
+          </Link>
+          <Link href="https://www.facebook.com" className="link link-hover">
+            Work-based learning
+          </Link>
+          <Link href="https://www.facebook.com" className="link link-hover">
+            Training
           </Link>
         </div>
         <div>
-          <span className="footer-title">Legal</span>
+          <span className="footer-title">ABOUT US</span>
           <Link href="https://www.likedin.com" className="link link-hover">
-            Terms of use
+            About Pearson
           </Link>
           <Link href="https://www.likedin.com" className="link link-hover">
-            Privacy policy
+            News, media and policy
           </Link>
           <Link href="https://www.likedin.com" className="link link-hover">
-            Cookie policy
+            Become an examiner
+          </Link>
+          <Link href="https://www.likedin.com" className="link link-hover">
+            Edexcel
+          </Link>
+          <Link href="https://www.likedin.com" className="link link-hover">
+            BTEC
+          </Link>
+          <Link href="https://www.likedin.com" className="link link-hover">
+            LCCI
           </Link>
         </div>
         <div>
-          <span className="footer-title">Follow Us</span>
-
           <div>
+            <span className="footer-title">Contact Us</span>
+            <Link href="https://www.google.com" className="link link-hover">
+              <ul className="mt-4">
+                <li className="flex gap-2 items-center my-2">
+                  <GoLocation className="  text-blue-400 " size="18px" />
+                  <div>
+
+                    <p> <span className="font-bold">Address: </span>banani, dhaka b/1200</p>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                <li className="flex gap-2 items-center my-2">
+                  <AiOutlineMobile className="  text-blue-400 " size="18px" />
+                  <div>
+                    <p> <span className="font-bold">Mobile: </span> +880 1726427834</p>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                <li className="flex gap-2 items-center">
+                  <AiOutlineMail className="  text-blue-400 " size="18px" />
+                  <div>
+                    <p> <span className="font-bold">Email: </span> callback.developers@gmail.com</p>
+                  </div>
+                </li>
+              </ul>
+            </Link>
+          </div>
+
+          <div className="mt-3">
             <ul className="flex gap-2">
               <Link href="https://www.facebook.comk">
                 <CiFacebook
                   className="text-blue-400 mb-2 hover:text-white rounded-full"
-                  size="30px"
+                  size="27px"
                 />
               </Link>
               <Link href="https://www.facebook.comk">
                 <AiOutlineLinkedin
                   className="text-blue-400 mb-2 hover:text-white "
-                  size="30px"
+                  size="27px"
                 />
               </Link>
               <Link href="https://www.facebook.comk">
                 <AiFillTwitterCircle
                   className="text-blue-400 mb-2 hover:bg-blue-400 hover:text-white rounded-full"
-                  size="30px"
+                  size="27px"
                 />
               </Link>
               <Link href="https://www.facebook.comk">
                 <AiOutlineInstagram
                   className="text-blue-400 mb-2  hover:text-white rounded-badge"
-                  size="30px"
+                  size="27px"
                 />
               </Link>
             </ul>
           </div>
         </div>
-       
+
       </footer>
-      <div className="text-center">
+      <div className="text-center mt-10">
         <span className="text-center ">&copy; ResultRise Team 2023</span>
       </div>
     </div>
