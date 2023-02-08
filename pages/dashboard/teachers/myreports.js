@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import InfoModal from "../../../components/modals/Info/InfoModal";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
 import { useFirebase } from "../../../context/UserContext";
 import Layout from "../../../Layout/Layout";
@@ -26,10 +27,10 @@ function myreports() {
                     <table className="table w-full">
                         <thead>
                             <tr>
-                                <th>Report By</th>
-                                <th>Report to</th>
+                                <th>Student Name</th>
                                 <th>Report Info</th>
-                                <th>Time</th>
+                                <th>Depertment</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,16 +51,16 @@ function myreports() {
                                 <td>
                                     <span>
                                         {report?.report.length > 30 ?
-                                            <>{report?.report.slice(0, 25) + ""} <label htmlFor="show-report-modal" className="font-semibold cursor-pointer">...</label></>
+                                            <>{report?.report.slice(0, 25) + ""}
+                                                <label htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
+                                            </>
                                             : <span>{report?.report}</span>
                                         }
                                     </span>
                                 </td>
                                 <td>{report.department}</td>
                                 <td>
-                                    {report?.reportDate}
-                                    <br />
-                                    {report?.reportTime}
+                                    <label htmlFor="my-modal-4" className="btn btn-warning btn-xs">Delete</label>
                                 </td>
                             </tr>)}
                         </tbody>
@@ -73,6 +74,7 @@ function myreports() {
                         </tfoot>
                     </table>
                 </div>}
+            <InfoModal />
         </Layout>
     );
 }
