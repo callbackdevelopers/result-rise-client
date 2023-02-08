@@ -35,12 +35,12 @@ function Report() {
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={student.photoURL} alt="Avatar Tailwind CSS Component" />
+                                            <img src={student.photoURL} alt="Avatar" />
                                         </div>
                                     </div>
                                     <div>
                                         <div className="font-bold">{student.name}</div>
-                                        <div className="text-sm opacity-50"></div>
+                                        <div className="text-sm opacity-50">{student.roll} ID: {student.id}</div>
                                     </div>
                                 </div>
                             </td>
