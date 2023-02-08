@@ -71,8 +71,7 @@ function Report() {
             {reportStudent && (
                 <StudentReportModal data={reportStudent}></StudentReportModal>
             )}
-            <StudentReportModal></StudentReportModal>
-
+            <StudentReportModal />
         </Layout>
     );
 }

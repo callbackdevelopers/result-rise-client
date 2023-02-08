@@ -10,6 +10,7 @@ const Sidebars = () => {
                 <hr />
                 <li><Link href="/dashboard/students/Report">Report Student</Link></li>
                 <li><Link href="/dashboard/students/pending/reporterdStudent">Pending Reported Students</Link></li>
+                <li><Link href="/dashboard/teachers/myreports">My Reports</Link></li>
                 <li><Link href="/dashboard/students/ReportedStudents">Reported Students</Link></li>
                 <hr />
                 <li><Link href="/dashboard/teachers">Teachers</Link></li>
