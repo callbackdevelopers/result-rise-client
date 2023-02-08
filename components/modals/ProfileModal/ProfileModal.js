@@ -21,7 +21,7 @@ const ProfileModal = ({ userData, refetch, setUserEdit }) => {
         const updateProfile = {
             name, phone, address, verification
         }
-        fetch(`http://localhost:3100/users/create/${_id}`, {
+        fetch(`http://localhost:3100/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
