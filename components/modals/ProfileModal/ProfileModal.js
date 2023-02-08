@@ -14,18 +14,23 @@ const ProfileModal = ({ userData, refetch, setUserEdit }) => {
     const { register, handleSubmit: handleSave, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
-
-        fetch(`http://localhost:3100/users/${_id}`, {
+        const name = data.name;
+        const phone = data.phone;
+        const address = data.address;
+        const verification = false;
+        const updateProfile = {
+            name, phone, address, verification
+        }
+        fetch(`http://localhost:3100/users/create/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(updateProfile)
         })
             .then(res => res.json())
             .then(result => {
-                console.log("resultInside", result);
+                // console.log("resultInside", result);
                 if (result.acknowledged === true) {
                     setUserEdit(null)
                     successMessage("User data updated")
@@ -33,8 +38,6 @@ const ProfileModal = ({ userData, refetch, setUserEdit }) => {
                 }
             })
     }
-
-
     return (
         <>
             <input type="checkbox" id="my-modal-2" className="modal-toggle" />

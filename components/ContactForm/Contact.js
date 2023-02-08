@@ -1,14 +1,16 @@
 import emailjs from '@emailjs/browser';
 import React, { useRef } from 'react';
+import AlertMessage from '../../Hooks/AlertMessage';
 
 const Contact = () => {
+  const { successMessage } = AlertMessage();
   const form = useRef()
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm('service_jeb1yig', 'template_91qxmw4', form.current, '4l8rmu9ZXGBrDefvB')
       .then((result) => {
+        successMessage("message sent successfully")
         console.log(result.text);
       }, (error) => {
         console.log(error.text);
@@ -18,7 +20,6 @@ const Contact = () => {
 
   return (
     <div>
-
       <div className="flex items-center justify-around">
         <form ref={form} onSubmit={sendEmail}>
           <div className="bg-slate-100 p-10 pb-14 rounded-lg w-full xl:mr-40">

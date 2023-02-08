@@ -17,9 +17,9 @@ const StudentReportModal = ({ data }) => {
         const report = form.report.value;
         const department = form.department.value;
         const uid = form.uid.value;
-
+        const resolved = false;
         const reportPost = {
-            photoURL, name, email, id, report, department, uid
+            photoURL, name, email, id, report, department, uid, resolved
         }
 
         fetch("http://localhost:3100/report", {
