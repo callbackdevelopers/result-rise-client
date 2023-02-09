@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  CategoryScale, Legend, LinearScale, LineElement, PointElement, Title, Tooltip
-} from 'chart.js';
-import { Chart as ChartJS } from 'chart.js/auto';
+import { CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
+import { } from 'chart.js/auto';
 import Link from "next/link";
 import { Line } from 'react-chartjs-2';
 import SecondaryButton from "../../../components/Shared/Buttons/SecondaryButton";
@@ -10,10 +8,10 @@ import MidSpinner from "../../../components/Spiner/MidSpinner";
 import { useFirebase } from "../../../context/UserContext";
 import Layout from "../../../Layout/Layout";
 
-ChartJS.register(
-  CategoryScale, LinearScale, PointElement, LineElement, Title,
-  Tooltip, Legend)
 const index = () => {
+  ChartJS.register(
+    CategoryScale, LinearScale, PointElement, LineElement, Title,
+    Tooltip, Legend)
   const { user } = useFirebase();
   const url = `http://localhost:3100/resultdata?email=${user?.email}`;
   const {
@@ -27,12 +25,10 @@ const index = () => {
     });
   // console.log(resultData);
   if (isLoading) return <MidSpinner />;
-  let labels = [];
-  let datasets = [];
 
+  let datasets = [];
   const exams = resultData?.semester_results?.map(semester => semester.exam_results)
   // console.log(exams);
-  labels.push("Midterm", "Presentation", "Viva", "Final Exam")
   const examNames = exams?.map(exam => {
     exam?.map(exam => {
       console.log(exam);
@@ -44,24 +40,8 @@ const index = () => {
     })
   });
   const data = {
-    labels: labels,
+    labels: ["Midterm", "Presentation", "Viva", "Final Exam"],
     datasets: datasets,
-  };
-  const config = {
-    type: 'line',
-    data: [12, 43, 43, 34, 34, 4],
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Line Chart'
-        }
-      }
-    },
   };
   refetch()
   return (
@@ -72,16 +52,15 @@ const index = () => {
             Currently <br /> No Result Here</div> :
           <div className="">
             <div className=" py-2">
-              <h2 className="lg:text-2xl text-center">Semester Result</h2>
+              <h2 className="lg:text-2xl text-center">Full Semister Data</h2>
             </div>
-            <Line
-              data={data}
-              config={config}
-            />
+            <div className="">
+              <Line data={data} />
+            </div>
             <div className=" gap-3 p-4">
               <div>
                 <div
-                  className=" grid lg:grid-cols-2 gap-3"
+                  className=" grid md:grid-cols-2 gap-3 mt-5"
                 >
                   {resultData?.semester_results?.map((finaldata) => (
                     <div key={finaldata._id}>
