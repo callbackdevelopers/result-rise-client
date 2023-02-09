@@ -64,12 +64,12 @@ const index = () => {
                                             <div className="flex items-center space-x-3">
                                                 <div className="avatar">
                                                     <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={teacher?.photoURL} alt="Avatar Tailwind CSS Component" />
+                                                        <img src={teacher.photoURL} alt="Avatar" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold">{teacher?.name}</div>
-                                                    <div className="text-sm opacity-50"></div>
+                                                    <div className="font-bold">{teacher.name}</div>
+                                                    <div className="text-sm opacity-50">{teacher.roll} ID: {teacher.id}</div>
                                                 </div>
                                             </div>
                                         </td>

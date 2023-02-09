@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ShowReportModal = ({ report }) => {
-    console.log(report)
+    // console.log(report)
 
     return (
         <div>
