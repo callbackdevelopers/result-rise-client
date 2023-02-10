@@ -31,7 +31,7 @@ const index = () => {
   // console.log(exams);
   const examNames = exams?.map(exam => {
     exam?.map(exam => {
-      console.log(exam);
+      // console.log(exam);
       datasets.push({
         label: exam.subject_name,
         data: [exam.midterm_score, exam.presentation_score, exam.viva_score, exam.final_exam_score,
@@ -59,6 +59,7 @@ const index = () => {
             </div>
             <div className=" gap-3 p-4">
               <div>
+                <h2 className="lg:text-2xl text-center">Semister Wise Data</h2>
                 <div
                   className=" grid md:grid-cols-2 gap-3 mt-5"
                 >
