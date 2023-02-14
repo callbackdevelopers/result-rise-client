@@ -18,10 +18,8 @@ const SemesterResult = () => {
     fetch(`http://localhost:3100/resultdata/${id}?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
-        console.log('semester result ', data);
         setSemesterResult(data)
       })
-
   }, [id, user?.email])
 
   return (

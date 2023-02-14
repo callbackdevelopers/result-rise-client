@@ -2,7 +2,7 @@
 
 
 const MarksTableRow = ({ data, index }) => {
-  console.log(" result data for REsultdata page ", data);
+
   const {
     final_exam_score,
     midterm_score,
@@ -10,7 +10,6 @@ const MarksTableRow = ({ data, index }) => {
     subject_code,
     subject_name,
     viva_score
-   
   } = data;
 
   return (

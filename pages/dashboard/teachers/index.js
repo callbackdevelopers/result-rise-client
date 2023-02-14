@@ -38,69 +38,67 @@ const index = () => {
             });
 
     };
+    if (isLoading) return <MidSpinner />
     return (
         <>
             <Layout>
-                {(isLoading) ?
-                    <MidSpinner />
+                {teachers?.length < 1 ?
+                    <div className="flex h-[80vh] justify-center items-center text-3xl">
+                        Currently <br /> No Teacher Added</div>
                     :
-                    teachers?.length < 1 ?
-                        <div className="flex h-[80vh] justify-center items-center text-3xl">
-                            Currently <br /> No Teacher Added</div>
-                        :
-                        <div className="overflow-x-auto w-full">
-                            <table className="table w-full">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Subject</th>
-                                        <th></th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {teachers?.map(teacher =>
-                                        <tr key={teacher.id}>
-                                            <td>
-                                                <div className="flex items-center space-x-3">
-                                                    <div className="avatar">
-                                                        <div className="mask mask-squircle w-12 h-12">
-                                                            <img src={teacher?.photoURL} alt="Avatar Tailwind CSS Component" />
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className="font-bold">{teacher?.name}</div>
-                                                        <div className="text-sm opacity-50"></div>
+                    <div className="overflow-x-auto w-full">
+                        <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th></th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {teachers?.map(teacher =>
+                                    <tr key={teacher.id}>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={teacher.photoURL} alt="Avatar" />
                                                     </div>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <br />
-                                                <span className="">{teacher?.email}</span>
-                                            </td>
-                                            <td>
-                                                <br />
-                                                <span className="">{teacher?.department}</span>
-                                            </td>
-                                            <td></td>
-                                            <th>
-                                                <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
-                                            </th>
-                                        </tr>
-                                    )}
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
+                                                <div>
+                                                    <div className="font-bold">{teacher.name}</div>
+                                                    <div className="text-sm opacity-50">{teacher.roll} ID: {teacher.id}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <br />
+                                            <span className="">{teacher?.email}</span>
+                                        </td>
+                                        <td>
+                                            <br />
+                                            <span className="">{teacher?.department}</span>
+                                        </td>
+                                        <td></td>
+                                        <th>
+                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
+                                        </th>
                                     </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                                )}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 }
             </Layout>
             {deleteTeacher

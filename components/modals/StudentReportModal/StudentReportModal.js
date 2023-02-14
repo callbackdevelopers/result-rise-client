@@ -2,11 +2,8 @@ import { useFirebase } from "../../../context/UserContext";
 import AlertMessage from "../../../Hooks/AlertMessage";
 
 const StudentReportModal = ({ data }) => {
-    const { user } = useFirebase()
+    const { user } = useFirebase();
     const { successMessage, errorMessage } = AlertMessage();
-    console.log(user);
-    console.log(data)
-
     const handleAddStudentReport = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,10 +13,13 @@ const StudentReportModal = ({ data }) => {
         const id = form.id.value;
         const report = form.report.value;
         const department = form.department.value;
-        const uid = form.uid.value;
 
-        const reportPost = {
-            photoURL, name, email, id, report, department, uid
+        const reportData = {
+            photoURL, name, email, id, report, department,
+            reportDate: new Date().toDateString(),
+            reportTime: new Date().toLocaleTimeString(),
+            reporterEmail: user.email,
+            resolved: false
         }
 
         fetch("http://localhost:3100/report", {
@@ -27,7 +27,7 @@ const StudentReportModal = ({ data }) => {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(reportPost)
+            body: JSON.stringify(reportData)
         })
             .then(res => res.json())
             .then(data => {
@@ -39,8 +39,6 @@ const StudentReportModal = ({ data }) => {
                     errorMessage(data.error)
                 }
             })
-
-
     };
     return (
         <div>
