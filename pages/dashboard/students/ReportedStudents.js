@@ -1,10 +1,12 @@
-
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import Search from "../../../components/Search/Search";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
 import Layout from "../../../Layout/Layout";
 
-
 function ReportedStudents() {
+    const [search, setSearch] = useState("");
+    const [searchData, setSearchData] = useState([]);
     const { data: reports = [], refetch, isLoading } = useQuery({
         queryKey: ['reports'],
         queryFn: async () => {
@@ -13,26 +15,37 @@ function ReportedStudents() {
             return data;
         }
     })
+    useEffect(() => {
+        if (search?.length > 0) {
+            const filterResult = reports.filter(u => u?.name?.toLowerCase().includes(search?.toLowerCase()))
+            setSearchData(filterResult)
+        } else {
+            setSearchData(reports)
+        }
+    }, [search, reports]);
     if (isLoading) return <MidSpinner />
-
     return (
         <>
             <Layout>
-                {reports?.length < 1 ?
-                    <div className="flex h-[80vh] justify-center items-center text-3xl">
-                        Currently <br /> No Pending Teacher</div> :
-                    <div className="overflow-x-auto w-full">
-                        <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Report By</th>
-                                    <th>Report to</th>
-                                    <th>Report Info</th>
-                                    <th>Time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {reports?.map(report => <tr key={report.id}>
+                <Search
+                    setSearch={setSearch}
+                    setSearchData={setSearchData}
+                    title={"Find Reported Student"}
+                    value={"Reported Student"}
+                ></Search>
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Report</th>
+                                <th>department</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {searchData?.map(report =>
+                                <tr key={report.id}>
                                     <td>
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
@@ -47,6 +60,7 @@ function ReportedStudents() {
                                         </div>
                                     </td>
                                     <td>
+                                        <br />
                                         <span>
                                             {report?.report.length > 30 ?
                                                 <>{report?.report.slice(0, 25) + ""} <label htmlFor="show-report-modal" className="font-semibold cursor-pointer">...</label></>
@@ -55,23 +69,21 @@ function ReportedStudents() {
                                         </span>
                                     </td>
                                     <td>{report.department}</td>
-                                    <td>
-                                        {report?.reportDate}
-                                        <br />
-                                        {report?.reportTime}
-                                    </td>
+                                    <th>
+                                        <label disabled htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Success</label>
+                                    </th>
                                 </tr>)}
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </Layout>
         </>
     );
