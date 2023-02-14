@@ -1,16 +1,21 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import DashboardNavbar from "../../../components/Navbars/DashboardNavbar";
-import Sidebars from "../../../components/Sidebars/Sidebars";
-import MarksTable from "../../../components/Table/MarksTable";
+import { useEffect, useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
+import ResultPdfPrint from "../../../components/PDF/ResultPdf/ResultPdfPrint";
 import { useFirebase } from "../../../context/UserContext";
+import Layout from "../../../Layout/Layout";
 
 
 const SemesterResult = () => {
   const { user } = useFirebase();
   const [semesterResult, setSemesterResult] = useState({})
   const route = useRouter().query;
-
+  const conponentRef = useRef();
+  const heandelPrint = useReactToPrint({
+    content: () => conponentRef.current,
+    documentTitle: "Semester Result",
+    // onAfterPrint: () => alert("Printed"),
+  });
   const id = route.SemesterResult
   // console.log(semesterResult);
 
@@ -24,19 +29,11 @@ const SemesterResult = () => {
 
   return (
     <>
-      <DashboardNavbar />
-      <div className="drawer drawer-mobile">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          <div className="">
-            <div className=" py-2"></div>
-            <div className=" gap-3 p-4">
-              <MarksTable semesterResult={semesterResult}></MarksTable>
-            </div>
-          </div>
+      <Layout>
+        <div className=" gap-3 p-4">
+          <ResultPdfPrint semesterResult={semesterResult}></ResultPdfPrint>
         </div>
-        <Sidebars />
-      </div>
+      </Layout>
     </>
   );
 };
