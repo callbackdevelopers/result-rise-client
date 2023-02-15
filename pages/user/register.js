@@ -75,10 +75,10 @@ const register = () => {
     //image upload
     const imageHosting = (data, user) => {
         // console.log(user);
-        const imageBBapi = '27b73950d28f0e1e9f8c01294ddb3bae';
+        const imageBBapi = 'a0199ee9f89b265b565a793dcf77ab64';
         const formData = new FormData();
         formData.append('image', data)
-        const urL = `https://api.imgbb.com/1/upload?expiration=600&key=${imageBBapi}`
+        const urL = `https://api.imgbb.com/1/upload?key=${imageBBapi}`
         fetch(urL, {
             method: 'POST',
             body: formData

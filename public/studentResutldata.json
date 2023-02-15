@@ -1,6 +1,7 @@
 {
   "student_id": 1234,
   "student_name": "Chris Wade",
+  "registration_number": "2018106",
   "department": "CSE",
   "Addmission": "Winter-2018",
   "student_email": "jaja@gmail.com",
@@ -8,7 +9,7 @@
     {
       "semesterId": "01",
       "season": "Winter 2018",
-      "semester": "FirstSemester",
+      "semester": "1st",
       "exam_results": [
         {
           "subject_name": "Introduction of computer Science",
@@ -64,7 +65,7 @@
     {
       "semesterId": "2",
       "season": "Summer 2018",
-      "semester": "second semester",
+      "semester": "2nd",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -119,7 +120,7 @@
     {
       "semesterId": "3",
       "season": "Winter 2019",
-      "semester": "Third Semester",
+      "semester": "3rd",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -174,7 +175,7 @@
     {
       "semesterId": "4",
       "season": "Summer 2019",
-      "semester": "Four Semester",
+      "semester": "4th",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -229,7 +230,7 @@
     {
       "semesterId": "5",
       "season": "Winter 2020",
-      "semester": "five Semester",
+      "semester": "5th",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -284,7 +285,7 @@
     {
       "semesterId": "6",
       "season": "Summer 2020",
-      "semester": "six semester",
+      "semester": "6th",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -339,7 +340,7 @@
     {
       "semesterId": "7",
       "season": "Winter 2021",
-      "semester": "seven  Semester",
+      "semester": "7th",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -394,7 +395,7 @@
     {
       "semesterId": "8",
       "season": "Summer 2021",
-      "semester": "eight semester",
+      "semester": "8th",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
