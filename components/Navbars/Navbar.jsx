@@ -15,15 +15,10 @@ const Navbar = () => {
     };
     const menuItems = (
         <>
-            <li>
-                <Link href="/">Home</Link>
-            </li>
-            <li>
-                <Link href="/whyUs">Why Us</Link>
-            </li>
-            <li>
-                <Link href="/aboutus">About Us</Link>
-            </li>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/whyUs">Why Us</Link></li>
+            <li><Link href="/aboutus">About Us</Link></li>
+            <li><Link href="/getresult">Find Result</Link></li>
         </>
     );
     return (
