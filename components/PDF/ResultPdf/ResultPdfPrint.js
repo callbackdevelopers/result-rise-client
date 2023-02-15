@@ -3,7 +3,7 @@ import { SyncLoader } from "react-spinners";
 import { useReactToPrint } from "react-to-print";
 import AlertMessage from "../../../Hooks/AlertMessage";
 
-function ResultPdfPrint({ semesterResult, refetch, isLoading }) {
+function ResultPdfPrint({ semesterResult, isLoading }) {
     const { successMessage } = AlertMessage()
     const {
         semester,
@@ -15,7 +15,7 @@ function ResultPdfPrint({ semesterResult, refetch, isLoading }) {
     const componendRef = useRef();
     const heandelPrint = useReactToPrint({
         content: () => componendRef.current,
-        documentTitle: semester + season,
+        documentTitle: semester,
         onAfterPrint: () => successMessage("downloaded"),
     });
     if (isLoading) {
@@ -49,7 +49,7 @@ function ResultPdfPrint({ semesterResult, refetch, isLoading }) {
                         </div>
                     </div>
                     <div className="overflow-x-auto px-5 ">
-                        <table className=" table w-full mt-6 ">
+                        <table className=" table w-full mt-6 border ">
                             <thead className="text-blue-500">
                                 <tr>
                                     <th>Sl No</th>
@@ -88,5 +88,4 @@ function ResultPdfPrint({ semesterResult, refetch, isLoading }) {
         </>
     );
 }
-
 export default ResultPdfPrint;

@@ -6,6 +6,7 @@ import MidSpinner from '../../../components/Spiner/MidSpinner';
 import { useFirebase } from '../../../context/UserContext';
 import Layout from '../../../Layout/Layout';
 
+
 const profile = () => {
     const { user, } = useFirebase()
     const [userEdit, setUserEdit] = useState(true);
