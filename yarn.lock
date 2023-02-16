@@ -5305,7 +5305,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.0, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.0, prop-types@npm:^15.6.0, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -5446,6 +5446,17 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-messenger-customer-chat@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "react-messenger-customer-chat@npm:0.8.0"
+  dependencies:
+    prop-types: ^15.6.0
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0-0 || ^16.0.0-0
+  checksum: 851ba1daa4dbe749df7ca28bcbaf9154dbb609835e1a1a2eb3253fbed581e0cb42ba85d95e9d621159e820b408311249570bc3ce8a2d2980366dd5e726c085ca
   languageName: node
   linkType: hard
 
@@ -5685,6 +5696,7 @@ __metadata:
     react-dom: 18.2.0
     react-hook-form: ^7.41.5
     react-icons: ^4.7.1
+    react-messenger-customer-chat: ^0.8.0
     react-query: ^3.39.2
     react-spinners: ^0.13.7
     react-tabs: ^6.0.0

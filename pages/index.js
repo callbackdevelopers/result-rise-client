@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import ContactForm from "../components/ContactForm/ContactForm";
 import Footer from "../components/Footer/Footer";
 import FeaturesVideo from "../components/HeroSection/FeaturesVideo";
@@ -28,6 +29,10 @@ export default function Home() {
             <FeaturesVideo />
             <ContactForm />
             <Footer />
+            <MessengerCustomerChat
+                pageId="111854754052829"
+                appId="883726859558006"
+            />,
         </div>
     );
 }
