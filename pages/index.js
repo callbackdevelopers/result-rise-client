@@ -31,7 +31,7 @@ export default function Home() {
             <Footer />
             <MessengerCustomerChat
                 pageId="111854754052829"
-                appId="883726859558006"
+                appId="527602612817067"
             />,
         </div>
     );
