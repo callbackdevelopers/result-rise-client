@@ -1,6 +1,8 @@
 import React from 'react';
-import DashboardNavbar from '../components/Navbars/DashboardNavbar';
-import Sidebars from '../components/Sidebars/Sidebars';
+
+
+import DashboardNavbar from '../Navbars/DashboardNavbar';
+import Sidebars from '../Sidebars/Sidebars';
 
 
 const Layout = ({ children }) => {
