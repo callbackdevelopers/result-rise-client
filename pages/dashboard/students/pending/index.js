@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { useState } from "react"
 import UsersTableTamplete from "../../../../components/Shared/UsersTableTamplete/usersTableTamplete"
 import MidSpinner from "../../../../components/Spiner/MidSpinner"
 import AlertMessage from "../../../../Hooks/AlertMessage"
@@ -7,18 +8,19 @@ import Layout from "../../../../Layout/Layout"
 
 const index = () => {
     const { successMessage } = AlertMessage();
-    const url = `http://localhost:3100/pending/student`
-    const { data: users = [], refetch, isLoading } = useQuery({
+    const [users, setUsers] = useState(null)
+    const url = `https://resultrise-server.vercel.app/pending/student`
+    const { data = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const res = await fetch(url)
             const data = await res.json()
+            setUsers(data);
             return data;
         }
     })
-
     const handleUser = (user) => {
-        fetch(`http://localhost:3100/users/${user._id}`, {
+        fetch(`https://resultrise-server.vercel.app/users/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -69,5 +71,4 @@ const index = () => {
         </Layout>
     );
 }
-
 export default index;

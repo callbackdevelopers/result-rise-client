@@ -1,17 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import AddNumberModal from "../../../components/modals/AddNumber/AddNumberModal";
-import MidSpinner from "../../../components/Spiner/MidSpinner";
-import { useFirebase } from "../../../context/UserContext";
-import Layout from "../../../Layout/Layout";
 import { nanoid } from "nanoid";
-import Data from "../../../public/mock-data.json";
+import { useState } from "react";
+import AddNumberModal from "../../../components/modals/AddNumber/AddNumberModal";
 import Stdentaddmarks from "../../../components/modals/AddNumber/stdentaddmarks";
+import MidSpinner from "../../../components/Spiner/MidSpinner";
+import Layout from "../../../Layout/Layout";
+import Data from "../../../public/mock-data.json";
 
 function index() {
   const [show, setShow] = useState(false);
   const [student, setStudent] = useState([]);
-  const [ showdata, setShowdata] = useState('')
+  const [showdata, setShowdata] = useState('')
   const url = `http://localhost:3100/verified/student`;
   const {
     data: students = [],
@@ -48,7 +47,7 @@ function index() {
     event.preventDefault();
     const name = event.target.name;
     const value = event.target.value;
-  
+
     setShowdata((prevData) => ({
       ...prevData,
       [name]: value,
@@ -143,7 +142,7 @@ function index() {
   };
 
   if (isLoading) return <MidSpinner />;
-//multi stage form 
+  //multi stage form 
   return (
     <div>
       <div>
@@ -184,7 +183,7 @@ function index() {
             )}
           </div>
 
-    
+
         </Layout>
       </div>
     </div>

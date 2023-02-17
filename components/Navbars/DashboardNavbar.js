@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import React from "react";
 import { GrNotification } from "react-icons/gr";
 import { useFirebase } from "../../context/UserContext";
@@ -6,6 +8,21 @@ import ShowNotification from "../ShowNotification/ShowNotification";
 
 const DashboardNavbar = () => {
   const { user } = useFirebase();
+  const route = useRouter();
+
+  const url = `http://localhost:3100/notice`;
+  const {
+    data: noticeData = [], refetch, isLoading, } = useQuery({
+      queryKey: ["noticeData"],
+      queryFn: async () => {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      },
+    });
+
+  refetch();
+
 
   return (
     <div>
@@ -38,20 +55,25 @@ const DashboardNavbar = () => {
               </svg>
             </label>
           </div>
+
           <div className="flex-none">
             <div className="dropdown dropdown-end flex">
-              <label tabIndex={0} className="btn btn-ghost btn-circle">
-                <div className="indicator">
-                  <GrNotification size="20px" />
-                  <span className="badge badge-sm indicator-item">2</span>
-                </div>
-              </label>
+              {
+                route.pathname === "/dashboard/notification/shownotification"
+                  ? undefined :
+                  <label tabIndex={0} className="btn btn-ghost btn-circle">
+                    <div className="indicator">
+                      <GrNotification size="20px" />
+                      <span className="badge badge-sm indicator-item">{noticeData.length}</span>
+                    </div>
+                  </label>}
               <div
                 tabIndex={0}
-                className="mt-8 card card-compact border w-96  border-red-400 dropdown-content bg-base-100 shadow"
+                className="mt-8 card card-compact border w-96  dropdown-content bg-base-100 shadow"
               >
-                <div className="card-body w-84 border border-green-800">
-                  <ShowNotification />
+                <div className="card-body w-84 border max-h-[70vh] overflow-scroll">
+                  <ShowNotification
+                    noticeData={noticeData} />
                 </div>
               </div>
               <div>
