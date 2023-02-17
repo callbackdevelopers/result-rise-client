@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import ResultPdfPrint from "../../components/PDF/ResultPdf/ResultPdfPrint";
 import FormOptionTemplate from "../../components/Shared/FormTemplate/FormOptionTemplate";
 import FormTemplate from "../../components/Shared/FormTemplate/FormTemplate";
+import AlertMessage from "../../Hooks/AlertMessage";
 
 
 const index = () => {
+  const { errorMessage } = AlertMessage()
   const [studentType, setStudentType] = useState(null);
   const {
     register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -24,6 +26,8 @@ const index = () => {
       .then(data => {
         setStudentType(data);
         // console.log('data', data);
+      }).catch(err => {
+        console.log('err', errorMessage(err.message));
       })
   };
   const CommonTableData = [
@@ -45,7 +49,6 @@ const index = () => {
       { value: "Math" }, { value: "Physics" }, { value: "Chemistry" },
     ],
   };
-
   return (
     <>
       {!studentType &&
@@ -66,7 +69,6 @@ const index = () => {
               </h6>
             </div>
           </div>
-
           <div className=" lg:p-12  ">
             <form className="border md:border-gray-400 p-5 " onSubmit={handleSubmit(onSubmit)}>
               <FormOptionTemplate data={departmentData} register={register} />
