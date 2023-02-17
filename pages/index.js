@@ -1,5 +1,8 @@
 import { useState } from "react";
+import ContactForm from "../components/ContactForm/ContactForm";
+import Footer from "../components/Footer/Footer";
 import HeroSection from "../components/HeroSection/HeroSection";
+import FeaturesVideo from "../components/Home/FeaturesVideo";
 import Navbar from "../components/Navbars/Navbar";
 import Spiner from "../components/Spiner/Spiner";
 import { useFirebase } from "../context/UserContext";
@@ -22,6 +25,9 @@ export default function Home() {
                 <Navbar></Navbar>
             </div>
             <HeroSection></HeroSection>
+            <FeaturesVideo></FeaturesVideo>
+            <ContactForm />
+            <Footer />
         </div>
     );
 }

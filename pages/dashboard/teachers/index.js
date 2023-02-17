@@ -1,27 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import ConfirmationModal from '../../../components/modals/ConfirmationModal/ConfirmationModal';
-import DashboardNavbar from '../../../components/Navbars/DashboardNavbar';
-import Sidebars from '../../../components/Sidebars/Sidebars';
+import MidSpinner from '../../../components/Spiner/MidSpinner';
 import AlertMessage from '../../../Hooks/AlertMessage';
+import Layout from '../../../Layout/Layout';
 
-const Teacher = () => {
+const index = () => {
     const { successMessage, errorMessage } = AlertMessage()
     const [deleteTeacher, setDeleteTeacher] = useState(null)
 
     const closeModal = () => {
         setDeleteTeacher(null)
     }
-    const { data: teachers = [], refetch } = useQuery({
+    const { data: teachers = [], refetch, isLoading } = useQuery({
         queryKey: ["teachers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3100/user?roll=teacher")
+            const res = await fetch("http://localhost:3100/verified/teacher")
             const data = await res.json()
-
             return data;
         }
     })
-
     const handleTeacherDelete = (teacher) => {
         console.log(teacher);
         fetch(`http://localhost:3100/user/${teacher._id}`, {
@@ -39,15 +37,15 @@ const Teacher = () => {
                 }
             });
 
-
-
     };
+    if (isLoading) return <MidSpinner />
     return (
         <>
-            <DashboardNavbar />
-            <div className="drawer drawer-mobile">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content ">
+            <Layout>
+                {teachers?.length < 1 ?
+                    <div className="flex h-[80vh] justify-center items-center text-3xl">
+                        Currently <br /> No Teacher Added</div>
+                    :
                     <div className="overflow-x-auto w-full">
                         <table className="table w-full">
                             <thead>
@@ -60,9 +58,8 @@ const Teacher = () => {
                                 </tr>
                             </thead>
                             <tbody>
-
-                                {
-                                    teachers?.map(teacher => <tr>
+                                {teachers?.map(teacher =>
+                                    <tr key={teacher.id}>
                                         <td>
                                             <div className="flex items-center space-x-3">
                                                 <div className="avatar">
@@ -77,25 +74,19 @@ const Teacher = () => {
                                             </div>
                                         </td>
                                         <td>
-
                                             <br />
                                             <span className="">{teacher?.email}</span>
                                         </td>
                                         <td>
-
                                             <br />
                                             <span className="">{teacher?.department}</span>
                                         </td>
                                         <td></td>
                                         <th>
-
-                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Deletee</label>
-
+                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
                                         </th>
-                                    </tr>)
-                                }
-
-
+                                    </tr>
+                                )}
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -108,9 +99,11 @@ const Teacher = () => {
                             </tfoot>
                         </table>
                     </div>
-                </div>
-
-                {deleteTeacher && <ConfirmationModal
+                }
+            </Layout>
+            {deleteTeacher
+                &&
+                <ConfirmationModal
                     title={`Are you sure you want to delete? `}
                     message={`If you delete teacher, will be permanently deleted! ${deleteTeacher?.name}`}
                     closeModal={closeModal}
@@ -118,18 +111,10 @@ const Teacher = () => {
                     successAction={handleTeacherDelete}
                     modalData={deleteTeacher}
                 ></ConfirmationModal>
-
-                }
-
-                <Sidebars></Sidebars>
-
-
-
-
-            </div>
+            }
         </>
 
     );
 };
 
-export default Teacher;
+export default index;

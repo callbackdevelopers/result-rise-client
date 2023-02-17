@@ -6,9 +6,7 @@
     "Addmission":"Winter-2018",
     "student_email": "wade@gmail.com",
     "semester_results": [
-      {
-         "year_name":"first year",
-        "first_year": [
+  
           {
             "season": "Winter 2018",
              "semester":"First Semester",
@@ -223,13 +221,7 @@
                 "Grade_Point": 2.44
               }
             ]
-          }
-        ]
-      },
-
-      {
-        "year_name":"second year",
-        "second_year": [
+          },
           {
             "season": "Winter 2019",
              "semester":"Third Semester",
@@ -441,12 +433,7 @@
                 "Grade_Point": 2.44
               }
             ]
-          }
-        ]
-      },
-      {
-        "year_name":"third year",
-        "third_year": [
+          },
           {
             "season": "Winter 2020",
             "semester":"five Semester",
@@ -658,12 +645,7 @@
                 "Grade_Point": 2.44
               }
             ]
-          }
-        ]
-      },
-      { 
-        "year_name":"four year",
-        "fourth_year": [
+          },
           {
             "season": "Winter 2021",
              "semester":"seven  Semester",
@@ -874,8 +856,7 @@
               }
             ]
           }
-        ]
-      }
+      
     ]
   }
 ]

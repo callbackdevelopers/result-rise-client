@@ -42,7 +42,7 @@ const register = () => {
         const subject = data.subject;
         const department = data.department;
         const dataCreated = new Date();
-        const verification = "false";
+        const verification = false;
 
         //differentiate users data. like : student, teacher and head
         if (tabIndex === 0) {
@@ -138,7 +138,7 @@ const register = () => {
                 successMessage(
                     "Account created,Please Got to Your Email & verify your email."
                 );
-                router.push('/')
+                router.push('/dashboard/profile')
             });
     }
 
