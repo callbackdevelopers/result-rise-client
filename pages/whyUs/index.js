@@ -1,6 +1,8 @@
+import React from 'react';
+import WhyUs from '../../components/AboutUS/WhyUs';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbars/Navbar';
-import WhyUs from '../../components/WhyUS/WhyUs';
+
 
 const index = () => {
     return (
@@ -8,7 +10,10 @@ const index = () => {
             <div className="md:mx-6">
                 <Navbar></Navbar>
             </div>
-            <WhyUs></WhyUs>
+            <div className="px-5 md:px-20 bg-base-100">
+                <WhyUs />
+
+            </div>
             <Footer />
         </div>
     );
