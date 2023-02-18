@@ -26,7 +26,7 @@ const DashboardNavbar = () => {
 
   return (
     <div>
-      <div className="navbar container mx-auto ">
+      <div className="navbar container mx-auto sticky top-0 ">
         <div className="flex-1">
           <a className="lg:ml-28 normal-case text-xl font-semibold">
             Hello , {user?.displayName}
@@ -71,7 +71,7 @@ const DashboardNavbar = () => {
                 tabIndex={0}
                 className="mt-8 card card-compact border w-96  dropdown-content bg-base-100 shadow"
               >
-                <div className="card-body w-84 border max-h-[70vh] overflow-scroll">
+                <div className="card-body w-84 border max-h-[70vh] overflow-scroll z-50 ">
                   <ShowNotification
                     noticeData={noticeData} />
                 </div>
