@@ -41,7 +41,15 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                                                     htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
                                             </>
                                             :
-                                            <span>{user?.report}</span>
+                                            <>
+                                                <span>{user?.report}
+                                                </span>
+                                                <label
+                                                    onClick={() => setReportStudent(user)}
+                                                    htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
+                                            </>
+
+
                                         }
                                     </span>
                                 }
@@ -51,6 +59,7 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                                         <label htmlFor="confirmation-modal" className="btn btn-disabled  btn-xs text-gray-600  w-20 sm:text-left text-right">{btnName}</label>}
                                     {action === "report" &&
                                         <label onClick={() => setReportStudent(user)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>}
+
                                     <BsThreeDotsVertical />
                                 </div>
                             </li>
@@ -58,16 +67,8 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                     </ul>
                 </div>
             </div>
-            {
-                reportStudent &&
-                <InfoModal
-                    report={reportStudent}
-                />
-            }
-            {reportStudent && (
-                <StudentReportModal data={reportStudent}></StudentReportModal>
-            )}
-            <StudentReportModal />
+            {reportStudent && <InfoModal report={reportStudent} />}
+            {reportStudent && <StudentReportModal data={reportStudent} setReportStudent={setReportStudent} />}
         </div>
 
     );
