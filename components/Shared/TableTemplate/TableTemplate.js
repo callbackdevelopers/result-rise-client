@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import ConfirmationModal from "../../modals/ConfirmationModal/ConfirmationModal";
 import InfoModal from "../../modals/Info/InfoModal";
 import StudentReportModal from "../../modals/StudentReportModal/StudentReportModal";
 
-function TableTemplate({ users, handleUser, btnName, tableData, type, action }) {
+function TableTemplate({ users, handleUser, btnName, tableData, type, action, refetch }) {
     const [reportStudent, setReportStudent] = useState(null);
-
+    const [resolve, setResolve] = useState(null);
     return (
         <div className='bg-gray-100 min-h-screen'>
             <div className='px-4'>
@@ -34,8 +35,9 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                                 <p className='hidden md:flex'>{user?.email}</p>
                                 {type ? <p className='hidden md:flex'>{user?.department}</p> :
                                     <span className='hidden md:flex'>
-                                        {user?.report.length > 30 ?
-                                            <>{user?.report.slice(0, 20) + ""}
+                                        {user?.report?.length > 30 ?
+                                            <>
+                                                {user?.report.slice(0, 20) + ""}
                                                 <label
                                                     onClick={() => setReportStudent(user)}
                                                     htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
@@ -48,8 +50,6 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                                                     onClick={() => setReportStudent(user)}
                                                     htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
                                             </>
-
-
                                         }
                                     </span>
                                 }
@@ -59,7 +59,10 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                                         <label htmlFor="confirmation-modal" className="btn btn-disabled  btn-xs text-gray-600  w-20 sm:text-left text-right">{btnName}</label>}
                                     {action === "report" &&
                                         <label onClick={() => setReportStudent(user)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>}
-
+                                    {action === "pending" &&
+                                        <label onClick={() => setResolve(user)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Resolve</label>
+                                    }
+                                    {action === "approve" && <label onClick={() => handleUser(user._id)} htmlFor="confirmation-modal" className="btn btn-warning  btn-xs text-gray-600  w-20 sm:text-left text-right">{btnName}</label>}
                                     <BsThreeDotsVertical />
                                 </div>
                             </li>
@@ -69,6 +72,7 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
             </div>
             {reportStudent && <InfoModal report={reportStudent} />}
             {reportStudent && <StudentReportModal data={reportStudent} setReportStudent={setReportStudent} />}
+            {resolve && <ConfirmationModal modalData={resolve} refetch={refetch} />}
         </div>
 
     );

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 
 const ShowNotification = () => {
-
+  const route = useRouter();
   const url = `http://localhost:3100/notice`;
   const {
     data: noticeData = [], refetch, isLoading, } = useQuery({
@@ -16,12 +16,12 @@ const ShowNotification = () => {
       },
     });
   refetch();
-  const route = useRouter();
+
   return (
-    <div className="">
+    <div className="bg-white max-w-xl h-screen overflow-scroll mx-auto">
       <div className="flex justify-between items-center px-3">
         <div>
-          <h1 className="font-bold text-xl">Notifications</h1>
+          <h1 className="font-bold text-xl mt-4">Notifications</h1>
         </div>
         <div className="">
           {route.pathname === "/dashboard/notification/shownotification"

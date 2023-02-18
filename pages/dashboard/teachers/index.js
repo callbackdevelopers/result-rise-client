@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { BsThreeDotsVertical } from 'react-icons/bs';
-import ConfirmationModal from '../../../components/modals/ConfirmationModal/ConfirmationModal';
+import Swal from 'sweetalert2';
 import Search from '../../../components/Search/Search';
+import TableTemplate from '../../../components/Shared/TableTemplate/TableTemplate';
 import MidSpinner from '../../../components/Spiner/MidSpinner';
 import AlertMessage from '../../../Hooks/AlertMessage';
 import Layout from '../../../Layout/Layout';
@@ -22,142 +22,61 @@ const index = () => {
             return data;
         }
     })
-    const handleTeacherDelete = (teacher) => {
-        // console.log(teacher);
-        fetch(`http://localhost:3100/user/${teacher._id}`, {
-            method: "DELETE"
+    const handleUser = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3100/user/${id}`, {
+                    method: "DELETE"
+                }).then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                {
+                                    title: 'Deleted!',
+                                    text: 'Your Report has been deleted.',
+                                    icon: 'success',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }
+                            )
+                        }
+                    });
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    successMessage("Successfully Deleted");
-                    refetch();
-                }
-                else {
-                    errorMessage("Something went wrong!! please try again")
-                }
-            });
-    };
+    }
+
+    const tableData = { first: 'Name', second: 'Email', third: 'subject', fourth: 'Action' }
     if (isLoading) return <MidSpinner />
     return (
         <>
-            {/* <Layout>
-                {teachers?.length < 1 ?
-                    <div className="flex h-[80vh] justify-center items-center text-3xl">
-                        Currently <br /> No Teacher Added</div>
-                    :
-                    <div className="overflow-x-auto w-full">
-                        <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Subject</th>
-                                    <th></th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {teachers?.map(teacher =>
-                                    <tr key={teacher.id}>
-                                        <td>
-                                            <div className="flex items-center space-x-3">
-                                                <div className="avatar">
-                                                    <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={teacher.photoURL} alt="Avatar" />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div className="font-bold">{teacher.name}</div>
-                                                    <div className="text-sm opacity-50">{teacher.roll} ID: {teacher.id}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <br />
-                                            <span className="">{teacher?.email}</span>
-                                        </td>
-                                        <td>
-                                            <br />
-                                            <span className="">{teacher?.department}</span>
-                                        </td>
-                                        <td></td>
-                                        <th>
-                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning btn-xs">Delete</label>
-                                        </th>
-                                    </tr>
-                                )}
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                }
-            </Layout> */}
-
             <Layout>
                 <div className='bg-gray-100 min-h-screen'>
                     <div className='p-4'>
                         <Search
-                            title={'All Teachers'}
-                            value={'Search by NAme'}
+                            title={'Teachers List'}
+                            value={'Search by name'}
                         />
                     </div>
-                    <div className='px-4'>
-                        <div className='w-full m-auto p-4 border rounded-lg bg-white overflow-y-auto'>
-                            <div className='my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-                                <span>Name</span> <span className='hidden md:grid'>Email</span>
-
-                                <span className='hidden md:grid'>Subject</span>
-                                <span className='sm:text-left text-left'>Action</span>
-                            </div>
-                            <ul>
-                                {teachers.map((teacher, id) => (
-                                    <li key={id} className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-                                        <div className="flex items-center space-x-2">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-8 h-8">
-                                                    <img src={teacher?.photoURL} alt="Avatar" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">{teacher?.name}
-                                                </div>
-                                                <div className="text-sm opacity-50">{teacher?.roll} {" "} ID: {teacher?.id}</div>
-                                            </div>
-                                        </div>
-                                        <p className='hidden md:flex'>{teacher?.email}</p>
-                                        <p className='hidden md:flex'>{teacher?.department}</p>
-                                        <div className='flex  items-center justify-between'>
-                                            <label onClick={() => setDeleteTeacher(teacher)} htmlFor="confirmation-modal" className="btn btn-warning  btn-xs text-gray-600  w-20 sm:text-left text-right">Delete</label>
-                                            <BsThreeDotsVertical />
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
+                    <TableTemplate
+                        tableData={tableData}
+                        users={teachers}
+                        handleUser={handleUser}
+                        btnName={'Delete'}
+                        type={true}
+                        action={"delete"}
+                    />
                 </div>
             </Layout>
-            {deleteTeacher
-                &&
-                <ConfirmationModal
-                    title={`Are you sure you want to delete? `}
-                    message={`If you delete teacher, will be permanently deleted! ${deleteTeacher?.name}`}
-                    closeModal={closeModal}
-                    successButtonName="Delete"
-                    successAction={handleTeacherDelete}
-                    modalData={deleteTeacher}
-                ></ConfirmationModal>
-            }
         </>
 
     );

@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import UsersTableTamplete from "../../../components/Shared/UsersTableTamplete/usersTableTamplete";
+import Swal from "sweetalert2";
+import Search from "../../../components/Search/Search";
+import TableTemplate from "../../../components/Shared/TableTemplate/TableTemplate";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
 import AlertMessage from "../../../Hooks/AlertMessage";
 import Layout from "../../../Layout/Layout";
@@ -7,7 +9,6 @@ import Layout from "../../../Layout/Layout";
 
 const index = () => {
     const { successMessage } = AlertMessage();
-    const btnName = "Delete";
     const url = `http://localhost:3100/verified/student`
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['students'],
@@ -18,59 +19,59 @@ const index = () => {
         }
     })
 
-    const handleUser = (user) => {
-        fetch(`http://localhost:3100/users/${user._id}`, {
-            method: 'DELETE'
+    const handleUser = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3100/users/${id}`, {
+                    method: "DELETE"
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                {
+                                    title: 'Deleted!',
+                                    text: 'Your Report has been deleted.',
+                                    icon: 'success',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }
+                            )
+                        }
+                    });
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount) {
-                    refetch();
-                    successMessage("Deleted")
-                }
-            })
     }
+    const tableData = { first: 'Name', second: 'Email', third: 'subject', fourth: 'Action' }
     if (isLoading) return <MidSpinner />
     return (
         <>
             <Layout>
-                {users?.length < 1 ?
-                    <div className="flex h-[80vh] justify-center items-center text-3xl">
-                        Currently <br /> No Student Admited</div>
-                    :
-                    <div className="overflow-x-auto w-full">
-                        <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Depertment</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            {
-                                users?.map(user => <UsersTableTamplete
-                                    id={user._id}
-                                    user={user}
-                                    handleUser={handleUser}
-                                    btnName={btnName}
-                                ></UsersTableTamplete>)
-                            }
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
+                <div className='bg-gray-100 min-h-screen'>
+                    <div className='p-4'>
+                        <Search
+                            title={'Students List'}
+                            value={'Search by name'}
+                        />
                     </div>
-                }
+                    <TableTemplate
+                        tableData={tableData}
+                        users={users}
+                        handleUser={handleUser}
+                        btnName={'Delete'}
+                        type={true}
+                        action={"delete"}
+                    />
+                </div>
             </Layout>
-
-
         </>
     );
 }

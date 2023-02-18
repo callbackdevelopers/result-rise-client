@@ -21,7 +21,6 @@ const StudentReportModal = ({ data, setReportStudent }) => {
             reporterEmail: user.email,
             resolved: false
         }
-
         fetch("http://localhost:3100/report", {
             method: "POST",
             headers: {

@@ -142,45 +142,47 @@ function index() {
   };
 
   if (isLoading) return <MidSpinner />;
-  //multi stage form 
+
   return (
     <div>
       <div>
         <Layout>
-          <div>
-            <Stdentaddmarks
-              handleAddFormChange={handleAddFormChange}
-              handleAddFormSubmit={handleAddFormSubmit}
-              data={students}
-            />
-          </div>
-          <div className="m-4">
-            <label
-              onClick={() => {
-                setStudent(students), setShow(true);
-              }}
-              htmlFor="add_Number_modal"
-              className="btn btn-sm btn-warning"
-            >
-              View Marks
-            </label>
-
-            {show && (
-              <AddNumberModal
-                handleDeleteClick={handleDeleteClick}
+          <div className='bg-gray-100 min-h-screen'>
+            <div className="p-6">
+              <Stdentaddmarks
                 handleAddFormChange={handleAddFormChange}
-                handleCancelClick={handleCancelClick}
-                handleEditClick={handleEditClick}
-                handleEditFormSubmit={handleEditFormSubmit}
-                handleEditFormChange={handleEditFormChange}
-                contacts={contacts}
-                editFormData={editFormData}
-                editContactId={editContactId}
-                student={student}
-                setShow={setShow}
-                showdata={showdata}
+                handleAddFormSubmit={handleAddFormSubmit}
+                data={students}
               />
-            )}
+            </div>
+            <div className="m-4">
+              <label
+                onClick={() => {
+                  setStudent(students), setShow(true);
+                }}
+                htmlFor="add_Number_modal"
+                className="btn btn-sm btn-warning"
+              >
+                View Marks
+              </label>
+
+              {show && (
+                <AddNumberModal
+                  handleDeleteClick={handleDeleteClick}
+                  handleAddFormChange={handleAddFormChange}
+                  handleCancelClick={handleCancelClick}
+                  handleEditClick={handleEditClick}
+                  handleEditFormSubmit={handleEditFormSubmit}
+                  handleEditFormChange={handleEditFormChange}
+                  contacts={contacts}
+                  editFormData={editFormData}
+                  editContactId={editContactId}
+                  student={student}
+                  setShow={setShow}
+                  showdata={showdata}
+                />
+              )}
+            </div>
           </div>
 
 
