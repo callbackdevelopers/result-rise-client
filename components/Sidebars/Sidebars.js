@@ -4,8 +4,14 @@ const Sidebars = () => {
     return (
         <div className="drawer-side">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-            <div className="menu py-4  w-64 bg-base-100 lg:bg-inherit text-base-content">
-                <li><Link href="/dashboard/profile">Profile</Link></li>
+
+            <div className="menu py-6 w-64 bg-base-100 text-base-content">
+                <div className=" items-center justify-center hidden md:flex ">
+                    <a className="font-bold cursor-pointer select-none md:text-3xl text-xl no-animation">
+                        ResultRise
+                    </a>
+                </div>
+                <li className="mt-5"><Link href="/dashboard/profile">Profile</Link></li>
                 <li><Link href="/dashboard/result">Results</Link></li>
                 <li><Link href="/dashboard/students/Report">Report Student</Link></li>
                 <li><Link href="/dashboard/students/pending/reporterdStudent">Pending Reported Students</Link></li>

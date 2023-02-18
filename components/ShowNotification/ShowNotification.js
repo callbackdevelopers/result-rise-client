@@ -1,8 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 
-const ShowNotification = ({ noticeData }) => {
+const ShowNotification = () => {
+
+  const url = `http://localhost:3100/notice`;
+  const {
+    data: noticeData = [], refetch, isLoading, } = useQuery({
+      queryKey: ["noticeData"],
+      queryFn: async () => {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      },
+    });
+
+  refetch();
+
   const route = useRouter();
   return (
     <div className="">

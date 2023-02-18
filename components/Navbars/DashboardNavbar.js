@@ -26,7 +26,7 @@ const DashboardNavbar = () => {
 
   return (
     <div>
-      <div className="navbar container mx-auto sticky top-0 ">
+      <div className="navbar container mx-auto sticky top-0 bg-base-400 ">
         <div className="flex-1">
           <a className="lg:ml-28 normal-case text-xl font-semibold">
             Hello , {user?.displayName}
@@ -61,12 +61,13 @@ const DashboardNavbar = () => {
               {
                 route.pathname === "/dashboard/notification/shownotification"
                   ? undefined :
-                  <label tabIndex={0} className="btn btn-ghost btn-circle">
-                    <div className="indicator">
-                      <GrNotification size="20px" />
-                      <span className="badge badge-sm indicator-item">{noticeData.length}</span>
-                    </div>
-                  </label>}
+
+
+                  <label htmlFor="notification" className="drawer-button btn btn-primary">  <GrNotification size="20px" /></label>
+
+              }
+
+
               <div
                 tabIndex={0}
                 className="mt-8 card card-compact border w-96  dropdown-content bg-base-100 shadow"

@@ -48,7 +48,6 @@ const index = () => {
   return (
     <>
       <Layout>
-
         <div className="h-screen bg-gray-100">
           <div className='grid lg:grid-cols-5 gap-4 p-4'>
             <div className='lg:col-span-2 col-span-1 bg-white flex justify-between w-full border p-4 rounded-lg'>
@@ -102,13 +101,7 @@ const index = () => {
                         <MdOutlineFilePresent className='text-purple-800' />
                       </div>
                       <div className='pl-4'>
-
-                        <div className="w-56">
-
-                          {finaldata.semester}
-
-                        </div>
-
+                        <p className="w-56">{finaldata.semester} </p>
                       </div>
                       <p className='lg:flex md:hidden px-4'>
                         <GrFormNextLink />
