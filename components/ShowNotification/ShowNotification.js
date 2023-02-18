@@ -15,9 +15,7 @@ const ShowNotification = () => {
         return data;
       },
     });
-
   refetch();
-
   const route = useRouter();
   return (
     <div className="">
@@ -50,15 +48,6 @@ const ShowNotification = () => {
               <div className="text-sm opacity-50"><p>{notice.title} </p></div>
             </div>
           </div>
-          // <div className="flex my-2 rounded-lg items-center py-2 hover:bg-[#F2F2F2] ">
-          //   <div className="px-5">
-          //     <img className="rounded-full w-12" src={notice?.photoURL} />
-          //   </div>
-          //   <div>
-          //     <p>{notice.body} </p>
-          //     <small className="font-bold">time ago ago</small>
-          //   </div>
-          // </div>
         ))}
       </div>
     </div>

@@ -27,9 +27,9 @@ function ResultPdfPrint({ semesterResult, isLoading }) {
     }
     return (
         <>
-            <div ref={componendRef} style={{ width: '100%' }}>
+            <div ref={componendRef} style={{ width: '100%' }} className="bg-white">
                 <div className="">
-                    <div className="p-5">
+                    <div className="p-3">
                         <p className=" p-2  text-white bg-primary rounded-xl">
                             {semester} Exam Marks{" "}
                         </p>
@@ -49,10 +49,10 @@ function ResultPdfPrint({ semesterResult, isLoading }) {
                         </div>
                     </div>
                     <div className="overflow-x-auto px-5 ">
-                        <table className=" table w-full mt-6 border ">
+                        <table
+                            className=" table w-full mt-6 shadow border-b">
                             <thead className="text-blue-500">
                                 <tr>
-                                    <th>Sl No</th>
                                     <th>Subject code </th>
                                     <th>Subject Name </th>
                                     <th>Midterm </th>
@@ -65,7 +65,6 @@ function ResultPdfPrint({ semesterResult, isLoading }) {
                                 {exam_results?.map((numberdata, i) =>
                                 (
                                     <tr className="">
-                                        <td>{i + 1}</td>
                                         <td>{numberdata?.subject_code}</td>
                                         <td className="font-semibold">{numberdata?.subject_name}</td>
                                         <td className="font-semibold text-center">{numberdata?.midterm_score}</td>
