@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import StudentReportModal from "../../../components/modals/StudentReportModal/StudentReportModal";
+import Search from "../../../components/Search/Search";
+import TableTemplate from "../../../components/Shared/TableTemplate/TableTemplate";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
 import Layout from "../../../Layout/Layout";
 
@@ -15,10 +16,29 @@ function Report() {
             return data;
         }
     })
+
+    const tableData = { first: 'Name', second: 'Email', third: 'address', fourth: 'Action' }
     if (isLoading) return <MidSpinner />
     return (
         <Layout>
-            <div className="overflow-x-auto w-full">
+            <div className='bg-gray-100 min-h-screen'>
+                <div className='p-4'>
+                    <Search
+                        title={'Report Student'}
+                        value={'Search by name'}
+                    />
+                </div>
+                <TableTemplate
+                    tableData={tableData}
+                    users={students}
+                    btnName={'Report'}
+                    type={true}
+                    action={"report"}
+                />
+            </div>
+
+
+            {/* <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -71,7 +91,7 @@ function Report() {
             {reportStudent && (
                 <StudentReportModal data={reportStudent}></StudentReportModal>
             )}
-            <StudentReportModal />
+            <StudentReportModal /> */}
         </Layout>
     );
 }

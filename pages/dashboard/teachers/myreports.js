@@ -69,51 +69,7 @@ function myreports() {
                     type={false}
                     action={"delete"}
                 />
-                {/* <div className='px-4'>
-                    <div className='w-full m-auto p-4 border rounded-lg bg-white overflow-y-auto'>
-                        <div className='my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-                            <span>Name</span> <span className='hidden md:grid'></span>
 
-                            <span className='hidden md:grid'>Report Info</span>
-                            <span className='sm:text-left text-left'>Action</span>
-                        </div>
-                        <ul>
-                            {myreports.map((report, id) => (
-                                <li key={id} className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-                                    <div className="flex items-center space-x-2">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-8 h-8">
-                                                <img src={report.photoURL} alt="Avatar" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold">{report.name}</div>
-                                            <div className="text-sm opacity-50">{report.roll} ID: {report.id}</div>
-                                        </div>
-                                    </div>
-                                    <p className='hidden md:flex'>{report.department}</p>
-                                    <span className='hidden md:flex'>
-                                        {report?.report.length > 30 ?
-                                            <>{report?.report.slice(0, 20) + ""}
-                                                <label
-                                                    onClick={() => setReportStudent(report)}
-                                                    htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
-                                            </>
-                                            :
-                                            <span>{report?.report}</span>
-                                        }
-                                    </span>
-                                    <div className='flex  items-center justify-between'>
-                                        <label
-                                            onClick={() => heandelDelete(report._id)}
-                                            className="btn btn-warning  btn-xs text-gray-600  w-20 sm:text-left text-right">Delete</label>
-                                        <BsThreeDotsVertical />
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div> */}
             </div>
         </Layout>
     );

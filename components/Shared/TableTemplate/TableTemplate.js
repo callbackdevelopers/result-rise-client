@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import InfoModal from "../../modals/Info/InfoModal";
+import StudentReportModal from "../../modals/StudentReportModal/StudentReportModal";
 
 function TableTemplate({ users, handleUser, btnName, tableData, type, action }) {
     const [reportStudent, setReportStudent] = useState(null);
@@ -48,7 +49,8 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                                     {action === "delete" && <label onClick={() => handleUser(user._id)} htmlFor="confirmation-modal" className="btn btn-warning  btn-xs text-gray-600  w-20 sm:text-left text-right">{btnName}</label>}
                                     {action === "success" &&
                                         <label htmlFor="confirmation-modal" className="btn btn-disabled  btn-xs text-gray-600  w-20 sm:text-left text-right">{btnName}</label>}
-
+                                    {action === "report" &&
+                                        <label onClick={() => setReportStudent(user)} htmlFor="student-report-modal" className="btn btn-warning btn-xs">Report</label>}
                                     <BsThreeDotsVertical />
                                 </div>
                             </li>
@@ -62,6 +64,10 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action }) 
                     report={reportStudent}
                 />
             }
+            {reportStudent && (
+                <StudentReportModal data={reportStudent}></StudentReportModal>
+            )}
+            <StudentReportModal />
         </div>
 
     );
