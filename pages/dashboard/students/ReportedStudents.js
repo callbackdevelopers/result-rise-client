@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Search from "../../../components/Search/Search";
+import TableTemplate from "../../../components/Shared/TableTemplate/TableTemplate";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
 import Layout from "../../../Layout/Layout";
 
@@ -23,17 +24,32 @@ function ReportedStudents() {
             setSearchData(reports)
         }
     }, [search, reports]);
+
+    const tableData = { first: 'Name', second: 'Email', third: 'Report Info', fourth: 'Action' }
     if (isLoading) return <MidSpinner />
     return (
         <>
             <Layout>
-                <Search
-                    setSearch={setSearch}
-                    setSearchData={setSearchData}
-                    title={"Find Reported Student"}
-                    value={"Reported Student"}
-                ></Search>
-                <div className="overflow-x-auto w-full">
+                <div className='bg-gray-100 min-h-screen'>
+                    <div className='p-4'>
+                        <Search
+                            setSearch={setSearch}
+                            setSearchData={setSearchData}
+                            title={"Find Reported Student"}
+                            value={"Reported Student"}
+                        ></Search>
+                    </div>
+                    <TableTemplate
+                        tableData={tableData}
+                        users={reports}
+                        btnName={'success'}
+                        type={false}
+                        action={"success"}
+                    />
+
+                </div>
+
+                {/* <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                         <thead>
                             <tr>
@@ -83,7 +99,7 @@ function ReportedStudents() {
                             </tr>
                         </tfoot>
                     </table>
-                </div>
+                </div> */}
             </Layout>
         </>
     );

@@ -69,6 +69,8 @@ const index = () => {
                     </div>
                 }
             </Layout>
+
+
         </>
     );
 }

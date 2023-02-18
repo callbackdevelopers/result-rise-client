@@ -23,10 +23,6 @@ const Layout = ({ children }) => {
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
                 <Sidebars />
             </div>

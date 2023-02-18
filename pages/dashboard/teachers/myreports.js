@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { BsThreeDotsVertical } from 'react-icons/bs';
 import Swal from "sweetalert2";
-import InfoModal from "../../../components/modals/Info/InfoModal";
 import Search from "../../../components/Search/Search";
+import TableTemplate from "../../../components/Shared/TableTemplate/TableTemplate";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
 import { useFirebase } from "../../../context/UserContext";
 import AlertMessage from "../../../Hooks/AlertMessage";
@@ -12,7 +10,6 @@ import Layout from "../../../Layout/Layout";
 function myreports() {
     const { user } = useFirebase();
     const { successMessage, deleteMessage } = AlertMessage();
-    const [reportStudent, setReportStudent] = useState(null);
     const { data: myreports = [], refetch, isLoading } = useQuery({
         queryKey: ['myreports', user.email],
         queryFn: async () => {
@@ -21,7 +18,7 @@ function myreports() {
             return data;
         }
     })
-    const heandelDelete = (id) => {
+    const handleUser = (id) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -52,6 +49,7 @@ function myreports() {
             }
         })
     }
+    const tableData = { first: 'Name', second: 'Email', third: 'Report Info', fourth: 'Action' }
     if (isLoading || !user) return <MidSpinner />
     refetch();
     return (
@@ -63,10 +61,18 @@ function myreports() {
                         value={'Search by name'}
                     />
                 </div>
-                <div className='px-4'>
+                <TableTemplate
+                    tableData={tableData}
+                    users={myreports}
+                    handleUser={handleUser}
+                    btnName={'Delete'}
+                    type={false}
+                    action={"delete"}
+                />
+                {/* <div className='px-4'>
                     <div className='w-full m-auto p-4 border rounded-lg bg-white overflow-y-auto'>
                         <div className='my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-                            <span>Name</span> <span className='hidden md:grid'>Depertment</span>
+                            <span>Name</span> <span className='hidden md:grid'></span>
 
                             <span className='hidden md:grid'>Report Info</span>
                             <span className='sm:text-left text-left'>Action</span>
@@ -107,14 +113,8 @@ function myreports() {
                             ))}
                         </ul>
                     </div>
-                </div>
+                </div> */}
             </div>
-
-            {reportStudent &&
-                <InfoModal
-                    report={reportStudent}
-                />
-            }
         </Layout>
     );
 }

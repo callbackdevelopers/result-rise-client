@@ -36,8 +36,8 @@ const ShowNotification = () => {
       <div>
       </div>
       <div className="mt-5">
-        {noticeData?.map((notice) => (
-          <div className="flex items-center pl-4 space-x-3 w-full">
+        {noticeData?.map((notice, i) => (
+          <div className="flex items-center pl-4 space-x-3 w-full" key={i}>
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12 my-2">
                 <img className="rounded-full w-12" src={notice?.photoURL} />
