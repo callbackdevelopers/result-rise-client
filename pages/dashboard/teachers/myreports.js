@@ -85,12 +85,10 @@ function myreports() {
                                             <div className="text-sm opacity-50">{report.roll} ID: {report.id}</div>
                                         </div>
                                     </div>
-
-
                                     <p className='hidden md:flex'>{report.department}</p>
-                                    <span>
+                                    <span className='hidden md:flex'>
                                         {report?.report.length > 30 ?
-                                            <>{report?.report.slice(0, 25) + ""}
+                                            <>{report?.report.slice(0, 20) + ""}
                                                 <label
                                                     onClick={() => setReportStudent(report)}
                                                     htmlFor="infomodal" className="font-semibold cursor-pointer">...</label>
@@ -99,7 +97,6 @@ function myreports() {
                                             <span>{report?.report}</span>
                                         }
                                     </span>
-
                                     <div className='flex  items-center justify-between'>
                                         <label
                                             onClick={() => heandelDelete(report._id)}
