@@ -37,13 +37,13 @@ export default function Home() {
         );
     return (
         <div className="bg-gray-900 ">
-            <div className="md:mx-6 trn sticky top-0 z-50 ">
+            <div className=" trn sticky top-0 z-50 ">
                 <Navbar></Navbar>
             </div>
-            <div className={` ${scrollPosition > 300 ? "bg-blue-500 " : ""} trn bp-10 h-auto py-10 duration-700`}>
+            <div className={` ${scrollPosition > 500 ? "bg-blue-500 " : ""} trn bp-10 h-auto py-10 duration-700`}>
                 <HeroSection></HeroSection>
             </div>
-            <div className={` ${scrollPosition > 300 && scrollPosition < 2300 ? "bg-blue-500" : "bg-[#02132b]"} trn  pb-20 h-auto py-10 duration-700`}>
+            <div className={` ${scrollPosition > 500 && scrollPosition < 2300 ? "bg-blue-500" : "bg-[#02132b]"} trn  pb-20 h-auto py-10 duration-700`}>
                 <div className='mt-10'>
                     <h1 className="text-6xl text-center pb-10  font-bold text-purple-50 ">The Factors  <br />
                         Of  Result Rise_</h1>
