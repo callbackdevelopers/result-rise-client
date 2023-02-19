@@ -84,7 +84,6 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action, re
                             </li>
                         ))}
                     </ul>
-
                     <ReactPaginate
                         breakLabel="..."
                         onPageChange={handlePageClick}
@@ -99,8 +98,6 @@ function TableTemplate({ users, handleUser, btnName, tableData, type, action, re
                         activeClassName="active"
                         nextLinkClassName="page-link"
                     />
-
-
                 </div>
             </div>
             {reportStudent && <InfoModal report={reportStudent} />}

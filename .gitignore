@@ -13,7 +13,7 @@ cache
 # testing
 /coverage
 text
-
+test
 # next.js
 /.next/
 /out/

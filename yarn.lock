@@ -4515,22 +4515,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-react@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "lottie-react@npm:2.3.1"
+"lottie-react@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "lottie-react@npm:2.4.0"
   dependencies:
-    lottie-web: ^5.9.4
+    lottie-web: ^5.10.2
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 3f83511eec9ef80c6500658fcb188f757c663c5de49de5cfd55d061d5de72b9242fd0a3b7ec7ce84bbad5acbcd7293468228a0f6cbe28e50e4c44e5b25df1c8d
+  checksum: e9ea4a89be90a29bde4a83956f76a80d1f8031882f18ea38ef5271d2aafd8e68348ae6297f185ed85b149ca4896fe33aee7faf9780b88a1b289b8e146f477448
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.9.4":
-  version: 5.10.1
-  resolution: "lottie-web@npm:5.10.1"
-  checksum: 5da7d0804b4b895d795e3eb299e45a0dfd1c7a5268784668ff72965d4c6e0806e0b60984fade74dd681909cc325d45b13d4a8e24c96e73472a00646e16b628b4
+"lottie-web@npm:^5.10.2":
+  version: 5.10.2
+  resolution: "lottie-web@npm:5.10.2"
+  checksum: 9ec80b479d8d03c079bd4f246d301f0c4aac2c4d6f8daaa79f6f3fc285aaba377c64879f6748d49c1db52b9854aea81c3203d858e9c686f7a47cd8b771d112d0
   languageName: node
   linkType: hard
 
@@ -5810,7 +5810,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.3.0
     firebase: ^9.15.0
     jspdf: ^2.5.1
-    lottie-react: ^2.3.1
+    lottie-react: ^2.4.0
     next: 13.1.1
     postcss: ^8.4.21
     prettier: ^2.8.2

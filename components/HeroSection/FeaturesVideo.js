@@ -5,7 +5,7 @@ import ButtonUp from '../Shared/Buttons/SecondaryButton';
 const FeaturesVideo = () => {
     return (
 
-        <div className="bg-white py-10">
+        <div className=" py-10">
 
             <div className="my-10 md:mx-20 mx-10  " >
                 <h1 className="md:text-6xl text-2xl my-5 md:my-10">Explore System Features</h1>

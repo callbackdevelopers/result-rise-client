@@ -155,7 +155,7 @@ const register = () => {
     //student table data
     const semisterStudent =
     {
-        name: "semister", type: "file", placeholder: "Photo", error: errors.photo,
+        name: "semester", type: "file", placeholder: "Photo", error: errors.photo,
         options: [{ value: "1st" }, { value: "2nd" }, { value: "3rd" }, { value: "4th" },
         { value: "5th" }, { value: "6th" }, { value: "7th" }, { value: "8th" }]
     }

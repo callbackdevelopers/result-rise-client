@@ -1,7 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html,
+body {
+  font-family: "Space Grotesk";
+}
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -23,4 +39,7 @@
 }
 .pagination .active {
   background-color: #e2e8f0;
+}
+.trn {
+  transition: background-color 0.4s ease-in-out;
 }
