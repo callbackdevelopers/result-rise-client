@@ -16,7 +16,6 @@ const ShowNotification = () => {
       },
     });
   refetch();
-
   return (
     <div className="bg-white max-w-xl h-screen overflow-scroll mx-auto">
       <div className="flex justify-between items-center px-3">

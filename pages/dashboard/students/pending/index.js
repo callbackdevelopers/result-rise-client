@@ -8,7 +8,7 @@ import Layout from "../../../../Layout/Layout"
 
 const index = () => {
     const { successMessage } = AlertMessage();
-    const url = `https://resultrise-server.vercel.app/pending/student`
+    const url = `http://localhost:3100/pending/student`
     const { data: pendingStudent = [], refetch, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
@@ -18,7 +18,7 @@ const index = () => {
         }
     })
     const handleUser = (id) => {
-        fetch(`https://resultrise-server.vercel.app/users/${id}`, {
+        fetch(`http://localhost:3100/users/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -5372,7 +5372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.0, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15, prop-types@npm:^15.5.0, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -5546,6 +5546,17 @@ __metadata:
   peerDependencies:
     react: ^0.14.0 || ^15.0.0-0 || ^16.0.0-0
   checksum: 851ba1daa4dbe749df7ca28bcbaf9154dbb609835e1a1a2eb3253fbed581e0cb42ba85d95e9d621159e820b408311249570bc3ce8a2d2980366dd5e726c085ca
+  languageName: node
+  linkType: hard
+
+"react-paginate@npm:^8.1.4":
+  version: 8.1.4
+  resolution: "react-paginate@npm:8.1.4"
+  dependencies:
+    prop-types: ^15
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+  checksum: 0e733ca70a828b4f5bcb955fa1d175b74f8f22d8c1dd9b733255e1d263b2cb88316df9398ad0723ff02dca162b374ef48bed3993cb65a0f4e11333a1a0ca191e
   languageName: node
   linkType: hard
 
@@ -5811,6 +5822,7 @@ __metadata:
     react-icons: ^4.7.1
     react-images-viewer: ^1.7.1
     react-messenger-customer-chat: ^0.8.0
+    react-paginate: ^8.1.4
     react-query: ^3.39.2
     react-spinners: ^0.13.7
     react-tabs: ^6.0.0
