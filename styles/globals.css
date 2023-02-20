@@ -43,3 +43,59 @@ a {
 .trn {
   transition: background-color 0.4s ease-in-out;
 }
+
+.animation,
+.animation_layer {
+  height: 1000px;
+}
+
+.animation {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+
+.animation_layer {
+  background-position: bottom center;
+  background-size: auto 1038px;
+  background-repeat: repeat-x;
+  width: 100%;
+  position: absolute;
+}
+.animation_layer.parallax {
+  position: fixed;
+}
+#artback {
+  background-image: url(/images/background.png);
+}
+#mountain {
+  background-image: url(/images/mountains.png);
+}
+
+#logoland {
+  background-image: url(/images/logo_land.png);
+}
+
+#jungle1 {
+  background-image: url(/images/jungle1.png);
+}
+
+#jungle2 {
+  background-image: url(/images/jungle2.png);
+}
+
+#jungle3 {
+  background-image: url(/images/jungle3.png);
+}
+
+#jungle4 {
+  background-image: url(/images/jungle4.png);
+}
+
+#jungle5 {
+  background-image: url(../public/images/jungle5.png);
+}
+
+#manonmountain {
+  background-image: url(../public/images/man_on_mountain.png);
+}

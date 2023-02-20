@@ -57,7 +57,7 @@ const HeroSection = () => {
                                 </div>}
                             </div>
                         </div>
-                        <div className='flex justify-end  lg:w-5/6  '>
+                        <div className=' hidden md:flex justify-end  lg:w-5/6  '>
                             <img src="/heroImage.svg" alt="hero iamge " className='h-96 w-96 md:h-[520px] md:w-auto' />
                         </div>
                     </div>
