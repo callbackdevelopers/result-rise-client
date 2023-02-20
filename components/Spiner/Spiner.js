@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScaleLoader } from 'react-spinners';
 
-const Spiner = ({ color, height }) => {
+const Spinier = ({ color, height }) => {
     return (
         <ScaleLoader color={color}
             height={height}
@@ -11,4 +11,4 @@ const Spiner = ({ color, height }) => {
     );
 };
 
-export default Spiner;
+export default Spinier;
