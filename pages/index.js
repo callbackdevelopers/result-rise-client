@@ -27,16 +27,16 @@ export default function Home() {
 
     setTimeout(() => {
         setTimeOutLoading(true);
-    }, 500);
+    }, 1200);
 
     if (loading) return <div className="flex justify-center items-center h-screen ">
-        <h1 className="text-6xl font-bold "><Spinier /></h1>
+        <Spinier />
     </div>
     return (
-        <div className="bg-gray-900 ">
+        <div className={`bg-gray-900`}>
             {timeOutLoading &&
                 <div className=" trn sticky top-0 z-50 ">
-                    <Navbar></Navbar>
+                    <Navbar scrollPosition={scrollPosition}></Navbar>
                 </div>}
             <ParallaX />
             {

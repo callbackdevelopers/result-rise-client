@@ -5,7 +5,7 @@ import AlertMessage from "../../Hooks/AlertMessage";
 import BodyTamplate from "../Shared/BodyTamplate";
 import ButtonUp from "../Shared/Buttons/SecondaryButton";
 
-const Navbar = () => {
+const Navbar = ({ scrollPosition }) => {
     const { successMessage } = AlertMessage();
     const { user, logout } = useFirebase();
     const heandelLogout = () => {
@@ -13,6 +13,14 @@ const Navbar = () => {
             successMessage("logout success");
         });
     };
+    let bg;
+    if (scrollPosition < 500) {
+        bg = "bg-[#02132b]";
+    } else if (scrollPosition > 530 && scrollPosition < 2300) {
+        bg = "bg-blue-500";
+    } else {
+        bg = "bg-[#02132b]"
+    }
     const menuItems = (
         <>
             <li><Link href="/">Home</Link></li>
@@ -22,7 +30,7 @@ const Navbar = () => {
         </>
     );
     return (
-        <div className="shadow-md ">
+        <div className={`shadow-md ${bg} opacity-90 `}>
             <BodyTamplate>
                 <div className="navbar  text-white pt-5 ">
                     <div className="navbar-start">
