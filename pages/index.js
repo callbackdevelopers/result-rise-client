@@ -9,7 +9,6 @@ import ParallaX from "../components/Parallax/Parallax";
 import Spinier from "../components/Spiner/Spiner";
 import { useFirebase } from "../context/UserContext";
 
-
 export default function Home() {
     const { loading } = useFirebase();
     const [timeOutLoading, setTimeOutLoading] = useState(false);
@@ -23,7 +22,7 @@ export default function Home() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [scrollPosition]);
 
     setTimeout(() => {
         setTimeOutLoading(true);
@@ -34,30 +33,27 @@ export default function Home() {
     </div>
     return (
         <div className={`bg-gray-900`}>
-            {timeOutLoading &&
-                <div className=" trn sticky top-0 z-50 ">
-                    <Navbar scrollPosition={scrollPosition}></Navbar>
-                </div>}
+            <div className=" trn sticky top-0 z-50 ">
+                <Navbar scrollPosition={scrollPosition}></Navbar>
+            </div>
             <ParallaX />
-            {
-                timeOutLoading &&
-                <>
-                    <div className={` ${scrollPosition > 500 ? "bg-blue-500 " : ""} trn bp-10 h-auto py-10 duration-700`}>
-                        <HeroSection></HeroSection>
+            <>
+                <div className={` ${scrollPosition > 500 ? "bg-[#4650e5]" : ""} trn bp-10 h-auto py-10 duration-700`}>
+                    <HeroSection></HeroSection>
+                </div>
+                <div className={` ${scrollPosition > 500 && scrollPosition < 2300 ? "bg-[#4650e5]" : "bg-[#02132b]"} trn  pb-10 h-auto py-10 duration-700`}>
+                    <div className='mt-10'>
+                        <h1 className="text-6xl text-center pb-5  font-bold text-purple-50 ">Some Best Features
+                            Of
+                            <br /> Result Rise_</h1>
+                        <Cards />
                     </div>
-                    <div className={` ${scrollPosition > 500 && scrollPosition < 2300 ? "bg-blue-500" : "bg-[#02132b]"} trn  pb-20 h-auto py-10 duration-700`}>
-                        <div className='mt-10'>
-                            <h1 className="text-6xl text-center pb-10  font-bold text-purple-50 ">The Factors  <br />
-                                Of  Result Rise_</h1>
-                            <Cards />
-                        </div>
-                    </div>
-                    <div className={` ${scrollPosition < 2300 ? "bg-blue-500" : "bg-[#02132b]"}   bp-10 h-auto py-10 trn`}>
-                        <ContactForm />
-                    </div>
-                    <Footer />
-                </>
-            }
+                </div>
+                <div className={` ${scrollPosition < 2300 ? "bg-[#4650e5]" : "bg-[#02132b]"}   bp-10 h-auto py-10 trn`}>
+                    <ContactForm />
+                </div>
+                <Footer />
+            </>
             <MessengerCustomerChat
                 pageId="111854754052829"
                 appId="527602612817067"

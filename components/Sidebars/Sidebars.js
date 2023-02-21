@@ -7,9 +7,9 @@ const Sidebars = () => {
 
             <div className="menu py-6 w-64 bg-base-100 lg:bg-inherit text-base-content">
                 <div className=" items-center justify-center hidden md:flex ">
-                    <a className="font-bold cursor-pointer select-none md:text-3xl text-xl no-animation">
+                    <Link href={'/'} className="font-bold cursor-pointer select-none md:text-3xl text-xl no-animation">
                         ResultRise
-                    </a>
+                    </Link>
                 </div>
                 <li className="mt-5"><Link href="/dashboard/profile">Profile</Link></li>
                 <li><Link href="/dashboard/result">Results</Link></li>

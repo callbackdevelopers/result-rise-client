@@ -1,63 +1,51 @@
 import React from "react";
-import lottie2 from "../../public/Lottie/contact-mail.json";
-import lottie5 from "../../public/Lottie/lottie2.json";
-import lottie1 from "../../public/Lottie/shopping-cart.json";
-import lottie4 from "../../public/Lottie/website-design.json";
+import data from "../../public/Lottie/data.json";
+import lottie2 from "../../public/Lottie/lottie2.json";
+import mutD from "../../public/Lottie/mutD.json";
+import per from "../../public/Lottie/per.json";
 import Card from "./Card";
+
 
 const cardsData = [
     {
         id: 1,
-        title: "Is it safe to make a purchase on your website ?",
-        body: "Yes, it is safe to make a purchase on our website. We use secure payment gateways to process all transactions and protect your personal information.",
-        img: lottie1,
-        bg: "bg-yellow-400",
-        end: true,
+        fs: "Personalization",
+        title: "What is Personalization ?",
+        body: " Personalization is becoming increasingly important for modern result-generating websites. The ability to personalize search results, ",
+        img: per,
+        bg: "bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400",
     },
     {
         id: 2,
-        title: "Do you offer international shipping?",
-        body: "Yes, we offer international shipping to select countries. Please contact us for more information on shipping options and costs.",
-        title: "Do you offer international shipping?",
-        body: "Yes, we offer international shipping to select countries. Please contact us for more information on shipping options and costs.",
-        img: lottie2,
-        bg: "bg-green-400",
+        fs: "Real-time data processing",
+        title: "Why Real-time data processing need?",
+        body: "The ability to process and generate results in real-time, providing users with up-to-date information as soon as it becomes available.",
+        img: data,
+        bg: "bg-gradient-to-r from-yellow-100 via-yellow-300 to-yellow-500",
     },
     {
         id: 3,
-        title: "Do you offer international shipping?",
-        body: "Yes, we offer international shipping to select countries. Please contact us for more information on shipping options and costs.",
-        title: "Do you offer international shipping?",
-        body: "Yes, we offer international shipping to select countries. Please contact us for more information on shipping options and costs.",
-        img: lottie2,
-        bg: "bg-blue-400",
-    },
-    {
-        id: 4,
-        title: "What is your return policy?",
-        body: "We have a 30-day return policy for all books. If you are not satisfied with your purchase, you may return the book within 30 days for a full refund.",
-        title: "What is your return policy?",
-        body: "We have a 30-day return policy for all books. If you are not satisfied with your purchase, you may return the book within 30 days for a full refund.",
-        img: lottie4,
-        bg: "bg-red-400",
+        fs: "Multi-device compatibility",
+        title: "Multi-device compatibility ?",
+        body: "The website should be optimized for various devices, such as laptops, tablets, and smartphones, to make it accessible for students at all times",
+        img: mutD,
+        bg: "bg-gradient-to-r from-green-200 to-green-500",
     },
     {
         id: 5,
-        title: "Who do I contact if I have more questions?",
-        body: "If you have any questions or concerns, Our team is available to assist you during business hours.",
-        title: "Who do I contact if I have more questions?",
-        body: "If you have any questions or concerns, Our team is available to assist you during business hours.",
-        img: lottie5,
-        bg: "bg-purple-400",
+        fs: "Get Results",
+        title: "Result Management System",
+        body: "Student, Subject, Teacher, Semester, Result and Class from this project. The main objective to develop Result Management System",
+
+        img: lottie2,
+        bg: "bg-gradient-to-r from-rose-300 to-rose-500",
 
     },
 ];
-
-
 const Cards = () => {
     return (
         <div className="mt-10">
-            <div className="space-y-10  px-5 md:px-0 md:w-[800px]  lg:w-[1000px] mx-auto  ">
+            <div className="space-y-10  px-5 md:px-0 md:w-[800px]  lg:w-[1000px] mx-auto">
                 {cardsData.map((card, index) => (
                     <Card
                         key={card.id} data={card}>

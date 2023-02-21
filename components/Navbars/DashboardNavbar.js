@@ -55,7 +55,6 @@ const DashboardNavbar = () => {
               </svg>
             </label>
           </div>
-
           <div className="flex-none">
             <div className="dropdown dropdown-end flex">
               {

@@ -17,7 +17,7 @@ const Navbar = ({ scrollPosition }) => {
     if (scrollPosition < 500) {
         bg = "bg-[#02132b]";
     } else if (scrollPosition > 530 && scrollPosition < 2300) {
-        bg = "bg-blue-500";
+        bg = "bg-[#4650e5]";
     } else {
         bg = "bg-[#02132b]"
     }
@@ -61,9 +61,9 @@ const Navbar = ({ scrollPosition }) => {
                                 {menuItems}
                             </ul>
                         </div>
-                        <a className="font-bold cursor-pointer select-none md:text-4xl text-xl no-animation">
+                        <Link href={'/'} className="font-bold cursor-pointer select-none md:text-3xl text-xl no-animation">
                             ResultRise
-                        </a>
+                        </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 ">
