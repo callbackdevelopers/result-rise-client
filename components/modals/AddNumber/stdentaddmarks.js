@@ -1,14 +1,8 @@
-
-
-
-const Stdentaddmarks = ({ data,handleAddFormSubmit,handleAddFormChange }) => {
-
-
-  
+const Stdentaddmarks = ({ data, handleAddFormSubmit, handleAddFormChange }) => {
   return (
     <section>
       {/* add marks section */}
-      <div className="border">
+      <div className="border bg-white ">
         <ul className="flex  justify-between gap-2 border bg-gray-200 lg:p-2 lg:text-lg text-[8px]">
           <li> SL </li>
           <li> Name </li>
@@ -18,13 +12,13 @@ const Stdentaddmarks = ({ data,handleAddFormSubmit,handleAddFormChange }) => {
           <li> Final Marks </li>
           <li> Status </li>
         </ul>
-
         <div>
           {data?.map((examResult, inx) => (
             <>
               <form
-              onSubmit={handleAddFormSubmit}
-               className=" form-control grid grid-cols-7 lg:gap-4 md:gap-3 gap-1 items-center my-2">
+                onSubmit={handleAddFormSubmit}
+                key={examResult._id}
+                className=" form-control grid grid-cols-7 lg:gap-4 md:gap-3 gap-1 items-center my-2">
                 <span className="mx-2  w-10">{inx}</span>
                 <label className=" lg:mr-4 lg:ml-[-50px] md:ml-[-50px] ml-[-25px]">
                   {examResult.name}
@@ -36,7 +30,6 @@ const Stdentaddmarks = ({ data,handleAddFormSubmit,handleAddFormChange }) => {
                   name="presentation_score"
                   onChange={handleAddFormChange}
                 ></input>
-
                 <input
                   type="number"
                   className="input input-bordered w-full max-w-xs"
@@ -44,7 +37,6 @@ const Stdentaddmarks = ({ data,handleAddFormSubmit,handleAddFormChange }) => {
                   name="midterm_score"
                   onChange={handleAddFormChange}
                 ></input>
-
                 <input
                   type="number"
                   className="input input-bordered w-full max-w-xs"
@@ -52,7 +44,6 @@ const Stdentaddmarks = ({ data,handleAddFormSubmit,handleAddFormChange }) => {
                   name="final_exam_score"
                   onChange={handleAddFormChange}
                 ></input>
-
                 <input
                   type="number"
                   className="input input-bordered w-full max-w-xs"
@@ -60,7 +51,6 @@ const Stdentaddmarks = ({ data,handleAddFormSubmit,handleAddFormChange }) => {
                   name="viva_score"
                   onChange={handleAddFormChange}
                 ></input>
-
                 <button className="mx-2 btn btn-xs " type="submit">
                   Add
                 </button>

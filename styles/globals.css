@@ -7,8 +7,8 @@ body {
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 * {
   box-sizing: border-box;
@@ -17,4 +17,127 @@ a {
   color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0px;
+  font-size: 1.1rem;
+  gap: 5px;
+  border-radius: 10px;
+  background-color: #f7fafc;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.pagination .page-link {
+  padding: 8px 14px;
+  border-radius: 5px;
+}
+.pagination .page-link:hover {
+  background-color: #e2e8f0;
+}
+.pagination .active {
+  background-color: #e2e8f0;
+}
+.trn {
+  transition: background-color 0.4s ease-in-out;
+}
+
+.animation,
+.animation_layer {
+  height: 1000px;
+}
+
+.animation {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+
+.animation_layer {
+  background-position: bottom center;
+  background-size: auto 1038px;
+  background-repeat: repeat-x;
+  width: 100%;
+  position: absolute;
+}
+.animation_layer.parallax {
+  position: fixed;
+}
+#artback {
+  background-image: url(/images/background.png);
+}
+#mountain {
+  background-image: url(/images/mountains.png);
+}
+
+#logoland {
+  background-image: url(/images/logo_land.png);
+}
+
+#jungle1 {
+  background-image: url(/images/jungle1.png);
+}
+
+#jungle2 {
+  background-image: url(/images/jungle2.png);
+}
+
+#jungle3 {
+  background-image: url(/images/jungle3.png);
+}
+
+#jungle4 {
+  background-image: url(/images/jungle4.png);
+}
+
+#jungle5 {
+  background-image: url(../public/images/jungle5.png);
+}
+
+#manonmountain {
+  background-image: url(../public/images/man_on_mountain.png);
+}
+#textblock {
+  background-color: black;
+  height: 100vh;
+}
+
+#textblock-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+#textblock-title {
+  color: #ffaf1b;
+  font-size: 35px;
+  font-weight: 600;
+  font-family: "Helvetica Neue";
+}
+
+#textblock-content {
+  color: #ffaf1b;
+  font-size: 20px;
+}
+
+#textblock-footer {
+  color: #ffaf1b;
+  font-size: 15px;
+  font-weight: 400;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#textblock-devsense {
+  text-decoration: none;
+  color: #ffaf1b;
+  font-size: 15px;
+  font-weight: 600;
 }

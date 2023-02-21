@@ -1,7 +1,7 @@
 import { useFirebase } from "../../../context/UserContext";
 import AlertMessage from "../../../Hooks/AlertMessage";
 
-const StudentReportModal = ({ data }) => {
+const StudentReportModal = ({ data, setReportStudent }) => {
     const { user } = useFirebase();
     const { successMessage, errorMessage } = AlertMessage();
     const handleAddStudentReport = (event) => {
@@ -21,7 +21,6 @@ const StudentReportModal = ({ data }) => {
             reporterEmail: user.email,
             resolved: false
         }
-
         fetch("http://localhost:3100/report", {
             method: "POST",
             headers: {
@@ -34,10 +33,9 @@ const StudentReportModal = ({ data }) => {
                 if (data.acknowledged) {
                     successMessage("Your report has been submitted successfully");
                     form.reset();
+                    setReportStudent(null)
                 }
-                else {
-                    errorMessage(data.error)
-                }
+                else { errorMessage(data.error) }
             })
     };
     return (

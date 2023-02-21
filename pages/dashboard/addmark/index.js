@@ -1,17 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import AddNumberModal from "../../../components/modals/AddNumber/AddNumberModal";
-import MidSpinner from "../../../components/Spiner/MidSpinner";
-import { useFirebase } from "../../../context/UserContext";
-import Layout from "../../../Layout/Layout";
 import { nanoid } from "nanoid";
-import Data from "../../../public/mock-data.json";
+import { useState } from "react";
+import AddNumberModal from "../../../components/modals/AddNumber/AddNumberModal";
 import Stdentaddmarks from "../../../components/modals/AddNumber/stdentaddmarks";
+import MidSpinner from "../../../components/Spiner/MidSpinner";
+import Layout from "../../../Layout/Layout";
+import Data from "../../../public/mock-data.json";
 
 function index() {
   const [show, setShow] = useState(false);
   const [student, setStudent] = useState([]);
-  const [ showdata, setShowdata] = useState('')
+  const [showdata, setShowdata] = useState('')
   const url = `http://localhost:3100/verified/student`;
   const {
     data: students = [],
@@ -48,7 +47,7 @@ function index() {
     event.preventDefault();
     const name = event.target.name;
     const value = event.target.value;
-  
+
     setShowdata((prevData) => ({
       ...prevData,
       [name]: value,
@@ -143,48 +142,50 @@ function index() {
   };
 
   if (isLoading) return <MidSpinner />;
-//multi stage form 
+
   return (
     <div>
       <div>
         <Layout>
-          <div>
-            <Stdentaddmarks
-              handleAddFormChange={handleAddFormChange}
-              handleAddFormSubmit={handleAddFormSubmit}
-              data={students}
-            />
-          </div>
-          <div className="m-4">
-            <label
-              onClick={() => {
-                setStudent(students), setShow(true);
-              }}
-              htmlFor="add_Number_modal"
-              className="btn btn-sm btn-warning"
-            >
-              View Marks
-            </label>
-
-            {show && (
-              <AddNumberModal
-                handleDeleteClick={handleDeleteClick}
+          <div className='bg-gray-100 min-h-screen'>
+            <div className="p-6">
+              <Stdentaddmarks
                 handleAddFormChange={handleAddFormChange}
-                handleCancelClick={handleCancelClick}
-                handleEditClick={handleEditClick}
-                handleEditFormSubmit={handleEditFormSubmit}
-                handleEditFormChange={handleEditFormChange}
-                contacts={contacts}
-                editFormData={editFormData}
-                editContactId={editContactId}
-                student={student}
-                setShow={setShow}
-                showdata={showdata}
+                handleAddFormSubmit={handleAddFormSubmit}
+                data={students}
               />
-            )}
+            </div>
+            <div className="m-4">
+              <label
+                onClick={() => {
+                  setStudent(students), setShow(true);
+                }}
+                htmlFor="add_Number_modal"
+                className="btn btn-sm btn-warning"
+              >
+                View Marks
+              </label>
+
+              {show && (
+                <AddNumberModal
+                  handleDeleteClick={handleDeleteClick}
+                  handleAddFormChange={handleAddFormChange}
+                  handleCancelClick={handleCancelClick}
+                  handleEditClick={handleEditClick}
+                  handleEditFormSubmit={handleEditFormSubmit}
+                  handleEditFormChange={handleEditFormChange}
+                  contacts={contacts}
+                  editFormData={editFormData}
+                  editContactId={editContactId}
+                  student={student}
+                  setShow={setShow}
+                  showdata={showdata}
+                />
+              )}
+            </div>
           </div>
 
-    
+
         </Layout>
       </div>
     </div>

@@ -5,7 +5,7 @@ import AlertMessage from "../../Hooks/AlertMessage";
 import BodyTamplate from "../Shared/BodyTamplate";
 import ButtonUp from "../Shared/Buttons/SecondaryButton";
 
-const Navbar = () => {
+const Navbar = ({ scrollPosition }) => {
     const { successMessage } = AlertMessage();
     const { user, logout } = useFirebase();
     const heandelLogout = () => {
@@ -13,6 +13,14 @@ const Navbar = () => {
             successMessage("logout success");
         });
     };
+    let bg;
+    if (scrollPosition < 500) {
+        bg = "bg-[#02132b]";
+    } else if (scrollPosition > 530 && scrollPosition < 2300) {
+        bg = "bg-[#4650e5]";
+    } else {
+        bg = "bg-[#02132b]"
+    }
     const menuItems = (
         <>
             <li><Link href="/">Home</Link></li>
@@ -22,10 +30,10 @@ const Navbar = () => {
         </>
     );
     return (
-        <div className="shadow-md bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
+        <div className={`shadow-md ${bg} opacity-90 `}>
             <BodyTamplate>
                 <div className="navbar  text-white pt-5 ">
-                    <div className="navbar-start ">
+                    <div className="navbar-start">
                         <div className="dropdown">
                             <label
                                 tabIndex={0}
@@ -53,9 +61,9 @@ const Navbar = () => {
                                 {menuItems}
                             </ul>
                         </div>
-                        <a className="font-bold cursor-pointer select-none md:text-4xl text-xl no-animation">
+                        <Link href={'/'} className="font-bold cursor-pointer select-none md:text-3xl text-xl no-animation">
                             ResultRise
-                        </a>
+                        </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 ">

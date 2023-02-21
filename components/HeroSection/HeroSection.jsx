@@ -12,7 +12,7 @@ const HeroSection = () => {
         <div>
             <Head><title>Home - ResultRise</title></Head>
             <BodyTamplate>
-                <div className="hero min-h-[calc(100vh_-_70px)] text-white ">
+                <div className="hero h-screen text-white ">
                     <div className="md:px-0 flex-col  md:grid md:grid-cols-2 md:w-full  h-full flex  items-center justify-between ">
                         <div className='col-span-1 md:mt-0 mt-14'>
                             <div className="mb-7">
@@ -57,7 +57,7 @@ const HeroSection = () => {
                                 </div>}
                             </div>
                         </div>
-                        <div className='flex justify-end  lg:w-5/6  '>
+                        <div className=' hidden md:flex justify-end  lg:w-5/6  '>
                             <img src="/heroImage.svg" alt="hero iamge " className='h-96 w-96 md:h-[520px] md:w-auto' />
                         </div>
                     </div>

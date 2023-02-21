@@ -21,8 +21,10 @@ const SemesterResult = () => {
   return (
     <>
       <Layout>
-        <div className=" gap-3 p-4">
-          <ResultPdfPrint semesterResult={semesterResult} refetch={refetch} isLoading={isLoading}></ResultPdfPrint>
+        <div className=" gap-3  p-7 h-screen bg-gray-100 shadow-md">
+          <div className="bg-white  p-4">
+            <ResultPdfPrint semesterResult={semesterResult} refetch={refetch} isLoading={isLoading}></ResultPdfPrint>
+          </div>
         </div>
       </Layout>
     </>

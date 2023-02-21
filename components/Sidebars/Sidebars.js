@@ -4,24 +4,28 @@ const Sidebars = () => {
     return (
         <div className="drawer-side">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-            <ul className="menu p-8 w-80 bg-base-100 lg:bg-inherit text-base-content">
-                <li><Link href="/dashboard/profile">Profile</Link></li>
+
+            <div className="menu py-6 w-64 bg-base-100 lg:bg-inherit text-base-content">
+                <div className=" items-center justify-center hidden md:flex ">
+                    <Link href={'/'} className="font-bold cursor-pointer select-none md:text-3xl text-xl no-animation">
+                        ResultRise
+                    </Link>
+                </div>
+                <li className="mt-5"><Link href="/dashboard/profile">Profile</Link></li>
                 <li><Link href="/dashboard/result">Results</Link></li>
-                <hr />
                 <li><Link href="/dashboard/students/Report">Report Student</Link></li>
                 <li><Link href="/dashboard/students/pending/reporterdStudent">Pending Reported Students</Link></li>
                 <li><Link href="/dashboard/teachers/myreports">My Reports</Link></li>
                 <li><Link href="/dashboard/students/ReportedStudents">Reported Students</Link></li>
-                <hr />
                 <li><Link href="/dashboard/teachers">Teachers</Link></li>
                 <li><Link href="/dashboard/students">Students</Link></li>
                 <li><Link href="/dashboard/addmark">Add Marks</Link></li>
                 <hr />
                 <li><Link href="/dashboard/teachers/pending">Pending Teachers</Link></li>
                 <li><Link href="/dashboard/students/pending">Pending Students</Link></li>
-                <hr />
-
-            </ul>
+                <li><Link href="/dashboard/notification/shownotification">Notification</Link></li>
+                <li><Link href="/dashboard/notification/pushnotification">Notice Board</Link></li>
+            </div>
         </div>
     );
 }

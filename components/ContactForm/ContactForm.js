@@ -3,7 +3,7 @@ import Contact from "./Contact";
 
 const ContactForm = () => {
   return (
-    <div className="p-10 bg-white">
+    <div className="p-10 ">
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 justify-around">
         <div className="h h-full  xl:pl-20">
           <img
