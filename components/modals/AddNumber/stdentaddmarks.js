@@ -30,13 +30,14 @@ const Stdentaddmarks = ({ data }) => {
     <section>
       {/* add marks section */}
       <div className="border bg-white ">
-        <ul className="flex  justify-between gap-2 border bg-gray-200 lg:p-2 lg:text-lg text-[8px]">
+        <ul className="gap-1 border bg-gray-200 
+        form-control grid grid-cols-7  md:gap-3  items-center px-5 py-2">
           <li> SL </li>
           <li> Name </li>
-          <li> Presentation marks </li>
-          <li> Midterm Marks </li>
-          <li> Viva Marks </li>
-          <li> Final Marks </li>
+          <li> Presentation  </li>
+          <li> Midterm  </li>
+          <li> Final  </li>
+          <li> Viva  </li>
           <li> Status </li>
         </ul>
         <div>
@@ -45,14 +46,14 @@ const Stdentaddmarks = ({ data }) => {
               <form
                 onSubmit={handleAddFormChange}
                 key={examResult._id}
-                className=" form-control grid grid-cols-7 lg:gap-4 md:gap-3 gap-1 items-center my-2">
-                <span className="mx-2  w-10">{examResult.id}</span>
-                <label className=" lg:mr-4 lg:ml-[-50px] md:ml-[-50px] ml-[-25px]">
+                className=" form-control grid grid-cols-7  md:gap-3 gap-1 items-center my-2">
+                <span className="mx-2 w-10">{examResult.id}</span>
+                <label className=" ">
                   {examResult.name}
                 </label>
                 <input
                   type="number"
-                  className="input input-bordered lg:w-40  lg:ml-[-100px] md:ml-[-50px] max-w-xs input-sm w-full "
+                  className="input input-bordered  max-w-xs input-sm w-full "
                   placeholder="presenatation marks"
                   name="presentation_score"
                 ></input>
