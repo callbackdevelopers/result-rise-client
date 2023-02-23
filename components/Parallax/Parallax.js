@@ -1,6 +1,6 @@
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
-function ParallaX({ scrollPosition }) {
+function ParallaX() {
     return (
         <>
             <div className='h-[10vh] md:h-0 overflow-hidden'>

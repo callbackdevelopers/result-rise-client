@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import OtherInfo from "./OtherInfo";
 import PersonalInfo from "./PersonalInfo";
-import SignUpInfo from "./SignUpInfo";
 
 function Form() {
   const [page, setPage] = useState(0);
@@ -20,7 +19,39 @@ function Form() {
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <SignUpInfo formData={formData} setFormData={setFormData} />;
+      return <div className="">
+        <div className="flex flex-col items-center w-full">
+          <input
+            className="input input-bordered input-sm w-full  my-2 "
+            type="text"
+            placeholder="Email..."
+            value={formData.email}
+            onChange={(event) =>
+              setFormData({ ...formData, email: event.target.value })
+            }
+          />
+          <input
+            className="input input-bordered input-sm w-full my-2"
+            type="text"
+            placeholder="Password..."
+            value={formData.password}
+            onChange={(event) =>
+              setFormData({ ...formData, password: event.target.value })
+            }
+          />
+          <input
+            className="input input-bordered input-sm w-full my-2"
+            type="text"
+            placeholder="Confirm Password..."
+            value={formData.confirmPassword}
+            onChange={(event) =>
+              setFormData({ ...formData, confirmPassword: event.target.value })
+            }
+          />
+        </div>
+      </div>
+
+
     } else if (page === 1) {
       return <PersonalInfo formData={formData} setFormData={setFormData} />;
     } else {
@@ -29,7 +60,7 @@ function Form() {
   };
 
   return (
-    <div className="form ">
+    <div className="form  flex w-full justify-center items-center">
       <div className="form-container border p-5 max-w-3xl">
         <div className="header">
           <h1>{FormTitles[page]}</h1>
@@ -37,7 +68,7 @@ function Form() {
         <div className="body">
           {PageDisplay()}
         </div>
-        <div className="footer">
+        <div className="footer mt-4">
           <button
             disabled={page == 0}
             onClick={() => {
