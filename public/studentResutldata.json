@@ -1,15 +1,14 @@
 {
-  "student_id": 1234,
-  "student_name": "Chris Wade",
-  "registration_number": "2018106",
+  "student_id": 323234,
+  "student_name": "akash",
   "department": "CSE",
-  "Addmission": "Winter-2018",
-  "student_email": "jaja@gmail.com",
+  "Admission": "Winter-2018",
+  "student_email": "akash@t.com",
   "semester_results": [
     {
       "semesterId": "01",
       "season": "Winter 2018",
-      "semester": "1st",
+      "semester": "FirstSemester",
       "exam_results": [
         {
           "subject_name": "Introduction of computer Science",
@@ -18,7 +17,7 @@
           "midterm_score": 18,
           "final_exam_score": 40,
           "presentation_score": 10,
-          "viva_score": 10
+          "viva_score": 20
         },
         {
           "subject_name": "Analog Electronics",
@@ -65,7 +64,7 @@
     {
       "semesterId": "2",
       "season": "Summer 2018",
-      "semester": "2nd",
+      "semester": "second semester",
       "exam_results": [
         {
           "subject_name": "Programming and Data Structures",
@@ -76,374 +75,374 @@
           "viva_score": 10
         },
         {
-          "subject_name": "Algorithms and Theory of Computation",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "English reading and  Composition",
+          "subject_code": "ENG 101",
+          "midterm_score": 17,
+          "final_exam_score": 39,
+          "presentation_score": 9,
+          "viva_score": 16
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Advanced English communication",
+          "subject_code": "ENG 213",
+          "midterm_score": 19,
+          "final_exam_score": 44,
+          "presentation_score": 8,
+          "viva_score": 18
         },
         {
-          "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Sociology",
+          "subject_code": "SOC 101",
+          "midterm_score": 17,
+          "final_exam_score": 46,
+          "presentation_score": 10,
+          "viva_score": 18
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Bangladesh Studies",
+          "subject_code": "HIS 101",
+          "midterm_score": 16,
+          "final_exam_score": 42,
+          "presentation_score": 8,
+          "viva_score": 17
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Principles of Accounting",
+          "subject_code": "ACT 201",
+          "midterm_score": 18,
+          "final_exam_score": 41,
+          "presentation_score": 8,
+          "viva_score": 18
         }
       ]
     },
     {
       "semesterId": "3",
       "season": "Winter 2019",
-      "semester": "3rd",
+      "semester": "Third Semester",
       "exam_results": [
         {
-          "subject_name": "Programming and Data Structures",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Computer Fundamentals",
+          "subject_code": "CSE101",
+          "midterm_score": 16,
+          "final_exam_score": 46,
+          "presentation_score": 8,
+          "viva_score": 17
         },
         {
-          "subject_name": "Algorithms and Theory of Computation",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Discrete Mathematics",
+          "subject_code": "CSE 103",
+          "midterm_score": 17,
+          "final_exam_score": 43,
+          "presentation_score": 9,
+          "viva_score": 19
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Structured Programming",
+          "subject_code": "CSE 105",
+          "midterm_score": 19,
+          "final_exam_score": 44,
+          "presentation_score": 7,
+          "viva_score": 16
         },
         {
-          "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Structured Programming Laboratory",
+          "subject_code": "CSE 106",
+          "midterm_score": 19,
+          "final_exam_score": 47,
+          "presentation_score": 10,
+          "viva_score": 19
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Introduction to Electrical Engineering",
+          "subject_code": "EE 105",
+          "midterm_score": 18,
+          "final_exam_score": 46,
+          "presentation_score": 9,
+          "viva_score": 18
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Introduction to Electrical Engineering Laboratory",
+          "subject_code": "EE 106",
+          "midterm_score": 19,
+          "final_exam_score": 41,
+          "presentation_score": 8,
+          "viva_score": 17
         }
       ]
     },
     {
       "semesterId": "4",
       "season": "Summer 2019",
-      "semester": "4th",
+      "semester": "Four Semester",
       "exam_results": [
         {
-          "subject_name": "Programming and Data Structures",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Data Structures",
+          "subject_code": "CSE 201",
+          "midterm_score": 18,
+          "final_exam_score": 48,
+          "presentation_score": 10,
+          "viva_score": 18
         },
         {
           "subject_name": "Algorithms and Theory of Computation",
           "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
+          "midterm_score": 15,
+          "final_exam_score": 46,
+          "presentation_score": 9,
           "viva_score": 20
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
+          "subject_name": "Introduction to Algorithms",
+          "subject_code": "CSE 203",
+          "midterm_score": 18,
+          "final_exam_score": 48,
+          "presentation_score": 9,
           "viva_score": 20
         },
         {
-          "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Data Structures and Algorithms Laboratory",
+          "subject_code": "CSE 204",
+          "midterm_score": 19,
+          "final_exam_score": 46,
+          "presentation_score": 9,
+          "viva_score": 19
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Object Oriented Programming Laboratory ",
+          "subject_code": "CSE 206",
+          "midterm_score": 17,
+          "final_exam_score": 47,
+          "presentation_score": 8,
+          "viva_score": 17
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Electronic Devices and Circuits",
+          "subject_code": "EE 217",
+          "midterm_score": 16,
+          "final_exam_score": 45,
+          "presentation_score": 8,
+          "viva_score": 15
         }
       ]
     },
     {
       "semesterId": "5",
       "season": "Winter 2020",
-      "semester": "5th",
+      "semester": "five Semester",
       "exam_results": [
         {
-          "subject_name": "Programming and Data Structures",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Electronic Devices and Circuits Laboratory",
+          "subject_code": "EE 218",
+          "midterm_score": 17,
+          "final_exam_score": 44,
+          "presentation_score": 8,
+          "viva_score": 18
         },
         {
-          "subject_name": "Algorithms and Theory of Computation",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Digital Logic Design",
+          "subject_code": "CSE 207",
+          "midterm_score": 17,
+          "final_exam_score": 43,
+          "presentation_score": 7,
+          "viva_score": 17
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Digital Logic Design Laboratory",
+          "subject_code": "CSE 208",
+          "midterm_score": 19,
+          "final_exam_score": 46,
+          "presentation_score": 8,
+          "viva_score": 16
         },
         {
-          "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Microprocessors and Microcontrollers",
+          "subject_code": "CSE 301",
+          "midterm_score": 18,
+          "final_exam_score": 44,
+          "presentation_score": 7,
+          "viva_score": 18
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Microprocessors and Microcontrollers Laboratory",
+          "subject_code": "CSE 302",
+          "midterm_score": 18,
+          "final_exam_score": 46,
+          "presentation_score": 8,
+          "viva_score": 18
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Database Management Systems",
+          "subject_code": "CSE 303",
+          "midterm_score": 15,
+          "final_exam_score": 47,
+          "presentation_score": 8,
+          "viva_score": 18
         }
       ]
     },
     {
       "semesterId": "6",
       "season": "Summer 2020",
-      "semester": "6th",
+      "semester": "six semester",
       "exam_results": [
         {
-          "subject_name": "Programming and Data Structures",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Database Management Systems Laboratory",
+          "subject_code": "CSE 304",
+          "midterm_score": 18,
+          "final_exam_score": 47,
+          "presentation_score": 8,
+          "viva_score": 19
         },
         {
-          "subject_name": "Algorithms and Theory of Computation",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Data Communication",
+          "subject_code": "CSE 305",
+          "midterm_score": 16,
+          "final_exam_score": 48,
+          "presentation_score": 9,
+          "viva_score": 17
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Computer Architecture",
+          "subject_code": "CSE 307",
+          "midterm_score": 16,
+          "final_exam_score": 47,
+          "presentation_score": 9,
+          "viva_score": 18
         },
         {
-          "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Numerical Methods",
+          "subject_code": "CSE 309",
+          "midterm_score": 20,
+          "final_exam_score": 48,
+          "presentation_score": 8,
+          "viva_score": 19
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Operating Systems",
+          "subject_code": "CSE 311",
+          "midterm_score": 19,
+          "final_exam_score": 46,
+          "presentation_score": 7,
+          "viva_score": 16
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Operating Systems Laboratory",
+          "subject_code": "CSE 312",
+          "midterm_score": 17,
+          "final_exam_score": 47,
+          "presentation_score": 9,
+          "viva_score": 18
         }
       ]
     },
     {
       "semesterId": "7",
       "season": "Winter 2021",
-      "semester": "7th",
+      "semester": "seven  Semester",
       "exam_results": [
         {
-          "subject_name": "Programming and Data Structures",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Computer Networks",
+          "subject_code": "CSE 313",
+          "midterm_score": 15,
+          "final_exam_score": 38,
+          "presentation_score": 7,
+          "viva_score": 14
         },
         {
-          "subject_name": "Algorithms and Theory of Computation",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Computer Networks Laboratory ",
+          "subject_code": "CSE 314",
+          "midterm_score": 13,
+          "final_exam_score": 41,
+          "presentation_score": 8,
+          "viva_score": 17
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Theory of Automata and Formal Languages",
+          "subject_code": "CSE 315",
+          "midterm_score": 16,
+          "final_exam_score": 43,
+          "presentation_score": 10,
+          "viva_score": 19
         },
         {
           "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_code": "CSE 401",
+          "midterm_score": 17,
+          "final_exam_score": 45,
+          "presentation_score": 8,
+          "viva_score": 17
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Internet and Web Technologies",
+          "subject_code": "CSE 403",
+          "midterm_score": 18,
+          "final_exam_score": 36,
+          "presentation_score": 7,
+          "viva_score": 14
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Internet and Web Technologies laboratory",
+          "subject_code": "CSE 404",
+          "midterm_score": 16,
+          "final_exam_score": 47,
+          "presentation_score": 8,
+          "viva_score": 17
         }
       ]
     },
     {
       "semesterId": "8",
       "season": "Summer 2021",
-      "semester": "8th",
+      "semester": "eight semester",
       "exam_results": [
         {
-          "subject_name": "Programming and Data Structures",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
+          "subject_name": "Artificial Intelligence and Expert Systems",
+          "subject_code": "CSE 405",
+          "midterm_score": 9,
+          "final_exam_score": 48,
+          "presentation_score": 9,
           "viva_score": 20
         },
         {
-          "subject_name": "Algorithms and Theory of Computation",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Artificial Intelligence and Expert Systems Laboratory",
+          "subject_code": "CSE 406",
+          "midterm_score": 15,
+          "final_exam_score": 42,
+          "presentation_score": 8,
+          "viva_score": 17
         },
         {
-          "subject_name": "Computer Systems and Architecture",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Compiler Design",
+          "subject_code": "CSE 407",
+          "midterm_score": 9,
+          "final_exam_score": 43,
+          "presentation_score": 7,
+          "viva_score": 14
         },
         {
-          "subject_name": "Software Engineering",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Compiler Design Laboratory",
+          "subject_code": "CSE 408",
+          "midterm_score": 17,
+          "final_exam_score": 46,
+          "presentation_score": 9,
+          "viva_score": 18
         },
         {
-          "subject_name": "Artificial Intelligence and Machine Learning",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Thesis/ Project",
+          "subject_code": "CSE 400",
+          "midterm_score": 16,
+          "final_exam_score": 43,
+          "presentation_score": 8,
+          "viva_score": 18
         },
         {
-          "subject_name": "Computer Networks and Security",
-          "subject_code": "4924",
-          "midterm_score": 85,
-          "final_exam_score": 92,
-          "presentation_score": 30,
-          "viva_score": 20
+          "subject_name": "Computer Graphics",
+          "subject_code": "CSE 417",
+          "midterm_score": 18,
+          "final_exam_score": 48,
+          "presentation_score": 7,
+          "viva_score": 15
         }
       ]
     }

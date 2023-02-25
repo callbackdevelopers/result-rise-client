@@ -49,7 +49,7 @@ const HeroSection = () => {
                                             Go to Your Dashboard
                                         </ButtonArrow> </Link>
                                 </div> : <div className=''>
-                                    <Link href='/user/login' >
+                                    <Link href='user/login' >
                                         <ButtonArrow
                                             h={'10'}>
                                             Go to Login

@@ -1,191 +1,105 @@
 import { useQuery } from "@tanstack/react-query";
-import { nanoid } from "nanoid";
 import { useState } from "react";
-import AddNumberModal from "../../../components/modals/AddNumber/AddNumberModal";
 import Stdentaddmarks from "../../../components/modals/AddNumber/stdentaddmarks";
 import MidSpinner from "../../../components/Spiner/MidSpinner";
+import { useFirebase } from "../../../context/UserContext";
 import Layout from "../../../Layout/Layout";
-import Data from "../../../public/mock-data.json";
 
 function index() {
-  const [show, setShow] = useState(false);
+  const { user } = useFirebase();
+  const [showTable, setShowTable] = useState(false);
   const [student, setStudent] = useState([]);
-  const [showdata, setShowdata] = useState('')
-  const url = `http://localhost:3100/verified/student`;
-  const {
-    data: students = [],
-    refetch,
-    isLoading,
-  } = useQuery({
-    queryKey: [],
+
+  const { data: userData = [], isLoading, refetch } = useQuery({
+    queryKey: ['user', user?.email],
     queryFn: async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      return data;
-    },
-  });
-
-  const [contacts, setContacts] = useState(Data);
-  const [addFormData, setAddFormData] = useState({
-    presentation_score: "",
-    final_exam_score: "",
-    midterm_score: "",
-    viva_score: "",
-  });
-
-  const [editFormData, setEditFormData] = useState({
-    studentName: "",
-    presentation_score: "",
-    final_exam_score: "",
-    midterm_score: "",
-    viva_score: "",
-  });
-
-  const [editContactId, setEditContactId] = useState(null);
-
+      const res = await fetch(`http://localhost:3100/users/${user?.email}`)
+      const data = await res.json()
+      return data[0];
+    }
+  })
   const handleAddFormChange = (event) => {
     event.preventDefault();
-    const name = event.target.name;
-    const value = event.target.value;
-
-    setShowdata((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-    const newFormData = { ...addFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setAddFormData(newFormData);
+    const target = event.target;
+    const admission = target.admission.value;
+    const department = target.department.value;
+    const subject = target.subject.value;
+    const getData = { admission, department, subject }
+    loadStudentByQuery(getData);
   };
-
-  const handleEditFormChange = (event) => {
-    event.preventDefault();
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...editFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setEditFormData(newFormData);
-  };
-
-  const handleAddFormSubmit = (event) => {
-    event.preventDefault();
-
-    const newContact = {
-      id: nanoid(),
-      studentName: addFormData.studentName,
-      presentation_score: addFormData.presentation_score,
-      final_exam_score: addFormData.final_exam_score,
-      midterm_score: addFormData.midterm_score,
-      viva_score: addFormData.viva_score,
-    };
-
-    const newContacts = [...contacts, newContact];
-    setContacts(newContacts);
-  };
-
-  const handleEditFormSubmit = (event) => {
-    event.preventDefault();
-
-    const editedContact = {
-      id: editContactId,
-      studentName: editFormData.studentName,
-      presentation_score: editFormData.presentation_score,
-      final_exam_score: editFormData.final_exam_score,
-      midterm_score: editFormData.midterm_score,
-      viva_score: editFormData.viva_score,
-    };
-
-    const newContacts = [...contacts];
-
-    const index = contacts.findIndex((contact) => contact.id === editContactId);
-
-    newContacts[index] = editedContact;
-
-    setContacts(newContacts);
-    setEditContactId(null);
-  };
-
-  const handleEditClick = (event, contact) => {
-    event.preventDefault();
-    setEditContactId(contact.id);
-
-
-    const formValues = {
-      studentName: contact.studentName,
-      presentation_score: contact.presentation_score,
-      final_exam_score: contact.final_exam_score,
-      midterm_score: contact.midterm_score,
-      viva_score: contact.viva_score,
-    };
-
-    setEditFormData(formValues);
-  };
-
-  const handleCancelClick = () => {
-    setEditContactId(null);
-  };
-
-  const handleDeleteClick = (contactId) => {
-    const newContacts = [...contacts];
-
-    const index = contacts.findIndex((contact) => contact.id === contactId);
-
-    newContacts.splice(index, 1);
-
-    setContacts(newContacts);
-  };
-
+  const loadStudentByQuery = (getData) => {
+    console.log(getData);
+    const { admission, department, subject } = getData;
+    const url = `http://localhost:3100/students?admission=${admission}&department=${department}&subject=${subject}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setStudent(data);
+        setShowTable(true);
+      });
+  }
   if (isLoading) return <MidSpinner />;
-
+  console.log(userData);
   return (
     <div>
       <div>
         <Layout>
           <div className='bg-gray-100 min-h-screen'>
+            {!showTable &&
+              <form
+                onSubmit={handleAddFormChange}
+                className="flex items-center h-[80vh] justify-center">
+                <div className="border lg:w-2/3 mx-auto bg-white shadow-sm p-4 md:p-7">
+                  <div className="text-2xl md:text-3xl text-center">Please Provide The information</div>
+                  <div className="flex flex-col items-center justify-center mt-5 p-4 md:p-0">
+                    <div className="w-4/5 flex flex-col items-center py-5">
+                      <div className="flex items-center w-full md:w-2/3 pt-2">
+                        <label className="mx-2 w-full">Select Admissions</label>
+                        <input type="text"
+                          name="admission"
+                          required
+                          className="input input-bordered input-sm w-full max-w-xs"
+                          placeholder="Enter Admissions year"
+                        />
+                      </div>
+                      <div className="flex items-center w-full md:w-2/3 mt-2">
+                        <label className="mx-2 w-full">Select DepartMent</label>
+                        <input type="text"
+                          name="department"
+                          required
+                          defaultValue={userData?.department}
+                          disabled
+                          className="input input-bordered input-sm w-full max-w-xs"
+                          placeholder="Enter Department"
+                        />
+                      </div>
+                      <div className="flex items-center w-full md:w-2/3 mt-2">
+                        <label className="mx-2 w-full">Enter Subject Code</label>
+                        <input
+                          required
+                          type="text"
+                          name="subject"
+                          className="input input-bordered input-sm w-full max-w-xs"
+                          placeholder="Enter Subject Code"
+                        />
+                      </div>
+                    </div>
+                    <div className=" w-full md:w-3/5 text-right">
+                      <button
+                        type="submit"
+                        className="btn btn-sm mt-5">Get Students</button>
+                    </div>
+                  </div>
+                </div>
+              </form>}
             <div className="p-6">
               <Stdentaddmarks
-                handleAddFormChange={handleAddFormChange}
-                handleAddFormSubmit={handleAddFormSubmit}
-                data={students}
+                data={student}
+                showTable={showTable}
               />
             </div>
-            <div className="m-4">
-              <label
-                onClick={() => {
-                  setStudent(students), setShow(true);
-                }}
-                htmlFor="add_Number_modal"
-                className="btn btn-sm btn-warning"
-              >
-                View Marks
-              </label>
-
-              {show && (
-                <AddNumberModal
-                  handleDeleteClick={handleDeleteClick}
-                  handleAddFormChange={handleAddFormChange}
-                  handleCancelClick={handleCancelClick}
-                  handleEditClick={handleEditClick}
-                  handleEditFormSubmit={handleEditFormSubmit}
-                  handleEditFormChange={handleEditFormChange}
-                  contacts={contacts}
-                  editFormData={editFormData}
-                  editContactId={editContactId}
-                  student={student}
-                  setShow={setShow}
-                  showdata={showdata}
-                />
-              )}
-            </div>
           </div>
-
-
         </Layout>
       </div>
     </div>
