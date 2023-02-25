@@ -19,7 +19,7 @@ const profile = () => {
             return data[0];
         }
     })
-    console.log(userData)
+    // console.log(userData)
     const { photoURL, roll, name, email, address, phone, gender, department, verification, id } = userData;
 
     if (isLoading) return <MidSpinner />
@@ -120,7 +120,9 @@ const profile = () => {
                                     <ul className="list-inside space-y-2">
                                         <li>
                                             <div className="text-teal-600">{department}</div>
-                                            <div className="text-gray-500 text-xs">March 2020 - Now</div>
+                                            <div className="text-gray-500 text-xs">
+                                                March 2020 - Now
+                                            </div>
                                         </li>
 
                                     </ul>
@@ -151,11 +153,6 @@ const profile = () => {
                             setUserEdit={setUserEdit}
                         ></ProfileModal>
                     }
-                    {/* <ProfileModal
-                                userData={userData}
-                                refetch={refetch}
-                                setUserEdit={setUserEdit}
-                            ></ProfileModal> */}
                 </div>
             </div>
 

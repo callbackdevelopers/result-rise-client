@@ -15,12 +15,7 @@ import AlertMessage from "../../Hooks/AlertMessage";
 const register = () => {
     const { successMessage, errorMessage } = AlertMessage();
     const router = useRouter();
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { CreateUserEP, updateProfilePic, verifyEmail } = useFirebase();
 
     const [tabIndex, setTabIndex] = useState(0);
@@ -43,6 +38,7 @@ const register = () => {
         const department = data.department;
         const dataCreated = new Date();
         const verification = false;
+        const Session = new Date().getFullYear();
 
         //differentiate users data. like : student, teacher and head
         if (tabIndex === 0) {
@@ -50,7 +46,7 @@ const register = () => {
             const user = {
                 name, email, password, id, semester,
                 department, address, phone, gender, birth,
-                dataCreated, roll: "student", verification
+                dataCreated, roll: "student", verification, Session
             };
             imageHosting(photo, user);
         } else if (tabIndex === 1) {
@@ -58,7 +54,7 @@ const register = () => {
             const user = {
                 name, email, password, id,
                 subject, gender, birth, dataCreated,
-                department, address, phone, roll: "teacher", verification
+                department, address, phone, roll: "teacher", verification, Session
             };
             imageHosting(photo, user);
         } else if (tabIndex === 2) {
@@ -67,7 +63,7 @@ const register = () => {
             const user = {
                 name, email, password, id, department,
                 address, phone, gender, birth,
-                dataCreated, roll: "head", verification
+                dataCreated, roll: "head", verification, Session
             }
             imageHosting(photo, user);
         } else { console.log("error"); }
@@ -151,6 +147,7 @@ const register = () => {
         { name: "phone", type: "number", placeholder: "Phone", error: errors.phone },
         { name: "address", type: "text", placeholder: "Address", error: errors.address },
         { name: "date", type: "date", placeholder: "date of birth", error: errors.date },
+
     ]
     //student table data
     const semisterStudent =
@@ -165,15 +162,9 @@ const register = () => {
             value: 'male'
         }, { value: 'female' }]
     }
-    const subjectTeacher =
-    {
-        name: "subject", type: "file", placeholder: "Photo", error: errors.photo,
-        options: [
-            { value: "CSE" },
-            { value: "EEE" }, { value: "BBA" }, { value: "English" }, { value: "Math" },
-            { value: "Physics" }, { value: "Chemistry" },
-        ]
-    }
+    const teacherSubject =
+        { name: "Subject", type: "text", placeholder: "Subject-code", error: errors.Subject }
+
     const departmentData = {
         name: "department", placeholder: "department", error: errors.department, options: [{
             value: 'CSE'
@@ -229,8 +220,9 @@ const register = () => {
                                         </TabPanel>
                                         <TabPanel>
                                             <div className="grid grid-cols-1 gap-6  md:grid-cols-3">
-                                                <FormOptionTemplate
-                                                    data={subjectTeacher}
+                                                <FormTemplate
+                                                    key={1}
+                                                    data={teacherSubject}
                                                     register={register}
                                                 />
                                                 <FormOptionTemplate
